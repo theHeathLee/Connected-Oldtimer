@@ -3,13 +3,15 @@ int led1 = D0;
 int led2 = D7; 
 SYSTEM_THREAD(ENABLED);
 #include "Serial4/Serial4.h"
+#include "Serial5/Serial5.h"
 #include "../lib/TinyGPS++/src/TinyGPS++.h"
 
 
 void setup() {
 
-  Serial.begin(9600);
-  Serial4.begin(9600);
+  Serial.begin(9600); //usb debugging
+  Serial4.begin(9600); // uart for nextion
+  Serial5.begin(9600); // uart for GPS
   pinMode(led1, OUTPUT);
   pinMode(led2, OUTPUT);
 
