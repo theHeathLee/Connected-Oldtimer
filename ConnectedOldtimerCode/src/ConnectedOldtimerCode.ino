@@ -9,6 +9,7 @@ SYSTEM_THREAD(ENABLED);
 
 TinyGPSPlus gps;
 static const uint32_t GPSBaud = 9600;
+double speed =0;
 
 void setup() {
 
@@ -31,20 +32,17 @@ while (Serial5.available() > 0)
 
 
   // To blink the LED, first we'll turn it on...
-  digitalWrite(led1, HIGH);
-  digitalWrite(led2, HIGH);
-  Serial4.print("n0.val=67");
-  Serial4.write(0xff);
-  Serial4.write(0xff);
-  Serial4.write(0xff);
+
 
   // We'll leave it on for 1 second...
   delay(500);
-
+  speed = gps.speed.kmph();
+  Serial.print(speed);
   // Then we'll turn it off...
   digitalWrite(led1, LOW);
   digitalWrite(led2, LOW);
   Serial4.printf("n0.val=66");
+  Serial4.print(speed);
   Serial4.write(0xff);
   Serial4.write(0xff);
   Serial4.write(0xff);
@@ -102,6 +100,10 @@ void displayInfo()
     Serial.print(F("."));
     if (gps.time.centisecond() < 10) Serial.print(F("0"));
     Serial.print(gps.time.centisecond());
+
+    //Serial.print("Speed= ");
+
+    
   }
   else
   {
@@ -110,3 +112,6 @@ void displayInfo()
 
   Serial.println();
 }
+
+
+

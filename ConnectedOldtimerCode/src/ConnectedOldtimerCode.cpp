@@ -11,12 +11,17 @@ SYSTEM_THREAD(ENABLED);
 #include "Serial4/Serial4.h"
 #include "Serial5/Serial5.h"
 #include "../lib/TinyGPS++/src/TinyGPS++.h"
+#include "can_hal.h"
 
 
 TinyGPSPlus gps;
 static const uint32_t GPSBaud = 9600;
+double speed =0;
 
 void setup() {
+  can.begin(125000); // pick the baud rate for your network
+    // accept one message. If no filter added by user then accept all messages
+    can.addFilter(0x100, 0x7FF);
 
   Serial.begin(9600); //usb debugging
   Serial4.begin(9600); // uart for nextion
@@ -37,20 +42,17 @@ while (Serial5.available() > 0)
 
 
   // To blink the LED, first we'll turn it on...
-  digitalWrite(led1, HIGH);
-  digitalWrite(led2, HIGH);
-  Serial4.print("n0.val=67");
-  Serial4.write(0xff);
-  Serial4.write(0xff);
-  Serial4.write(0xff);
+
 
   // We'll leave it on for 1 second...
   delay(500);
-
+  speed = gps.speed.kmph();
+  Serial.print(speed);
   // Then we'll turn it off...
   digitalWrite(led1, LOW);
   digitalWrite(led2, LOW);
   Serial4.printf("n0.val=66");
+  Serial4.print(speed);
   Serial4.write(0xff);
   Serial4.write(0xff);
   Serial4.write(0xff);
@@ -108,6 +110,10 @@ void displayInfo()
     Serial.print(F("."));
     if (gps.time.centisecond() < 10) Serial.print(F("0"));
     Serial.print(gps.time.centisecond());
+
+    //Serial.print("Speed= ");
+
+    
   }
   else
   {
@@ -116,3 +122,6 @@ void displayInfo()
 
   Serial.println();
 }
+
+
+
