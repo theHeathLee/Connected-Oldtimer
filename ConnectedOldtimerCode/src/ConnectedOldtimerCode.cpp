@@ -4,6 +4,7 @@
 void setup();
 void loop();
 void displayInfo();
+void canReceive();
 #line 2 "/Users/heath/Documents/workspace/Connected-Oldtimer/ConnectedOldtimerCode/src/ConnectedOldtimerCode.ino"
 int led1 = D0; 
 int led2 = D7; 
@@ -11,17 +12,21 @@ SYSTEM_THREAD(ENABLED);
 #include "Serial4/Serial4.h"
 #include "Serial5/Serial5.h"
 #include "../lib/TinyGPS++/src/TinyGPS++.h"
-#include "can_hal.h"
 
 
 TinyGPSPlus gps;
 static const uint32_t GPSBaud = 9600;
 double speed =0;
+CANChannel can(CAN_D1_D2);
+uint16_t motorTemperature = 0;
+uint16_t motorRPM = 0;
+uint8_t fuelLevel = 0;
 
 void setup() {
+
   can.begin(125000); // pick the baud rate for your network
     // accept one message. If no filter added by user then accept all messages
-    can.addFilter(0x100, 0x7FF);
+  can.addFilter(0x100, 0x7FF);
 
   Serial.begin(9600); //usb debugging
   Serial4.begin(9600); // uart for nextion
@@ -35,6 +40,7 @@ void setup() {
 
 void loop() {
 
+canReceive();
 
 while (Serial5.available() > 0)
     if (gps.encode(Serial5.read()))
@@ -123,5 +129,22 @@ void displayInfo()
   Serial.println();
 }
 
+
+void canReceive(){
+  
+  CANMessage message;
+
+  while(can.receive(message)) {
+    if (message.id == 0x100) {
+      digitalWrite(motorTemperature, !message.data[0]);
+    }
+    if (message.id == 0x200) {
+      digitalWrite(motorRPM, !message.data[0]);
+    }
+    if (message.id == 0x300) {
+      digitalWrite(fuelLevel, !message.data[0]);
+    }
+  }
+}  
 
 
