@@ -10,7 +10,7 @@ SYSTEM_THREAD(ENABLED);
 
 TinyGPSPlus gps;
 static const uint32_t GPSBaud = 9600;
-uint8_t speed =0;
+double speed =0;
 CANChannel can(CAN_D1_D2);
 uint16_t motorTemperature = 0;
 uint16_t motorRPM = 0;
@@ -38,10 +38,10 @@ void loop() {
 
 canReceive();
 
-while (Serial5.available() > 0)
-    if (gps.encode(Serial5.read()))
-      displayInfo();
-
+// while (Serial5.available() > 0)
+//     if (gps.encode(Serial5.read()))
+//       displayInfo();
+smartDelay(1000);
 
   // To blink the LED, first we'll turn it on...
   digitalWrite(led1, HIGH);
@@ -53,6 +53,7 @@ while (Serial5.available() > 0)
   if (gps.location.isValid()) {
     speed = gps.speed.kmph();
     Serial.println(speed);
+    Serial.println(gps.speed.kmph());
   }
   else {
     speed = 10; // we know that gps is not valid/
@@ -60,7 +61,7 @@ while (Serial5.available() > 0)
   }
 
   Serial.println("counting");
-  delay(500);
+  delay(200);
   //speed = gps.speed.kmph();
   //Serial.print(speed);
   // Then we'll turn it off...
@@ -157,3 +158,13 @@ void canReceive(){
 }  
 
 
+static void smartDelay(unsigned long ms)
+{
+  unsigned long start = millis();
+  do 
+  {
+    while (Serial5.available())
+      gps.encode(Serial5.read());
+      displayInfo();
+  } while (millis() - start < ms);
+}
