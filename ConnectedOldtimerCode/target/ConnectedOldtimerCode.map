@@ -363,9 +363,9 @@ Archive member included to satisfy reference by file (symbol)
 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libm.a(lib_a-s_copysign.o)
                               /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libm.a(lib_a-s_scalbn.o) (copysign)
 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7-m/libgcc.a(_arm_addsubdf3.o)
-                              ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(TinyGPS++.o) (__aeabi_dsub)
+                              ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(ConnectedOldtimerCode.o) (__aeabi_dsub)
 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7-m/libgcc.a(_arm_muldivdf3.o)
-                              ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(ConnectedOldtimerCode.o) (__aeabi_dmul)
+                              ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(TinyGPS++.o) (__aeabi_dmul)
 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7-m/libgcc.a(_arm_cmpdf2.o)
                               ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring.o) (__aeabi_dcmpeq)
 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7-m/libgcc.a(_arm_unorddf2.o)
@@ -31136,7 +31136,7 @@ END GROUP
                 0x0000000008080000                module_info
                 0x0000000008080018                link_module_info_end = .
 
-.text           0x0000000008080018     0x28c8
+.text           0x0000000008080018     0x28e8
                 0x0000000008080018                expected_dynalib_start = (ORIGIN (APP_FLASH) + 0x18)
                 0x0000000008080018                link_dynalib_start = .
  *(*.user_part_module)
@@ -31200,652 +31200,652 @@ END GROUP
  .text._Z10canReceivev
                 0x000000000808022c       0x8c ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(ConnectedOldtimerCode.o)
                 0x000000000808022c                canReceive()
- .text.loop     0x00000000080802b8      0x12c ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(ConnectedOldtimerCode.o)
+ .text.loop     0x00000000080802b8      0x150 ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(ConnectedOldtimerCode.o)
                 0x00000000080802b8                loop
  .text.startup._GLOBAL__sub_I_led1
-                0x00000000080803e4       0x40 ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(ConnectedOldtimerCode.o)
+                0x0000000008080408       0x40 ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(ConnectedOldtimerCode.o)
  .text._ZN11TinyGPSPlusC2Ev
-                0x0000000008080424       0xa6 ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(TinyGPS++.o)
-                0x0000000008080424                TinyGPSPlus::TinyGPSPlus()
-                0x0000000008080424                TinyGPSPlus::TinyGPSPlus()
+                0x0000000008080448       0xa6 ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(TinyGPS++.o)
+                0x0000000008080448                TinyGPSPlus::TinyGPSPlus()
+                0x0000000008080448                TinyGPSPlus::TinyGPSPlus()
  .text._ZN11TinyGPSPlus7fromHexEc
-                0x00000000080804ca       0x20 ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(TinyGPS++.o)
-                0x00000000080804ca                TinyGPSPlus::fromHex(char)
+                0x00000000080804ee       0x20 ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(TinyGPS++.o)
+                0x00000000080804ee                TinyGPSPlus::fromHex(char)
  .text._ZN11TinyGPSPlus12parseDecimalEPKc
-                0x00000000080804ea       0x48 ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(TinyGPS++.o)
-                0x00000000080804ea                TinyGPSPlus::parseDecimal(char const*)
- *fill*         0x0000000008080532        0x2 
+                0x000000000808050e       0x48 ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(TinyGPS++.o)
+                0x000000000808050e                TinyGPSPlus::parseDecimal(char const*)
+ *fill*         0x0000000008080556        0x2 
  .text._ZN11TinyGPSPlus12parseDegreesEPKcR10RawDegrees
-                0x0000000008080534       0x60 ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(TinyGPS++.o)
-                0x0000000008080534                TinyGPSPlus::parseDegrees(char const*, RawDegrees&)
+                0x0000000008080558       0x60 ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(TinyGPS++.o)
+                0x0000000008080558                TinyGPSPlus::parseDegrees(char const*, RawDegrees&)
  .text._ZN15TinyGPSLocation6commitEv
-                0x0000000008080594       0x32 ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(TinyGPS++.o)
-                0x0000000008080594                TinyGPSLocation::commit()
+                0x00000000080805b8       0x32 ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(TinyGPS++.o)
+                0x00000000080805b8                TinyGPSLocation::commit()
  .text._ZN11TinyGPSDate6commitEv
-                0x00000000080805c6       0x16 ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(TinyGPS++.o)
-                0x00000000080805c6                TinyGPSDate::commit()
+                0x00000000080805ea       0x16 ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(TinyGPS++.o)
+                0x00000000080805ea                TinyGPSDate::commit()
  .text._ZN11TinyGPSTime6commitEv
-                0x00000000080805dc       0x16 ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(TinyGPS++.o)
-                0x00000000080805dc                TinyGPSTime::commit()
+                0x0000000008080600       0x16 ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(TinyGPS++.o)
+                0x0000000008080600                TinyGPSTime::commit()
  .text._ZN11TinyGPSTime7setTimeEPKc
-                0x00000000080805f2        0xe ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(TinyGPS++.o)
-                0x00000000080805f2                TinyGPSTime::setTime(char const*)
+                0x0000000008080616        0xe ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(TinyGPS++.o)
+                0x0000000008080616                TinyGPSTime::setTime(char const*)
  .text._ZN11TinyGPSDate7setDateEPKc
-                0x0000000008080600        0xe ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(TinyGPS++.o)
-                0x0000000008080600                TinyGPSDate::setDate(char const*)
- .text._ZN14TinyGPSDecimal6commitEv
-                0x000000000808060e       0x16 ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(TinyGPS++.o)
-                0x000000000808060e                TinyGPSDecimal::commit()
- .text._ZN14TinyGPSDecimal3setEPKc
                 0x0000000008080624        0xe ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(TinyGPS++.o)
-                0x0000000008080624                TinyGPSDecimal::set(char const*)
- .text._ZN14TinyGPSInteger6commitEv
+                0x0000000008080624                TinyGPSDate::setDate(char const*)
+ .text._ZN14TinyGPSDecimal6commitEv
                 0x0000000008080632       0x16 ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(TinyGPS++.o)
-                0x0000000008080632                TinyGPSInteger::commit()
- .text._ZN14TinyGPSInteger3setEPKc
+                0x0000000008080632                TinyGPSDecimal::commit()
+ .text._ZN14TinyGPSDecimal3setEPKc
                 0x0000000008080648        0xe ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(TinyGPS++.o)
-                0x0000000008080648                TinyGPSInteger::set(char const*)
+                0x0000000008080648                TinyGPSDecimal::set(char const*)
+ .text._ZN14TinyGPSInteger6commitEv
+                0x0000000008080656       0x16 ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(TinyGPS++.o)
+                0x0000000008080656                TinyGPSInteger::commit()
+ .text._ZN14TinyGPSInteger3setEPKc
+                0x000000000808066c        0xe ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(TinyGPS++.o)
+                0x000000000808066c                TinyGPSInteger::set(char const*)
  .text._ZN13TinyGPSCustom6commitEv
-                0x0000000008080656       0x1e ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(TinyGPS++.o)
-                0x0000000008080656                TinyGPSCustom::commit()
+                0x000000000808067a       0x1e ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(TinyGPS++.o)
+                0x000000000808067a                TinyGPSCustom::commit()
  .text._ZN13TinyGPSCustom3setEPKc
-                0x0000000008080674        0x6 ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(TinyGPS++.o)
-                0x0000000008080674                TinyGPSCustom::set(char const*)
- *fill*         0x000000000808067a        0x2 
+                0x0000000008080698        0x6 ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(TinyGPS++.o)
+                0x0000000008080698                TinyGPSCustom::set(char const*)
+ *fill*         0x000000000808069e        0x2 
  .text._ZN11TinyGPSPlus16endOfTermHandlerEv
-                0x000000000808067c      0x248 ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(TinyGPS++.o)
-                0x000000000808067c                TinyGPSPlus::endOfTermHandler()
+                0x00000000080806a0      0x248 ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(TinyGPS++.o)
+                0x00000000080806a0                TinyGPSPlus::endOfTermHandler()
  .text._ZN11TinyGPSPlus6encodeEc
-                0x00000000080808c4       0xb0 ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(TinyGPS++.o)
-                0x00000000080808c4                TinyGPSPlus::encode(char)
+                0x00000000080808e8       0xb0 ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(TinyGPS++.o)
+                0x00000000080808e8                TinyGPSPlus::encode(char)
  .text.startup._GLOBAL__sub_I__ZN11TinyGPSPlusC2Ev
-                0x0000000008080974        0x4 ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(TinyGPS++.o)
+                0x0000000008080998        0x4 ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(TinyGPS++.o)
  .text.HAL_CAN_Init
-                0x0000000008080978       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_can.o)
-                0x0000000008080978                HAL_CAN_Init
+                0x000000000808099c       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_can.o)
+                0x000000000808099c                HAL_CAN_Init
  .text.HAL_CAN_Begin
-                0x0000000008080988       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_can.o)
-                0x0000000008080988                HAL_CAN_Begin
+                0x00000000080809ac       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_can.o)
+                0x00000000080809ac                HAL_CAN_Begin
  .text.HAL_CAN_Receive
-                0x0000000008080998       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_can.o)
-                0x0000000008080998                HAL_CAN_Receive
+                0x00000000080809bc       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_can.o)
+                0x00000000080809bc                HAL_CAN_Receive
  .text.HAL_CAN_Add_Filter
-                0x00000000080809a8       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_can.o)
-                0x00000000080809a8                HAL_CAN_Add_Filter
+                0x00000000080809cc       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_can.o)
+                0x00000000080809cc                HAL_CAN_Add_Filter
  .text.os_mutex_create
-                0x00000000080809b8       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_concurrent.o)
-                0x00000000080809b8                os_mutex_create
+                0x00000000080809dc       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_concurrent.o)
+                0x00000000080809dc                os_mutex_create
  .text.HAL_Core_Get_Last_Reset_Info
-                0x00000000080809c8       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_core.o)
-                0x00000000080809c8                HAL_Core_Get_Last_Reset_Info
+                0x00000000080809ec       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_core.o)
+                0x00000000080809ec                HAL_Core_Get_Last_Reset_Info
  .text.HAL_RNG_GetRandomNumber
-                0x00000000080809d8       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_dynalib.o)
-                0x00000000080809d8                HAL_RNG_GetRandomNumber
+                0x00000000080809fc       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_dynalib.o)
+                0x00000000080809fc                HAL_RNG_GetRandomNumber
  .text.HAL_Timer_Get_Milli_Seconds
-                0x00000000080809e8       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_dynalib.o)
-                0x00000000080809e8                HAL_Timer_Get_Milli_Seconds
+                0x0000000008080a0c       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_dynalib.o)
+                0x0000000008080a0c                HAL_Timer_Get_Milli_Seconds
  .text.HAL_Pin_Map
-                0x00000000080809f8       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_gpio.o)
-                0x00000000080809f8                HAL_Pin_Map
+                0x0000000008080a1c       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_gpio.o)
+                0x0000000008080a1c                HAL_Pin_Map
  .text.HAL_Pin_Mode
-                0x0000000008080a08       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_gpio.o)
-                0x0000000008080a08                HAL_Pin_Mode
+                0x0000000008080a2c       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_gpio.o)
+                0x0000000008080a2c                HAL_Pin_Mode
  .text.HAL_Get_Pin_Mode
-                0x0000000008080a18       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_gpio.o)
-                0x0000000008080a18                HAL_Get_Pin_Mode
+                0x0000000008080a3c       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_gpio.o)
+                0x0000000008080a3c                HAL_Get_Pin_Mode
  .text.HAL_GPIO_Write
-                0x0000000008080a28       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_gpio.o)
-                0x0000000008080a28                HAL_GPIO_Write
+                0x0000000008080a4c       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_gpio.o)
+                0x0000000008080a4c                HAL_GPIO_Write
  .text.HAL_I2C_Write_Data
-                0x0000000008080a38       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_i2c.o)
-                0x0000000008080a38                HAL_I2C_Write_Data
+                0x0000000008080a5c       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_i2c.o)
+                0x0000000008080a5c                HAL_I2C_Write_Data
  .text.HAL_I2C_Available_Data
-                0x0000000008080a48       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_i2c.o)
-                0x0000000008080a48                HAL_I2C_Available_Data
+                0x0000000008080a6c       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_i2c.o)
+                0x0000000008080a6c                HAL_I2C_Available_Data
  .text.HAL_I2C_Read_Data
-                0x0000000008080a58       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_i2c.o)
-                0x0000000008080a58                HAL_I2C_Read_Data
+                0x0000000008080a7c       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_i2c.o)
+                0x0000000008080a7c                HAL_I2C_Read_Data
  .text.HAL_I2C_Peek_Data
-                0x0000000008080a68       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_i2c.o)
-                0x0000000008080a68                HAL_I2C_Peek_Data
+                0x0000000008080a8c       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_i2c.o)
+                0x0000000008080a8c                HAL_I2C_Peek_Data
  .text.HAL_I2C_Flush_Data
-                0x0000000008080a78       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_i2c.o)
-                0x0000000008080a78                HAL_I2C_Flush_Data
+                0x0000000008080a9c       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_i2c.o)
+                0x0000000008080a9c                HAL_I2C_Flush_Data
  .text.HAL_I2C_Is_Enabled
-                0x0000000008080a88       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_i2c.o)
-                0x0000000008080a88                HAL_I2C_Is_Enabled
+                0x0000000008080aac       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_i2c.o)
+                0x0000000008080aac                HAL_I2C_Is_Enabled
  .text.HAL_I2C_Init
-                0x0000000008080a98       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_i2c.o)
-                0x0000000008080a98                HAL_I2C_Init
+                0x0000000008080abc       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_i2c.o)
+                0x0000000008080abc                HAL_I2C_Init
  .text.HAL_SPI_Init
-                0x0000000008080aa8       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_spi.o)
-                0x0000000008080aa8                HAL_SPI_Init
+                0x0000000008080acc       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_spi.o)
+                0x0000000008080acc                HAL_SPI_Init
  .text.HAL_SPI_Is_Enabled
-                0x0000000008080ab8       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_spi.o)
-                0x0000000008080ab8                HAL_SPI_Is_Enabled
+                0x0000000008080adc       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_spi.o)
+                0x0000000008080adc                HAL_SPI_Is_Enabled
  .text.HAL_USART_Init
-                0x0000000008080ac8       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_usart.o)
-                0x0000000008080ac8                HAL_USART_Init
+                0x0000000008080aec       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_usart.o)
+                0x0000000008080aec                HAL_USART_Init
  .text.HAL_USART_Write_Data
-                0x0000000008080ad8       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_usart.o)
-                0x0000000008080ad8                HAL_USART_Write_Data
+                0x0000000008080afc       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_usart.o)
+                0x0000000008080afc                HAL_USART_Write_Data
  .text.HAL_USART_Available_Data
-                0x0000000008080ae8       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_usart.o)
-                0x0000000008080ae8                HAL_USART_Available_Data
+                0x0000000008080b0c       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_usart.o)
+                0x0000000008080b0c                HAL_USART_Available_Data
  .text.HAL_USART_Read_Data
-                0x0000000008080af8       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_usart.o)
-                0x0000000008080af8                HAL_USART_Read_Data
+                0x0000000008080b1c       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_usart.o)
+                0x0000000008080b1c                HAL_USART_Read_Data
  .text.HAL_USART_Peek_Data
-                0x0000000008080b08       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_usart.o)
-                0x0000000008080b08                HAL_USART_Peek_Data
+                0x0000000008080b2c       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_usart.o)
+                0x0000000008080b2c                HAL_USART_Peek_Data
  .text.HAL_USART_Flush_Data
-                0x0000000008080b18       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_usart.o)
-                0x0000000008080b18                HAL_USART_Flush_Data
+                0x0000000008080b3c       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_usart.o)
+                0x0000000008080b3c                HAL_USART_Flush_Data
  .text.HAL_USART_Is_Enabled
-                0x0000000008080b28       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_usart.o)
-                0x0000000008080b28                HAL_USART_Is_Enabled
+                0x0000000008080b4c       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_usart.o)
+                0x0000000008080b4c                HAL_USART_Is_Enabled
  .text.HAL_USART_Available_Data_For_Write
-                0x0000000008080b38       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_usart.o)
-                0x0000000008080b38                HAL_USART_Available_Data_For_Write
+                0x0000000008080b5c       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_usart.o)
+                0x0000000008080b5c                HAL_USART_Available_Data_For_Write
  .text.HAL_USART_BeginConfig
-                0x0000000008080b48       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_usart.o)
-                0x0000000008080b48                HAL_USART_BeginConfig
+                0x0000000008080b6c       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_usart.o)
+                0x0000000008080b6c                HAL_USART_BeginConfig
  .text.HAL_USART_Write_NineBitData
-                0x0000000008080b58       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_usart.o)
-                0x0000000008080b58                HAL_USART_Write_NineBitData
+                0x0000000008080b7c       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_usart.o)
+                0x0000000008080b7c                HAL_USART_Write_NineBitData
  .text.HAL_USB_USART_Init
-                0x0000000008080b68       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_usb.o)
-                0x0000000008080b68                HAL_USB_USART_Init
+                0x0000000008080b8c       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_usb.o)
+                0x0000000008080b8c                HAL_USB_USART_Init
  .text.HAL_USB_USART_Begin
-                0x0000000008080b78       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_usb.o)
-                0x0000000008080b78                HAL_USB_USART_Begin
+                0x0000000008080b9c       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_usb.o)
+                0x0000000008080b9c                HAL_USB_USART_Begin
  .text.HAL_USB_USART_Available_Data
-                0x0000000008080b88       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_usb.o)
-                0x0000000008080b88                HAL_USB_USART_Available_Data
+                0x0000000008080bac       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_usb.o)
+                0x0000000008080bac                HAL_USB_USART_Available_Data
  .text.HAL_USB_USART_Available_Data_For_Write
-                0x0000000008080b98       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_usb.o)
-                0x0000000008080b98                HAL_USB_USART_Available_Data_For_Write
+                0x0000000008080bbc       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_usb.o)
+                0x0000000008080bbc                HAL_USB_USART_Available_Data_For_Write
  .text.HAL_USB_USART_Receive_Data
-                0x0000000008080ba8       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_usb.o)
-                0x0000000008080ba8                HAL_USB_USART_Receive_Data
+                0x0000000008080bcc       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_usb.o)
+                0x0000000008080bcc                HAL_USB_USART_Receive_Data
  .text.HAL_USB_USART_Send_Data
-                0x0000000008080bb8       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_usb.o)
-                0x0000000008080bb8                HAL_USB_USART_Send_Data
+                0x0000000008080bdc       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_usb.o)
+                0x0000000008080bdc                HAL_USB_USART_Send_Data
  .text.HAL_USB_USART_Flush_Data
-                0x0000000008080bc8       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_usb.o)
-                0x0000000008080bc8                HAL_USB_USART_Flush_Data
+                0x0000000008080bec       0x10 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_usb.o)
+                0x0000000008080bec                HAL_USB_USART_Flush_Data
  .text.set_system_mode
-                0x0000000008080bd8       0x10 ../../../build/target/system-dynalib/platform-10-m//libsystem-dynalib.a(system_dynalib.o)
-                0x0000000008080bd8                set_system_mode
+                0x0000000008080bfc       0x10 ../../../build/target/system-dynalib/platform-10-m//libsystem-dynalib.a(system_dynalib.o)
+                0x0000000008080bfc                set_system_mode
  .text.system_thread_set_state
-                0x0000000008080be8       0x10 ../../../build/target/system-dynalib/platform-10-m//libsystem-dynalib.a(system_dynalib.o)
-                0x0000000008080be8                system_thread_set_state
+                0x0000000008080c0c       0x10 ../../../build/target/system-dynalib/platform-10-m//libsystem-dynalib.a(system_dynalib.o)
+                0x0000000008080c0c                system_thread_set_state
  .text.system_ctrl_set_app_request_handler
-                0x0000000008080bf8       0x14 ../../../build/target/system-dynalib/platform-10-m//libsystem-dynalib.a(system_dynalib.o)
-                0x0000000008080bf8                system_ctrl_set_app_request_handler
+                0x0000000008080c1c       0x14 ../../../build/target/system-dynalib/platform-10-m//libsystem-dynalib.a(system_dynalib.o)
+                0x0000000008080c1c                system_ctrl_set_app_request_handler
  .text.system_ctrl_set_result
-                0x0000000008080c0c       0x14 ../../../build/target/system-dynalib/platform-10-m//libsystem-dynalib.a(system_dynalib.o)
-                0x0000000008080c0c                system_ctrl_set_result
+                0x0000000008080c30       0x14 ../../../build/target/system-dynalib/platform-10-m//libsystem-dynalib.a(system_dynalib.o)
+                0x0000000008080c30                system_ctrl_set_result
  .text.spark_set_random_seed_from_cloud_handler
-                0x0000000008080c20       0x10 ../../../build/target/system-dynalib/platform-10-m//libsystem-dynalib.a(system_dynalib_cloud.o)
-                0x0000000008080c20                spark_set_random_seed_from_cloud_handler
+                0x0000000008080c44       0x10 ../../../build/target/system-dynalib/platform-10-m//libsystem-dynalib.a(system_dynalib_cloud.o)
+                0x0000000008080c44                spark_set_random_seed_from_cloud_handler
  .text.network_ready
-                0x0000000008080c30       0x10 ../../../build/target/system-dynalib/platform-10-m//libsystem-dynalib.a(system_dynalib_net.o)
-                0x0000000008080c30                network_ready
- .text.malloc   0x0000000008080c40       0x10 ../../../build/target/rt-dynalib/platform-10-m//librt-dynalib.a(rt_dynalib.o)
-                0x0000000008080c40                malloc
- .text.free     0x0000000008080c50       0x10 ../../../build/target/rt-dynalib/platform-10-m//librt-dynalib.a(rt_dynalib.o)
-                0x0000000008080c50                free
+                0x0000000008080c54       0x10 ../../../build/target/system-dynalib/platform-10-m//libsystem-dynalib.a(system_dynalib_net.o)
+                0x0000000008080c54                network_ready
+ .text.malloc   0x0000000008080c64       0x10 ../../../build/target/rt-dynalib/platform-10-m//librt-dynalib.a(rt_dynalib.o)
+                0x0000000008080c64                malloc
+ .text.free     0x0000000008080c74       0x10 ../../../build/target/rt-dynalib/platform-10-m//librt-dynalib.a(rt_dynalib.o)
+                0x0000000008080c74                free
  .text.vsnprintf
-                0x0000000008080c60       0x10 ../../../build/target/rt-dynalib/platform-10-m//librt-dynalib.a(rt_dynalib.o)
-                0x0000000008080c60                vsnprintf
+                0x0000000008080c84       0x10 ../../../build/target/rt-dynalib/platform-10-m//librt-dynalib.a(rt_dynalib.o)
+                0x0000000008080c84                vsnprintf
  .text._ZN10CANChannelC2E15HAL_CAN_Channeltt
-                0x0000000008080c70       0x16 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_can.o)
-                0x0000000008080c70                CANChannel::CANChannel(HAL_CAN_Channel, unsigned short, unsigned short)
-                0x0000000008080c70                CANChannel::CANChannel(HAL_CAN_Channel, unsigned short, unsigned short)
+                0x0000000008080c94       0x16 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_can.o)
+                0x0000000008080c94                CANChannel::CANChannel(HAL_CAN_Channel, unsigned short, unsigned short)
+                0x0000000008080c94                CANChannel::CANChannel(HAL_CAN_Channel, unsigned short, unsigned short)
  .text._ZN10CANChannel5beginEmm
-                0x0000000008080c86        0x8 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_can.o)
-                0x0000000008080c86                CANChannel::begin(unsigned long, unsigned long)
+                0x0000000008080caa        0x8 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_can.o)
+                0x0000000008080caa                CANChannel::begin(unsigned long, unsigned long)
  .text._ZN10CANChannel7receiveER10CANMessage
-                0x0000000008080c8e        0x8 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_can.o)
-                0x0000000008080c8e                CANChannel::receive(CANMessage&)
+                0x0000000008080cb2        0x8 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_can.o)
+                0x0000000008080cb2                CANChannel::receive(CANMessage&)
  .text._ZN10CANChannel9addFilterEmm15HAL_CAN_Filters
-                0x0000000008080c96       0x10 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_can.o)
-                0x0000000008080c96                CANChannel::addFilter(unsigned long, unsigned long, HAL_CAN_Filters)
+                0x0000000008080cba       0x10 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_can.o)
+                0x0000000008080cba                CANChannel::addFilter(unsigned long, unsigned long, HAL_CAN_Filters)
  .text._ZN5spark13CellularClass5readyEv
-                0x0000000008080ca6        0xa ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_cellular.o)
-                0x0000000008080ca6                spark::CellularClass::ready()
+                0x0000000008080cca        0xa ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_cellular.o)
+                0x0000000008080cca                spark::CellularClass::ready()
  .text.startup._GLOBAL__sub_I__ZN5spark13CellularClass4RSSIEv
-                0x0000000008080cb0       0x3c ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_cellular.o)
+                0x0000000008080cd4       0x3c ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_cellular.o)
  .text._ZNSt14_Function_baseD2Ev
-                0x0000000008080cec       0x12 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_cloud.o)
-                0x0000000008080cec                std::_Function_base::~_Function_base()
-                0x0000000008080cec                std::_Function_base::~_Function_base()
+                0x0000000008080d10       0x12 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_cloud.o)
+                0x0000000008080d10                std::_Function_base::~_Function_base()
+                0x0000000008080d10                std::_Function_base::~_Function_base()
  .text._ZN7TwoWireD2Ev
-                0x0000000008080cfe        0x2 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_i2c.o)
-                0x0000000008080cfe                TwoWire::~TwoWire()
-                0x0000000008080cfe                TwoWire::~TwoWire()
+                0x0000000008080d22        0x2 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_i2c.o)
+                0x0000000008080d22                TwoWire::~TwoWire()
+                0x0000000008080d22                TwoWire::~TwoWire()
  .text._ZN7TwoWire5writeEPKhj
-                0x0000000008080d00       0x20 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_i2c.o)
-                0x0000000008080d00                TwoWire::write(unsigned char const*, unsigned int)
+                0x0000000008080d24       0x20 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_i2c.o)
+                0x0000000008080d24                TwoWire::write(unsigned char const*, unsigned int)
  .text._ZN7TwoWire5writeEh
-                0x0000000008080d20        0x8 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_i2c.o)
-                0x0000000008080d20                TwoWire::write(unsigned char)
+                0x0000000008080d44        0x8 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_i2c.o)
+                0x0000000008080d44                TwoWire::write(unsigned char)
  .text._ZN7TwoWire9availableEv
-                0x0000000008080d28        0x8 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_i2c.o)
-                0x0000000008080d28                TwoWire::available()
+                0x0000000008080d4c        0x8 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_i2c.o)
+                0x0000000008080d4c                TwoWire::available()
  .text._ZN7TwoWire4readEv
-                0x0000000008080d30        0x8 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_i2c.o)
-                0x0000000008080d30                TwoWire::read()
+                0x0000000008080d54        0x8 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_i2c.o)
+                0x0000000008080d54                TwoWire::read()
  .text._ZN7TwoWire4peekEv
-                0x0000000008080d38        0x8 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_i2c.o)
-                0x0000000008080d38                TwoWire::peek()
+                0x0000000008080d5c        0x8 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_i2c.o)
+                0x0000000008080d5c                TwoWire::peek()
  .text._ZN7TwoWire5flushEv
-                0x0000000008080d40        0x8 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_i2c.o)
-                0x0000000008080d40                TwoWire::flush()
+                0x0000000008080d64        0x8 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_i2c.o)
+                0x0000000008080d64                TwoWire::flush()
  .text._ZN7TwoWireD0Ev
-                0x0000000008080d48        0xc ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_i2c.o)
-                0x0000000008080d48                TwoWire::~TwoWire()
+                0x0000000008080d6c        0xc ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_i2c.o)
+                0x0000000008080d6c                TwoWire::~TwoWire()
  .text._ZN7TwoWireC2E17HAL_I2C_Interface
-                0x0000000008080d54       0x24 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_i2c.o)
-                0x0000000008080d54                TwoWire::TwoWire(HAL_I2C_Interface)
-                0x0000000008080d54                TwoWire::TwoWire(HAL_I2C_Interface)
+                0x0000000008080d78       0x24 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_i2c.o)
+                0x0000000008080d78                TwoWire::TwoWire(HAL_I2C_Interface)
+                0x0000000008080d78                TwoWire::TwoWire(HAL_I2C_Interface)
  .text._ZN7TwoWire9isEnabledEv
-                0x0000000008080d78        0x8 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_i2c.o)
-                0x0000000008080d78                TwoWire::isEnabled()
+                0x0000000008080d9c        0x8 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_i2c.o)
+                0x0000000008080d9c                TwoWire::isEnabled()
  .text._ZN9IPAddressD2Ev
-                0x0000000008080d80        0x2 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_ipaddress.o)
-                0x0000000008080d80                IPAddress::~IPAddress()
-                0x0000000008080d80                IPAddress::~IPAddress()
+                0x0000000008080da4        0x2 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_ipaddress.o)
+                0x0000000008080da4                IPAddress::~IPAddress()
+                0x0000000008080da4                IPAddress::~IPAddress()
  .text._ZN9IPAddressD0Ev
-                0x0000000008080d82        0xc ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_ipaddress.o)
-                0x0000000008080d82                IPAddress::~IPAddress()
+                0x0000000008080da6        0xc ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_ipaddress.o)
+                0x0000000008080da6                IPAddress::~IPAddress()
  .text._ZNK9IPAddress7printToER5Print
-                0x0000000008080d8e       0x32 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_ipaddress.o)
-                0x0000000008080d8e                IPAddress::printTo(Print&) const
+                0x0000000008080db2       0x32 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_ipaddress.o)
+                0x0000000008080db2                IPAddress::printTo(Print&) const
  .text._ZN9IPAddress8set_ipv4Ehhhh
-                0x0000000008080dc0       0x16 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_ipaddress.o)
-                0x0000000008080dc0                IPAddress::set_ipv4(unsigned char, unsigned char, unsigned char, unsigned char)
- *fill*         0x0000000008080dd6        0x2 
+                0x0000000008080de4       0x16 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_ipaddress.o)
+                0x0000000008080de4                IPAddress::set_ipv4(unsigned char, unsigned char, unsigned char, unsigned char)
+ *fill*         0x0000000008080dfa        0x2 
  .text._ZN9IPAddressC2Ehhhh
-                0x0000000008080dd8       0x18 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_ipaddress.o)
-                0x0000000008080dd8                IPAddress::IPAddress(unsigned char, unsigned char, unsigned char, unsigned char)
-                0x0000000008080dd8                IPAddress::IPAddress(unsigned char, unsigned char, unsigned char, unsigned char)
+                0x0000000008080dfc       0x18 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_ipaddress.o)
+                0x0000000008080dfc                IPAddress::IPAddress(unsigned char, unsigned char, unsigned char, unsigned char)
+                0x0000000008080dfc                IPAddress::IPAddress(unsigned char, unsigned char, unsigned char, unsigned char)
  .text.startup._GLOBAL__sub_I__ZN5spark3LogE
-                0x0000000008080df0       0x10 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_logging.o)
+                0x0000000008080e14       0x10 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_logging.o)
  .text._ZN5Print5writeEPKhj
-                0x0000000008080e00       0x2c ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_print.o)
-                0x0000000008080e00                Print::write(unsigned char const*, unsigned int)
+                0x0000000008080e24       0x2c ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_print.o)
+                0x0000000008080e24                Print::write(unsigned char const*, unsigned int)
  .text._ZN5Print5writeEPKc
-                0x0000000008080e2c       0x20 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_print.o)
-                0x0000000008080e2c                Print::write(char const*)
+                0x0000000008080e50       0x20 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_print.o)
+                0x0000000008080e50                Print::write(char const*)
  .text._ZN5Print5printEc
-                0x0000000008080e4c        0x6 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_print.o)
-                0x0000000008080e4c                Print::print(char)
+                0x0000000008080e70        0x6 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_print.o)
+                0x0000000008080e70                Print::print(char)
  .text._ZN5Print7printlnEv
-                0x0000000008080e52       0x18 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_print.o)
-                0x0000000008080e52                Print::println()
+                0x0000000008080e76       0x18 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_print.o)
+                0x0000000008080e76                Print::println()
  .text._ZN5Print7printlnEPKc
-                0x0000000008080e6a       0x14 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_print.o)
-                0x0000000008080e6a                Print::println(char const*)
+                0x0000000008080e8e       0x14 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_print.o)
+                0x0000000008080e8e                Print::println(char const*)
  .text._ZN5Print11printNumberEmh
-                0x0000000008080e7e       0x3e ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_print.o)
-                0x0000000008080e7e                Print::printNumber(unsigned long, unsigned char)
+                0x0000000008080ea2       0x3e ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_print.o)
+                0x0000000008080ea2                Print::printNumber(unsigned long, unsigned char)
  .text._ZN5Print5printEmi
-                0x0000000008080ebc       0x16 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_print.o)
-                0x0000000008080ebc                Print::print(unsigned long, int)
+                0x0000000008080ee0       0x16 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_print.o)
+                0x0000000008080ee0                Print::print(unsigned long, int)
  .text._ZN5Print5printEhi
-                0x0000000008080ed2        0x4 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_print.o)
-                0x0000000008080ed2                Print::print(unsigned char, int)
+                0x0000000008080ef6        0x4 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_print.o)
+                0x0000000008080ef6                Print::print(unsigned char, int)
  .text._ZN5Print5printEli
-                0x0000000008080ed6       0x44 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_print.o)
-                0x0000000008080ed6                Print::print(long, int)
- *fill*         0x0000000008080f1a        0x2 
+                0x0000000008080efa       0x44 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_print.o)
+                0x0000000008080efa                Print::print(long, int)
+ *fill*         0x0000000008080f3e        0x2 
  .text._ZN5Print10printFloatEdh
-                0x0000000008080f1c      0x15c ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_print.o)
-                0x0000000008080f1c                Print::printFloat(double, unsigned char)
+                0x0000000008080f40      0x15c ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_print.o)
+                0x0000000008080f40                Print::printFloat(double, unsigned char)
  .text._ZN5Print7printlnEdi
-                0x0000000008081078       0x1c ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_print.o)
-                0x0000000008081078                Print::println(double, int)
+                0x000000000808109c       0x1c ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_print.o)
+                0x000000000808109c                Print::println(double, int)
  .text._ZN5Print11printf_implEbPKcz
-                0x0000000008081094       0x74 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_print.o)
-                0x0000000008081094                Print::printf_impl(bool, char const*, ...)
+                0x00000000080810b8       0x74 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_print.o)
+                0x00000000080810b8                Print::printf_impl(bool, char const*, ...)
  .text._ZN8RGBClassD2Ev
-                0x0000000008081108        0xc ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_rgb.o)
-                0x0000000008081108                RGBClass::~RGBClass()
-                0x0000000008081108                RGBClass::~RGBClass()
+                0x000000000808112c        0xc ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_rgb.o)
+                0x000000000808112c                RGBClass::~RGBClass()
+                0x000000000808112c                RGBClass::~RGBClass()
  .text.startup._GLOBAL__sub_I_RGB
-                0x0000000008081114       0x1c ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_rgb.o)
+                0x0000000008081138       0x1c ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_rgb.o)
  .text._ZN8SPIClassD2Ev
-                0x0000000008081130        0x2 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_spi.o)
-                0x0000000008081130                SPIClass::~SPIClass()
-                0x0000000008081130                SPIClass::~SPIClass()
+                0x0000000008081154        0x2 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_spi.o)
+                0x0000000008081154                SPIClass::~SPIClass()
+                0x0000000008081154                SPIClass::~SPIClass()
  .text._ZN8SPIClassD0Ev
-                0x0000000008081132        0xc ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_spi.o)
-                0x0000000008081132                SPIClass::~SPIClass()
- *fill*         0x000000000808113e        0x2 
+                0x0000000008081156        0xc ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_spi.o)
+                0x0000000008081156                SPIClass::~SPIClass()
+ *fill*         0x0000000008081162        0x2 
  .text._ZN8SPIClassC2E17HAL_SPI_Interface
-                0x0000000008081140       0x28 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_spi.o)
-                0x0000000008081140                SPIClass::SPIClass(HAL_SPI_Interface)
-                0x0000000008081140                SPIClass::SPIClass(HAL_SPI_Interface)
+                0x0000000008081164       0x28 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_spi.o)
+                0x0000000008081164                SPIClass::SPIClass(HAL_SPI_Interface)
+                0x0000000008081164                SPIClass::SPIClass(HAL_SPI_Interface)
  .text._ZN8SPIClass9isEnabledEv
-                0x0000000008081168        0x6 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_spi.o)
-                0x0000000008081168                SPIClass::isEnabled()
- *fill*         0x000000000808116e        0x2 
+                0x000000000808118c        0x6 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_spi.o)
+                0x000000000808118c                SPIClass::isEnabled()
+ *fill*         0x0000000008081192        0x2 
  .text.startup._GLOBAL__sub_I_System
-                0x0000000008081170       0x40 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_system.o)
+                0x0000000008081194       0x40 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_system.o)
  .text.startup._GLOBAL__sub_I_TIME_FORMAT_DEFAULT
-                0x00000000080811b0       0x14 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_time.o)
+                0x00000000080811d4       0x14 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_time.o)
  .text._ZN11USARTSerial14blockOnOverrunEb
-                0x00000000080811c4        0x4 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usartserial.o)
-                0x00000000080811c4                USARTSerial::blockOnOverrun(bool)
+                0x00000000080811e8        0x4 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usartserial.o)
+                0x00000000080811e8                USARTSerial::blockOnOverrun(bool)
  .text._ZN11USARTSerial17availableForWriteEv
-                0x00000000080811c8        0x6 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usartserial.o)
-                0x00000000080811c8                USARTSerial::availableForWrite()
+                0x00000000080811ec        0x6 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usartserial.o)
+                0x00000000080811ec                USARTSerial::availableForWrite()
  .text._ZN11USARTSerial9availableEv
-                0x00000000080811ce        0x6 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usartserial.o)
-                0x00000000080811ce                USARTSerial::available()
+                0x00000000080811f2        0x6 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usartserial.o)
+                0x00000000080811f2                USARTSerial::available()
  .text._ZN11USARTSerial4peekEv
-                0x00000000080811d4        0x6 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usartserial.o)
-                0x00000000080811d4                USARTSerial::peek()
+                0x00000000080811f8        0x6 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usartserial.o)
+                0x00000000080811f8                USARTSerial::peek()
  .text._ZN11USARTSerial4readEv
-                0x00000000080811da        0x6 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usartserial.o)
-                0x00000000080811da                USARTSerial::read()
+                0x00000000080811fe        0x6 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usartserial.o)
+                0x00000000080811fe                USARTSerial::read()
  .text._ZN11USARTSerial5flushEv
-                0x00000000080811e0        0x6 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usartserial.o)
-                0x00000000080811e0                USARTSerial::flush()
+                0x0000000008081204        0x6 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usartserial.o)
+                0x0000000008081204                USARTSerial::flush()
  .text._ZN11USARTSerial5writeEh
-                0x00000000080811e6       0x24 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usartserial.o)
-                0x00000000080811e6                USARTSerial::write(unsigned char)
- *fill*         0x000000000808120a        0x2 
+                0x000000000808120a       0x24 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usartserial.o)
+                0x000000000808120a                USARTSerial::write(unsigned char)
+ *fill*         0x000000000808122e        0x2 
  .text._ZN11USARTSerialC2E16HAL_USART_SerialP11Ring_BufferS2_
-                0x000000000808120c       0x2c ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usartserial.o)
-                0x000000000808120c                USARTSerial::USARTSerial(HAL_USART_Serial, Ring_Buffer*, Ring_Buffer*)
-                0x000000000808120c                USARTSerial::USARTSerial(HAL_USART_Serial, Ring_Buffer*, Ring_Buffer*)
+                0x0000000008081230       0x2c ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usartserial.o)
+                0x0000000008081230                USARTSerial::USARTSerial(HAL_USART_Serial, Ring_Buffer*, Ring_Buffer*)
+                0x0000000008081230                USARTSerial::USARTSerial(HAL_USART_Serial, Ring_Buffer*, Ring_Buffer*)
  .text._ZN11USARTSerial5beginEmm
-                0x0000000008081238        0x8 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usartserial.o)
-                0x0000000008081238                USARTSerial::begin(unsigned long, unsigned long)
+                0x000000000808125c        0x8 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usartserial.o)
+                0x000000000808125c                USARTSerial::begin(unsigned long, unsigned long)
  .text._ZN11USARTSerial5beginEm
-                0x0000000008081240        0x6 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usartserial.o)
-                0x0000000008081240                USARTSerial::begin(unsigned long)
+                0x0000000008081264        0x6 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usartserial.o)
+                0x0000000008081264                USARTSerial::begin(unsigned long)
  .text._ZN11USARTSerial5writeEt
-                0x0000000008081246        0x6 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usartserial.o)
-                0x0000000008081246                USARTSerial::write(unsigned short)
+                0x000000000808126a        0x6 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usartserial.o)
+                0x000000000808126a                USARTSerial::write(unsigned short)
  .text._ZN11USARTSerial9isEnabledEv
-                0x000000000808124c        0x6 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usartserial.o)
-                0x000000000808124c                USARTSerial::isEnabled()
- *fill*         0x0000000008081252        0x2 
+                0x0000000008081270        0x6 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usartserial.o)
+                0x0000000008081270                USARTSerial::isEnabled()
+ *fill*         0x0000000008081276        0x2 
  .text._Z22__fetch_global_Serial1v
-                0x0000000008081254       0x4c ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usartserial.o)
-                0x0000000008081254                __fetch_global_Serial1()
+                0x0000000008081278       0x4c ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usartserial.o)
+                0x0000000008081278                __fetch_global_Serial1()
  .text._ZN9USBSerial14blockOnOverrunEb
-                0x00000000080812a0        0x4 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usbserial.o)
-                0x00000000080812a0                USBSerial::blockOnOverrun(bool)
+                0x00000000080812c4        0x4 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usbserial.o)
+                0x00000000080812c4                USBSerial::blockOnOverrun(bool)
  .text._ZN9USBSerialD2Ev
-                0x00000000080812a4        0x2 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usbserial.o)
-                0x00000000080812a4                USBSerial::~USBSerial()
-                0x00000000080812a4                USBSerial::~USBSerial()
+                0x00000000080812c8        0x2 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usbserial.o)
+                0x00000000080812c8                USBSerial::~USBSerial()
+                0x00000000080812c8                USBSerial::~USBSerial()
  .text._ZN9USBSerial4readEv
-                0x00000000080812a6        0x8 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usbserial.o)
-                0x00000000080812a6                USBSerial::read()
+                0x00000000080812ca        0x8 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usbserial.o)
+                0x00000000080812ca                USBSerial::read()
  .text._ZN9USBSerial4peekEv
-                0x00000000080812ae        0x8 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usbserial.o)
-                0x00000000080812ae                USBSerial::peek()
+                0x00000000080812d2        0x8 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usbserial.o)
+                0x00000000080812d2                USBSerial::peek()
  .text._ZN9USBSerial17availableForWriteEv
-                0x00000000080812b6        0x6 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usbserial.o)
-                0x00000000080812b6                USBSerial::availableForWrite()
+                0x00000000080812da        0x6 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usbserial.o)
+                0x00000000080812da                USBSerial::availableForWrite()
  .text._ZN9USBSerial9availableEv
-                0x00000000080812bc        0x6 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usbserial.o)
-                0x00000000080812bc                USBSerial::available()
+                0x00000000080812e0        0x6 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usbserial.o)
+                0x00000000080812e0                USBSerial::available()
  .text._ZN9USBSerial5writeEh
-                0x00000000080812c2       0x20 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usbserial.o)
-                0x00000000080812c2                USBSerial::write(unsigned char)
+                0x00000000080812e6       0x20 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usbserial.o)
+                0x00000000080812e6                USBSerial::write(unsigned char)
  .text._ZN9USBSerial5flushEv
-                0x00000000080812e2        0x6 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usbserial.o)
-                0x00000000080812e2                USBSerial::flush()
+                0x0000000008081306        0x6 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usbserial.o)
+                0x0000000008081306                USBSerial::flush()
  .text._ZN9USBSerialD0Ev
-                0x00000000080812e8        0xc ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usbserial.o)
-                0x00000000080812e8                USBSerial::~USBSerial()
+                0x000000000808130c        0xc ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usbserial.o)
+                0x000000000808130c                USBSerial::~USBSerial()
  .text._ZN9USBSerialC2E20HAL_USB_USART_SerialRK20HAL_USB_USART_Config
-                0x00000000080812f4       0x28 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usbserial.o)
-                0x00000000080812f4                USBSerial::USBSerial(HAL_USB_USART_Serial, HAL_USB_USART_Config const&)
-                0x00000000080812f4                USBSerial::USBSerial(HAL_USB_USART_Serial, HAL_USB_USART_Config const&)
+                0x0000000008081318       0x28 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usbserial.o)
+                0x0000000008081318                USBSerial::USBSerial(HAL_USB_USART_Serial, HAL_USB_USART_Config const&)
+                0x0000000008081318                USBSerial::USBSerial(HAL_USB_USART_Serial, HAL_USB_USART_Config const&)
  .text._ZN9USBSerial5beginEl
-                0x000000000808131c        0x8 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usbserial.o)
-                0x000000000808131c                USBSerial::begin(long)
+                0x0000000008081340        0x8 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usbserial.o)
+                0x0000000008081340                USBSerial::begin(long)
  .text._Z19acquireSerialBufferv
-                0x0000000008081324       0x2c ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usbserial.o)
-                0x0000000008081324                acquireSerialBuffer()
+                0x0000000008081348       0x2c ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usbserial.o)
+                0x0000000008081348                acquireSerialBuffer()
  .text._Z16_fetch_usbserialv
-                0x0000000008081350       0x4c ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usbserial.o)
-                0x0000000008081350                _fetch_usbserial()
+                0x0000000008081374       0x4c ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usbserial.o)
+                0x0000000008081374                _fetch_usbserial()
  .text._Z23acquireUSBSerial1Bufferv
-                0x000000000808139c       0x2c ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usbserial.o)
-                0x000000000808139c                acquireUSBSerial1Buffer()
+                0x00000000080813c0       0x2c ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usbserial.o)
+                0x00000000080813c0                acquireUSBSerial1Buffer()
  .text._Z17_fetch_usbserial1v
-                0x00000000080813c8       0x4c ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usbserial.o)
-                0x00000000080813c8                _fetch_usbserial1()
+                0x00000000080813ec       0x4c ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usbserial.o)
+                0x00000000080813ec                _fetch_usbserial1()
  .text.serialEventRun
-                0x0000000008081414       0x7c ../../../build/target/wiring/platform-10-m//libwiring.a(user.o)
-                0x0000000008081414                serialEventRun
+                0x0000000008081438       0x7c ../../../build/target/wiring/platform-10-m//libwiring.a(user.o)
+                0x0000000008081438                serialEventRun
  .text._post_loop
-                0x0000000008081490       0x14 ../../../build/target/wiring/platform-10-m//libwiring.a(user.o)
-                0x0000000008081490                _post_loop
+                0x00000000080814b4       0x14 ../../../build/target/wiring/platform-10-m//libwiring.a(user.o)
+                0x00000000080814b4                _post_loop
  .text._Z33system_initialize_user_backup_ramv
-                0x00000000080814a4       0x18 ../../../build/target/wiring/platform-10-m//libwiring.a(user.o)
-                0x00000000080814a4                system_initialize_user_backup_ram()
+                0x00000000080814c8       0x18 ../../../build/target/wiring/platform-10-m//libwiring.a(user.o)
+                0x00000000080814c8                system_initialize_user_backup_ram()
  .text._Z27ctrl_request_custom_handlerP12ctrl_request
-                0x00000000080814bc       0x16 ../../../build/target/wiring/platform-10-m//libwiring.a(user.o)
-                0x00000000080814bc                ctrl_request_custom_handler(ctrl_request*)
- *fill*         0x00000000080814d2        0x2 
+                0x00000000080814e0       0x16 ../../../build/target/wiring/platform-10-m//libwiring.a(user.o)
+                0x00000000080814e0                ctrl_request_custom_handler(ctrl_request*)
+ *fill*         0x00000000080814f6        0x2 
  .text._ZL20ctrl_request_handlerP12ctrl_request
-                0x00000000080814d4       0x38 ../../../build/target/wiring/platform-10-m//libwiring.a(user.o)
+                0x00000000080814f8       0x38 ../../../build/target/wiring/platform-10-m//libwiring.a(user.o)
  .text.module_user_init_hook
-                0x000000000808150c       0x58 ../../../build/target/wiring/platform-10-m//libwiring.a(user.o)
-                0x000000000808150c                module_user_init_hook
+                0x0000000008081530       0x58 ../../../build/target/wiring/platform-10-m//libwiring.a(user.o)
+                0x0000000008081530                module_user_init_hook
  .text.pinAvailable
-                0x0000000008081564       0x48 ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(spark_wiring_gpio.o)
-                0x0000000008081564                pinAvailable
- .text.pinMode  0x00000000080815ac       0x22 ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(spark_wiring_gpio.o)
-                0x00000000080815ac                pinMode
+                0x0000000008081588       0x48 ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(spark_wiring_gpio.o)
+                0x0000000008081588                pinAvailable
+ .text.pinMode  0x00000000080815d0       0x22 ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(spark_wiring_gpio.o)
+                0x00000000080815d0                pinMode
  .text.digitalWrite
-                0x00000000080815ce       0x32 ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(spark_wiring_gpio.o)
-                0x00000000080815ce                digitalWrite
+                0x00000000080815f2       0x32 ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(spark_wiring_gpio.o)
+                0x00000000080815f2                digitalWrite
  .text._Z19__fetch_global_Wirev
-                0x0000000008081600       0x40 ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(wiring_globals_i2c.o)
-                0x0000000008081600                __fetch_global_Wire()
+                0x0000000008081624       0x40 ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(wiring_globals_i2c.o)
+                0x0000000008081624                __fetch_global_Wire()
  .text.startup._GLOBAL__sub_I_INADDR_NONE
-                0x0000000008081640       0x30 ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(wiring_globals_ipaddress.o)
+                0x0000000008081664       0x30 ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(wiring_globals_ipaddress.o)
  .text.startup._GLOBAL__sub_I_SPI
-                0x0000000008081670       0x5c ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(wiring_globals_spi.o)
+                0x0000000008081694       0x5c ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(wiring_globals_spi.o)
  .text.__aeabi_atexit
-                0x00000000080816cc        0xa /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libstdc++_nano.a(atexit_arm.o)
-                0x00000000080816cc                __aeabi_atexit
- *fill*         0x00000000080816d6        0x2 
+                0x00000000080816f0        0xa /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libstdc++_nano.a(atexit_arm.o)
+                0x00000000080816f0                __aeabi_atexit
+ *fill*         0x00000000080816fa        0x2 
  .text.startup._GLOBAL__sub_I__ZNSt12ctype_bynameIwEC2ERKSsj
-                0x00000000080816d8       0xc4 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libstdc++_nano.a(wlocale-inst.o)
+                0x00000000080816fc       0xc4 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libstdc++_nano.a(wlocale-inst.o)
  .text.startup._GLOBAL__sub_I__ZNSt12ctype_bynameIcEC2ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEj
-                0x000000000808179c       0x84 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libstdc++_nano.a(cxx11-locale-inst.o)
+                0x00000000080817c0       0x84 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libstdc++_nano.a(cxx11-locale-inst.o)
  .text.startup._GLOBAL__sub_I__ZNSt12ctype_bynameIwEC2ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEj
-                0x0000000008081820       0x84 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libstdc++_nano.a(cxx11-wlocale-inst.o)
+                0x0000000008081844       0x84 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libstdc++_nano.a(cxx11-wlocale-inst.o)
  .text.startup._GLOBAL__sub_I__ZNSt12ctype_bynameIcEC2ERKSsj
-                0x00000000080818a4       0xc4 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libstdc++_nano.a(locale-inst.o)
- .text          0x0000000008081968      0x370 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7-m/libgcc.a(_arm_addsubdf3.o)
-                0x0000000008081968                __aeabi_drsub
-                0x0000000008081970                __aeabi_dsub
-                0x0000000008081970                __subdf3
-                0x0000000008081974                __aeabi_dadd
-                0x0000000008081974                __adddf3
-                0x0000000008081bec                __aeabi_ui2d
-                0x0000000008081bec                __floatunsidf
-                0x0000000008081c0c                __floatsidf
-                0x0000000008081c0c                __aeabi_i2d
-                0x0000000008081c30                __aeabi_f2d
-                0x0000000008081c30                __extendsfdf2
-                0x0000000008081c6c                __aeabi_ul2d
-                0x0000000008081c6c                __floatundidf
-                0x0000000008081c7c                __floatdidf
-                0x0000000008081c7c                __aeabi_l2d
- .text          0x0000000008081cd8      0x424 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7-m/libgcc.a(_arm_muldivdf3.o)
-                0x0000000008081cd8                __aeabi_dmul
-                0x0000000008081cd8                __muldf3
-                0x0000000008081f2c                __divdf3
-                0x0000000008081f2c                __aeabi_ddiv
- .text          0x00000000080820fc      0x110 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7-m/libgcc.a(_arm_cmpdf2.o)
-                0x00000000080820fc                __gtdf2
-                0x00000000080820fc                __gedf2
-                0x0000000008082104                __ltdf2
-                0x0000000008082104                __ledf2
-                0x000000000808210c                __eqdf2
-                0x000000000808210c                __nedf2
-                0x000000000808210c                __cmpdf2
-                0x0000000008082188                __aeabi_cdrcmple
-                0x0000000008082198                __aeabi_cdcmple
-                0x0000000008082198                __aeabi_cdcmpeq
-                0x00000000080821a8                __aeabi_dcmpeq
-                0x00000000080821bc                __aeabi_dcmplt
-                0x00000000080821d0                __aeabi_dcmple
-                0x00000000080821e4                __aeabi_dcmpge
-                0x00000000080821f8                __aeabi_dcmpgt
- .text          0x000000000808220c       0x2c /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7-m/libgcc.a(_arm_unorddf2.o)
-                0x000000000808220c                __aeabi_dcmpun
-                0x000000000808220c                __unorddf2
- .text          0x0000000008082238       0x50 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7-m/libgcc.a(_arm_fixdfsi.o)
-                0x0000000008082238                __fixdfsi
-                0x0000000008082238                __aeabi_d2iz
- .text          0x0000000008082288       0x40 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7-m/libgcc.a(_arm_fixunsdfsi.o)
-                0x0000000008082288                __aeabi_d2uiz
-                0x0000000008082288                __fixunsdfsi
- .text.atol     0x00000000080822c8        0x8 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-atol.o)
-                0x00000000080822c8                atol
+                0x00000000080818c8       0xc4 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libstdc++_nano.a(locale-inst.o)
+ .text          0x000000000808198c      0x370 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7-m/libgcc.a(_arm_addsubdf3.o)
+                0x000000000808198c                __aeabi_drsub
+                0x0000000008081994                __aeabi_dsub
+                0x0000000008081994                __subdf3
+                0x0000000008081998                __aeabi_dadd
+                0x0000000008081998                __adddf3
+                0x0000000008081c10                __aeabi_ui2d
+                0x0000000008081c10                __floatunsidf
+                0x0000000008081c30                __floatsidf
+                0x0000000008081c30                __aeabi_i2d
+                0x0000000008081c54                __aeabi_f2d
+                0x0000000008081c54                __extendsfdf2
+                0x0000000008081c90                __aeabi_ul2d
+                0x0000000008081c90                __floatundidf
+                0x0000000008081ca0                __floatdidf
+                0x0000000008081ca0                __aeabi_l2d
+ .text          0x0000000008081cfc      0x424 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7-m/libgcc.a(_arm_muldivdf3.o)
+                0x0000000008081cfc                __aeabi_dmul
+                0x0000000008081cfc                __muldf3
+                0x0000000008081f50                __divdf3
+                0x0000000008081f50                __aeabi_ddiv
+ .text          0x0000000008082120      0x110 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7-m/libgcc.a(_arm_cmpdf2.o)
+                0x0000000008082120                __gtdf2
+                0x0000000008082120                __gedf2
+                0x0000000008082128                __ltdf2
+                0x0000000008082128                __ledf2
+                0x0000000008082130                __eqdf2
+                0x0000000008082130                __nedf2
+                0x0000000008082130                __cmpdf2
+                0x00000000080821ac                __aeabi_cdrcmple
+                0x00000000080821bc                __aeabi_cdcmple
+                0x00000000080821bc                __aeabi_cdcmpeq
+                0x00000000080821cc                __aeabi_dcmpeq
+                0x00000000080821e0                __aeabi_dcmplt
+                0x00000000080821f4                __aeabi_dcmple
+                0x0000000008082208                __aeabi_dcmpge
+                0x000000000808221c                __aeabi_dcmpgt
+ .text          0x0000000008082230       0x2c /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7-m/libgcc.a(_arm_unorddf2.o)
+                0x0000000008082230                __aeabi_dcmpun
+                0x0000000008082230                __unorddf2
+ .text          0x000000000808225c       0x50 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7-m/libgcc.a(_arm_fixdfsi.o)
+                0x000000000808225c                __fixdfsi
+                0x000000000808225c                __aeabi_d2iz
+ .text          0x00000000080822ac       0x40 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7-m/libgcc.a(_arm_fixunsdfsi.o)
+                0x00000000080822ac                __aeabi_d2uiz
+                0x00000000080822ac                __fixunsdfsi
+ .text.atol     0x00000000080822ec        0x8 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-atol.o)
+                0x00000000080822ec                atol
  .text.__cxa_atexit
-                0x00000000080822d0       0x1c /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-cxa_atexit.o)
-                0x00000000080822d0                __cxa_atexit
- .text.memcpy   0x00000000080822ec       0x16 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-memcpy-stub.o)
-                0x00000000080822ec                memcpy
- .text.memset   0x0000000008082302       0x10 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-memset.o)
-                0x0000000008082302                memset
- *fill*         0x0000000008082312        0x2 
- .text.srand    0x0000000008082314       0x50 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-rand.o)
-                0x0000000008082314                srand
- .text          0x0000000008082364       0x14 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-strcmp.o)
-                0x0000000008082364                strcmp
- .text.strcpy   0x0000000008082378       0x10 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-strcpy.o)
-                0x0000000008082378                strcpy
- .text          0x0000000008082388       0x10 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-strlen.o)
-                0x0000000008082388                strlen
- .text.strncpy  0x0000000008082398       0x26 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-strncpy.o)
-                0x0000000008082398                strncpy
- *fill*         0x00000000080823be        0x2 
+                0x00000000080822f4       0x1c /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-cxa_atexit.o)
+                0x00000000080822f4                __cxa_atexit
+ .text.memcpy   0x0000000008082310       0x16 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-memcpy-stub.o)
+                0x0000000008082310                memcpy
+ .text.memset   0x0000000008082326       0x10 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-memset.o)
+                0x0000000008082326                memset
+ *fill*         0x0000000008082336        0x2 
+ .text.srand    0x0000000008082338       0x50 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-rand.o)
+                0x0000000008082338                srand
+ .text          0x0000000008082388       0x14 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-strcmp.o)
+                0x0000000008082388                strcmp
+ .text.strcpy   0x000000000808239c       0x10 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-strcpy.o)
+                0x000000000808239c                strcpy
+ .text          0x00000000080823ac       0x10 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-strlen.o)
+                0x00000000080823ac                strlen
+ .text.strncpy  0x00000000080823bc       0x26 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-strncpy.o)
+                0x00000000080823bc                strncpy
+ *fill*         0x00000000080823e2        0x2 
  .text._strtol_r
-                0x00000000080823c0      0x10c /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-strtol.o)
-                0x00000000080823c0                _strtol_r
- .text.strtol   0x00000000080824cc       0x14 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-strtol.o)
-                0x00000000080824cc                strtol
-                0x00000000080824e0                link_code_end = .
-                0x00000000080824e0                . = ALIGN (0x4)
-                0x00000000080824e0                link_const_variable_data_location = .
+                0x00000000080823e4      0x10c /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-strtol.o)
+                0x00000000080823e4                _strtol_r
+ .text.strtol   0x00000000080824f0       0x14 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-strtol.o)
+                0x00000000080824f0                strtol
+                0x0000000008082504                link_code_end = .
+                0x0000000008082504                . = ALIGN (0x4)
+                0x0000000008082504                link_const_variable_data_location = .
  *(.rodata .rodata.* .gnu.linkonce.r.*)
  .rodata.dynalib_user
-                0x00000000080824e0       0x14 /Users/heath/Documents/workspace/Connected-Oldtimer/ConnectedOldtimerCode/target//obj/src/user_export.o
-                0x00000000080824e0                dynalib_user
+                0x0000000008082504       0x14 /Users/heath/Documents/workspace/Connected-Oldtimer/ConnectedOldtimerCode/target//obj/src/user_export.o
+                0x0000000008082504                dynalib_user
  .rodata.str1.1
-                0x00000000080824f4       0x48 ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(ConnectedOldtimerCode.o)
+                0x0000000008082518       0x48 ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(ConnectedOldtimerCode.o)
                                          0x4a (size before relaxing)
  .rodata.str1.1
-                0x000000000808253c       0x30 ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(TinyGPS++.o)
+                0x0000000008082560       0x30 ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(TinyGPS++.o)
                                          0x40 (size before relaxing)
  .rodata._ZTVN5spark13CellularClassE
-                0x000000000808256c        0xc ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_cellular.o)
-                0x000000000808256c                vtable for spark::CellularClass
+                0x0000000008082590        0xc ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_cellular.o)
+                0x0000000008082590                vtable for spark::CellularClass
  .rodata._ZTV7TwoWire
-                0x0000000008082578       0x28 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_i2c.o)
-                0x0000000008082578                vtable for TwoWire
+                0x000000000808259c       0x28 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_i2c.o)
+                0x000000000808259c                vtable for TwoWire
  .rodata._ZTV9IPAddress
-                0x00000000080825a0       0x14 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_ipaddress.o)
-                0x00000000080825a0                vtable for IPAddress
+                0x00000000080825c4       0x14 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_ipaddress.o)
+                0x00000000080825c4                vtable for IPAddress
  .rodata.str1.1
-                0x00000000080825b4       0xdf ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_logging.o)
+                0x00000000080825d8       0xdf ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_logging.o)
                                         0x109 (size before relaxing)
  .rodata.str1.1
-                0x0000000008082693        0xe ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_print.o)
- *fill*         0x00000000080826a1        0x3 
+                0x00000000080826b7        0xe ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_print.o)
+ *fill*         0x00000000080826c5        0x3 
  .rodata._ZTV8SPIClass
-                0x00000000080826a4       0x10 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_spi.o)
-                0x00000000080826a4                vtable for SPIClass
+                0x00000000080826c8       0x10 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_spi.o)
+                0x00000000080826c8                vtable for SPIClass
  .rodata.str1.1
-                0x00000000080826b4       0x29 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_time.o)
- *fill*         0x00000000080826dd        0x3 
+                0x00000000080826d8       0x29 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_time.o)
+ *fill*         0x0000000008082701        0x3 
  .rodata._ZTV11USARTSerial
-                0x00000000080826e0       0x30 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usartserial.o)
-                0x00000000080826e0                vtable for USARTSerial
+                0x0000000008082704       0x30 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usartserial.o)
+                0x0000000008082704                vtable for USARTSerial
  .rodata._ZTV9USBSerial
-                0x0000000008082710       0x30 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usbserial.o)
-                0x0000000008082710                vtable for USBSerial
+                0x0000000008082734       0x30 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usbserial.o)
+                0x0000000008082734                vtable for USBSerial
  .rodata._ctype_
-                0x0000000008082740      0x101 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-ctype_.o)
-                0x0000000008082740                _ctype_
- *fill*         0x0000000008082841        0x3 
+                0x0000000008082764      0x101 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-ctype_.o)
+                0x0000000008082764                _ctype_
+ *fill*         0x0000000008082865        0x3 
  .rodata.__sf_fake_stdin
-                0x0000000008082844       0x20 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-findfp.o)
-                0x0000000008082844                __sf_fake_stdin
+                0x0000000008082868       0x20 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-findfp.o)
+                0x0000000008082868                __sf_fake_stdin
  .rodata.__sf_fake_stdout
-                0x0000000008082864       0x20 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-findfp.o)
-                0x0000000008082864                __sf_fake_stdout
+                0x0000000008082888       0x20 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-findfp.o)
+                0x0000000008082888                __sf_fake_stdout
  .rodata.__sf_fake_stderr
-                0x0000000008082884       0x20 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-findfp.o)
-                0x0000000008082884                __sf_fake_stderr
+                0x00000000080828a8       0x20 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-findfp.o)
+                0x00000000080828a8                __sf_fake_stderr
  .rodata.str1.1
-                0x00000000080828a4       0x29 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-impure.o)
+                0x00000000080828c8       0x29 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-impure.o)
                                           0x2 (size before relaxing)
-                0x00000000080828cd                link_const_variable_data_end = .
-                0x00000000080828d0                . = ALIGN (0x4)
-                0x00000000080828d0                link_constructors_location = .
+                0x00000000080828f1                link_const_variable_data_end = .
+                0x00000000080828f4                . = ALIGN (0x4)
+                0x00000000080828f4                link_constructors_location = .
  *(.preinit_array)
  *(.init_array)
- .init_array    0x00000000080828a4        0x4 ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(ConnectedOldtimerCode.o)
- .init_array    0x00000000080828a8        0x4 ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(TinyGPS++.o)
- .init_array    0x00000000080828ac        0x4 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_cellular.o)
- .init_array    0x00000000080828b0        0x4 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_logging.o)
- .init_array    0x00000000080828b4        0x4 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_rgb.o)
- .init_array    0x00000000080828b8        0x4 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_system.o)
- .init_array    0x00000000080828bc        0x4 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_time.o)
- .init_array    0x00000000080828c0        0x4 ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(wiring_globals_ipaddress.o)
- .init_array    0x00000000080828c4        0x4 ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(wiring_globals_spi.o)
- .init_array    0x00000000080828c8        0x4 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libstdc++_nano.a(wlocale-inst.o)
- .init_array    0x00000000080828cc        0x4 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libstdc++_nano.a(cxx11-locale-inst.o)
- .init_array    0x00000000080828d0        0x4 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libstdc++_nano.a(cxx11-wlocale-inst.o)
- .init_array    0x00000000080828d4        0x4 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libstdc++_nano.a(locale-inst.o)
+ .init_array    0x00000000080828c8        0x4 ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(ConnectedOldtimerCode.o)
+ .init_array    0x00000000080828cc        0x4 ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(TinyGPS++.o)
+ .init_array    0x00000000080828d0        0x4 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_cellular.o)
+ .init_array    0x00000000080828d4        0x4 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_logging.o)
+ .init_array    0x00000000080828d8        0x4 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_rgb.o)
+ .init_array    0x00000000080828dc        0x4 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_system.o)
+ .init_array    0x00000000080828e0        0x4 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_time.o)
+ .init_array    0x00000000080828e4        0x4 ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(wiring_globals_ipaddress.o)
+ .init_array    0x00000000080828e8        0x4 ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(wiring_globals_spi.o)
+ .init_array    0x00000000080828ec        0x4 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libstdc++_nano.a(wlocale-inst.o)
+ .init_array    0x00000000080828f0        0x4 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libstdc++_nano.a(cxx11-locale-inst.o)
+ .init_array    0x00000000080828f4        0x4 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libstdc++_nano.a(cxx11-wlocale-inst.o)
+ .init_array    0x00000000080828f8        0x4 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libstdc++_nano.a(locale-inst.o)
  *crtbegin.o(.ctors)
  *(EXCLUDE_FILE(*crtend.o) .ctors)
  *(SORT(.ctors.*))
  *crtend.o(.ctors)
-                0x00000000080828d8                link_constructors_end = .
-                0x00000000080828d8                . = ALIGN (0x4)
-                0x00000000080828d8                link_destructors_location = .
+                0x00000000080828fc                link_constructors_end = .
+                0x00000000080828fc                . = ALIGN (0x4)
+                0x00000000080828fc                link_destructors_location = .
  *crtbegin.o(.dtors)
  *(EXCLUDE_FILE(*crtend.o) .dtors)
  *(SORT(.dtors.*))
  *crtend.o(.dtors)
-                0x00000000080828d8                link_destructors_end = .
-                0x00000000080828e0                . = ALIGN (0x10)
- *fill*         0x00000000080828d8        0x8 
+                0x00000000080828fc                link_destructors_end = .
+                0x0000000008082900                . = ALIGN (0x10)
+ *fill*         0x00000000080828fc        0x4 
 
-.iplt           0x00000000080828e0        0x0
- .iplt          0x00000000080828e0        0x0 /Users/heath/Documents/workspace/Connected-Oldtimer/ConnectedOldtimerCode/target//obj/src/module_info.o
+.iplt           0x0000000008082900        0x0
+ .iplt          0x0000000008082900        0x0 /Users/heath/Documents/workspace/Connected-Oldtimer/ConnectedOldtimerCode/target//obj/src/module_info.o
 
-.ARM.exidx      0x00000000080828e0        0x0
-                0x00000000080828e0                __exidx_start = ALIGN (0x4)
+.ARM.exidx      0x0000000008082900        0x0
+                0x0000000008082900                __exidx_start = ALIGN (0x4)
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x00000000080828e0                __exidx_end = .
+                0x0000000008082900                __exidx_end = .
 
-.ARM.extab      0x00000000080828e0        0x0
-                0x00000000080828e0                __extab_start = ALIGN (0x4)
+.ARM.extab      0x0000000008082900        0x0
+                0x0000000008082900                __extab_start = ALIGN (0x4)
  *(.ARM.extab*)
-                0x00000000080828e0                __extab_end = .
+                0x0000000008082900                __extab_end = .
 
-.backup         0x0000000040024000        0x4 load address 0x00000000080828e0
-                0x00000000080828e0                link_global_retained_initial_values = LOADADDR (.backup)
+.backup         0x0000000040024000        0x4 load address 0x0000000008082900
+                0x0000000008082900                link_global_retained_initial_values = LOADADDR (.backup)
                 0x0000000040024000                link_global_retained_start = .
  *(.retained_user*)
  .retained_user
@@ -31853,8 +31853,8 @@ END GROUP
                 0x0000000040024004                link_global_retained_end = .
                 0x0000000040024004                . = ALIGN (., 0x4)
 
-.data           0x0000000020000400       0x74 load address 0x00000000080828e4
-                0x00000000080828e4                link_global_data_initial_values = LOADADDR (.data)
+.data           0x0000000020000400       0x74 load address 0x0000000008082904
+                0x0000000008082904                link_global_data_initial_values = LOADADDR (.data)
                 0x0000000020000400                link_global_data_start = .
  *(.data*)
  .data.led2     0x0000000020000400        0x4 ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(ConnectedOldtimerCode.o)
@@ -31877,7 +31877,7 @@ END GROUP
                 0x0000000020000474                link_global_data_end = .
                 0x0000000020000474                . = ALIGN (., 0x4)
 
-.igot.plt       0x0000000020000474        0x0 load address 0x0000000008082958
+.igot.plt       0x0000000020000474        0x0 load address 0x0000000008082978
  .igot.plt      0x0000000020000474        0x0 /Users/heath/Documents/workspace/Connected-Oldtimer/ConnectedOldtimerCode/target//obj/src/module_info.o
 
 .bss            0x0000000020000478      0x908
@@ -32114,34 +32114,34 @@ END GROUP
                 0x0000000020000d80                . = ALIGN (., 0x4)
 
 .module_info_suffix
-                0x0000000008082958       0x28
-                0x0000000008082958                . = ALIGN (., 0x2)
-                0x0000000008082958                link_module_info_static_start = .
-                0x0000000008082958        0x2 SHORT 0xffff
-                0x000000000808295a        0x2 SHORT 0xffff
+                0x0000000008082978       0x28
+                0x0000000008082978                . = ALIGN (., 0x2)
+                0x0000000008082978                link_module_info_static_start = .
+                0x0000000008082978        0x2 SHORT 0xffff
+                0x000000000808297a        0x2 SHORT 0xffff
  *.o(.modinfo.product_id)
  *.o(.modinfo.product_version)
-                0x000000000808295c                link_module_info_suffix_start = .
+                0x000000000808297c                link_module_info_suffix_start = .
  *.o(.modinfo.module_info_suffix)
  .modinfo.module_info_suffix
-                0x000000000808295c       0x24 /Users/heath/Documents/workspace/Connected-Oldtimer/ConnectedOldtimerCode/target//obj/src/module_info.o
-                0x000000000808295c                module_info_suffix
-                0x0000000008082980                link_module_info_suffix_end = .
+                0x000000000808297c       0x24 /Users/heath/Documents/workspace/Connected-Oldtimer/ConnectedOldtimerCode/target//obj/src/module_info.o
+                0x000000000808297c                module_info_suffix
+                0x00000000080829a0                link_module_info_suffix_end = .
 
-.module_end     0x0000000008082980        0x0
-                0x0000000008082980                link_module_end = .
+.module_end     0x00000000080829a0        0x0
+                0x00000000080829a0                link_module_end = .
 
 .module_info_crc
-                0x0000000008082980        0x4
-                0x0000000008082980                link_module_info_crc_start = .
+                0x00000000080829a0        0x4
+                0x00000000080829a0                link_module_info_crc_start = .
  *.o(.modinfo.module_info_crc)
  .modinfo.module_info_crc
-                0x0000000008082980        0x4 /Users/heath/Documents/workspace/Connected-Oldtimer/ConnectedOldtimerCode/target//obj/src/module_info.o
-                0x0000000008082980                module_info_crc
-                0x0000000008082984                link_module_info_crc_end = .
+                0x00000000080829a0        0x4 /Users/heath/Documents/workspace/Connected-Oldtimer/ConnectedOldtimerCode/target//obj/src/module_info.o
+                0x00000000080829a0                module_info_crc
+                0x00000000080829a4                link_module_info_crc_end = .
 
-.rel.dyn        0x0000000008082984        0x0
- .rel.iplt      0x0000000008082984        0x0 /Users/heath/Documents/workspace/Connected-Oldtimer/ConnectedOldtimerCode/target//obj/src/module_info.o
+.rel.dyn        0x00000000080829a4        0x0
+ .rel.iplt      0x00000000080829a4        0x0 /Users/heath/Documents/workspace/Connected-Oldtimer/ConnectedOldtimerCode/target//obj/src/module_info.o
 
 /DISCARD/
  *(.ARM.attributes*)
@@ -32186,111 +32186,111 @@ END GROUP
                 0x0000000000000001                ASSERT ((((link_module_info_suffix_start - link_module_info_static_start) == 0x4) || ((link_module_info_suffix_start - link_module_info_static_start) == 0x8)), module info static details not linked)
 OUTPUT(/Users/heath/Documents/workspace/Connected-Oldtimer/ConnectedOldtimerCode/target/ConnectedOldtimerCode.elf elf32-littlearm)
 
-.debug_info     0x0000000000000000    0x8b696
+.debug_info     0x0000000000000000    0x8b61c
  .debug_info    0x0000000000000000      0x4ca /Users/heath/Documents/workspace/Connected-Oldtimer/ConnectedOldtimerCode/target//obj/src/module_info.o
  .debug_info    0x00000000000004ca      0x46a /Users/heath/Documents/workspace/Connected-Oldtimer/ConnectedOldtimerCode/target//obj/src/user_export.o
  .debug_info    0x0000000000000934       0x79 /Users/heath/Documents/workspace/Connected-Oldtimer/ConnectedOldtimerCode/target//obj/src/user_module.o
  .debug_info    0x00000000000009ad      0x3df /Users/heath/Documents/workspace/Connected-Oldtimer/ConnectedOldtimerCode/target//obj/src/newlib_stubs.o
- .debug_info    0x0000000000000d8c     0x7ec9 ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(ConnectedOldtimerCode.o)
- .debug_info    0x0000000000008c55     0x6866 ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(TinyGPS++.o)
- .debug_info    0x000000000000f4bb      0x285 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_can.o)
- .debug_info    0x000000000000f740      0x699 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_concurrent.o)
- .debug_info    0x000000000000fdd9      0x82f ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_core.o)
- .debug_info    0x0000000000010608      0x5b1 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_dynalib.o)
- .debug_info    0x0000000000010bb9      0x8a3 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_gpio.o)
- .debug_info    0x000000000001145c      0x4c9 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_i2c.o)
- .debug_info    0x0000000000011925      0x3e1 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_spi.o)
- .debug_info    0x0000000000011d06      0x577 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_usart.o)
- .debug_info    0x000000000001227d      0x65a ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_usb.o)
- .debug_info    0x00000000000128d7      0xa45 ../../../build/target/system-dynalib/platform-10-m//libsystem-dynalib.a(system_dynalib.o)
- .debug_info    0x000000000001331c      0x3e1 ../../../build/target/system-dynalib/platform-10-m//libsystem-dynalib.a(system_dynalib_cloud.o)
- .debug_info    0x00000000000136fd      0x3e1 ../../../build/target/system-dynalib/platform-10-m//libsystem-dynalib.a(system_dynalib_net.o)
- .debug_info    0x0000000000013ade      0x3ed ../../../build/target/rt-dynalib/platform-10-m//librt-dynalib.a(rt_dynalib.o)
- .debug_info    0x0000000000013ecb     0x3ea4 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_can.o)
- .debug_info    0x0000000000017d6f     0x33f6 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_cellular.o)
- .debug_info    0x000000000001b165    0x1132f ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_cloud.o)
- .debug_info    0x000000000002c494     0x4aaa ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_i2c.o)
- .debug_info    0x0000000000030f3e     0x385b ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_ipaddress.o)
- .debug_info    0x0000000000034799    0x18c72 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_logging.o)
- .debug_info    0x000000000004d40b     0x3335 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_print.o)
- .debug_info    0x0000000000050740     0x3954 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_rgb.o)
- .debug_info    0x0000000000054094     0x52ba ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_spi.o)
- .debug_info    0x000000000005934e     0x688f ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_system.o)
- .debug_info    0x000000000005fbdd     0xb9f5 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_time.o)
- .debug_info    0x000000000006b5d2     0x3d9f ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usartserial.o)
- .debug_info    0x000000000006f371     0x482c ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usbserial.o)
- .debug_info    0x0000000000073b9d     0x51cc ../../../build/target/wiring/platform-10-m//libwiring.a(user.o)
- .debug_info    0x0000000000078d69     0x4b02 ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(spark_wiring_gpio.o)
- .debug_info    0x000000000007d86b     0x4953 ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(spark_wiring_watchdog.o)
- .debug_info    0x00000000000821be     0x341d ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(wiring_globals_i2c.o)
- .debug_info    0x00000000000855db     0x1e58 ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(wiring_globals_ipaddress.o)
- .debug_info    0x0000000000087433     0x4263 ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(wiring_globals_spi.o)
+ .debug_info    0x0000000000000d8c     0x7e4f ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(ConnectedOldtimerCode.o)
+ .debug_info    0x0000000000008bdb     0x6866 ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(TinyGPS++.o)
+ .debug_info    0x000000000000f441      0x285 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_can.o)
+ .debug_info    0x000000000000f6c6      0x699 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_concurrent.o)
+ .debug_info    0x000000000000fd5f      0x82f ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_core.o)
+ .debug_info    0x000000000001058e      0x5b1 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_dynalib.o)
+ .debug_info    0x0000000000010b3f      0x8a3 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_gpio.o)
+ .debug_info    0x00000000000113e2      0x4c9 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_i2c.o)
+ .debug_info    0x00000000000118ab      0x3e1 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_spi.o)
+ .debug_info    0x0000000000011c8c      0x577 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_usart.o)
+ .debug_info    0x0000000000012203      0x65a ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_usb.o)
+ .debug_info    0x000000000001285d      0xa45 ../../../build/target/system-dynalib/platform-10-m//libsystem-dynalib.a(system_dynalib.o)
+ .debug_info    0x00000000000132a2      0x3e1 ../../../build/target/system-dynalib/platform-10-m//libsystem-dynalib.a(system_dynalib_cloud.o)
+ .debug_info    0x0000000000013683      0x3e1 ../../../build/target/system-dynalib/platform-10-m//libsystem-dynalib.a(system_dynalib_net.o)
+ .debug_info    0x0000000000013a64      0x3ed ../../../build/target/rt-dynalib/platform-10-m//librt-dynalib.a(rt_dynalib.o)
+ .debug_info    0x0000000000013e51     0x3ea4 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_can.o)
+ .debug_info    0x0000000000017cf5     0x33f6 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_cellular.o)
+ .debug_info    0x000000000001b0eb    0x1132f ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_cloud.o)
+ .debug_info    0x000000000002c41a     0x4aaa ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_i2c.o)
+ .debug_info    0x0000000000030ec4     0x385b ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_ipaddress.o)
+ .debug_info    0x000000000003471f    0x18c72 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_logging.o)
+ .debug_info    0x000000000004d391     0x3335 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_print.o)
+ .debug_info    0x00000000000506c6     0x3954 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_rgb.o)
+ .debug_info    0x000000000005401a     0x52ba ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_spi.o)
+ .debug_info    0x00000000000592d4     0x688f ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_system.o)
+ .debug_info    0x000000000005fb63     0xb9f5 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_time.o)
+ .debug_info    0x000000000006b558     0x3d9f ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usartserial.o)
+ .debug_info    0x000000000006f2f7     0x482c ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usbserial.o)
+ .debug_info    0x0000000000073b23     0x51cc ../../../build/target/wiring/platform-10-m//libwiring.a(user.o)
+ .debug_info    0x0000000000078cef     0x4b02 ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(spark_wiring_gpio.o)
+ .debug_info    0x000000000007d7f1     0x4953 ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(spark_wiring_watchdog.o)
+ .debug_info    0x0000000000082144     0x341d ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(wiring_globals_i2c.o)
+ .debug_info    0x0000000000085561     0x1e58 ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(wiring_globals_ipaddress.o)
+ .debug_info    0x00000000000873b9     0x4263 ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(wiring_globals_spi.o)
 
-.debug_abbrev   0x0000000000000000     0xd685
+.debug_abbrev   0x0000000000000000     0xd675
  .debug_abbrev  0x0000000000000000      0x159 /Users/heath/Documents/workspace/Connected-Oldtimer/ConnectedOldtimerCode/target//obj/src/module_info.o
  .debug_abbrev  0x0000000000000159      0x17d /Users/heath/Documents/workspace/Connected-Oldtimer/ConnectedOldtimerCode/target//obj/src/user_export.o
  .debug_abbrev  0x00000000000002d6       0x6c /Users/heath/Documents/workspace/Connected-Oldtimer/ConnectedOldtimerCode/target//obj/src/user_module.o
  .debug_abbrev  0x0000000000000342      0x1fc /Users/heath/Documents/workspace/Connected-Oldtimer/ConnectedOldtimerCode/target//obj/src/newlib_stubs.o
- .debug_abbrev  0x000000000000053e      0xc19 ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(ConnectedOldtimerCode.o)
- .debug_abbrev  0x0000000000001157      0xbe8 ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(TinyGPS++.o)
- .debug_abbrev  0x0000000000001d3f       0x62 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_can.o)
- .debug_abbrev  0x0000000000001da1       0x62 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_concurrent.o)
- .debug_abbrev  0x0000000000001e03       0x62 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_core.o)
- .debug_abbrev  0x0000000000001e65       0x62 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_dynalib.o)
- .debug_abbrev  0x0000000000001ec7       0x62 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_gpio.o)
- .debug_abbrev  0x0000000000001f29       0x62 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_i2c.o)
- .debug_abbrev  0x0000000000001f8b       0x62 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_spi.o)
- .debug_abbrev  0x0000000000001fed       0x62 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_usart.o)
- .debug_abbrev  0x000000000000204f       0x92 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_usb.o)
- .debug_abbrev  0x00000000000020e1       0x6d ../../../build/target/system-dynalib/platform-10-m//libsystem-dynalib.a(system_dynalib.o)
- .debug_abbrev  0x000000000000214e       0x62 ../../../build/target/system-dynalib/platform-10-m//libsystem-dynalib.a(system_dynalib_cloud.o)
- .debug_abbrev  0x00000000000021b0       0x62 ../../../build/target/system-dynalib/platform-10-m//libsystem-dynalib.a(system_dynalib_net.o)
- .debug_abbrev  0x0000000000002212       0x6d ../../../build/target/rt-dynalib/platform-10-m//librt-dynalib.a(rt_dynalib.o)
- .debug_abbrev  0x000000000000227f      0x7e1 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_can.o)
- .debug_abbrev  0x0000000000002a60      0x6f5 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_cellular.o)
- .debug_abbrev  0x0000000000003155      0xebb ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_cloud.o)
- .debug_abbrev  0x0000000000004010      0x7f5 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_i2c.o)
- .debug_abbrev  0x0000000000004805      0x61c ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_ipaddress.o)
- .debug_abbrev  0x0000000000004e21     0x143f ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_logging.o)
- .debug_abbrev  0x0000000000006260      0x6b2 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_print.o)
- .debug_abbrev  0x0000000000006912      0x9b6 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_rgb.o)
- .debug_abbrev  0x00000000000072c8      0xa3a ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_spi.o)
- .debug_abbrev  0x0000000000007d02      0xaeb ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_system.o)
- .debug_abbrev  0x00000000000087ed      0xe59 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_time.o)
- .debug_abbrev  0x0000000000009646      0x6b9 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usartserial.o)
- .debug_abbrev  0x0000000000009cff      0x83b ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usbserial.o)
- .debug_abbrev  0x000000000000a53a      0xa32 ../../../build/target/wiring/platform-10-m//libwiring.a(user.o)
- .debug_abbrev  0x000000000000af6c      0xa95 ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(spark_wiring_gpio.o)
- .debug_abbrev  0x000000000000ba01      0x91f ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(spark_wiring_watchdog.o)
- .debug_abbrev  0x000000000000c320      0x5aa ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(wiring_globals_i2c.o)
- .debug_abbrev  0x000000000000c8ca      0x4ce ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(wiring_globals_ipaddress.o)
- .debug_abbrev  0x000000000000cd98      0x8ed ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(wiring_globals_spi.o)
+ .debug_abbrev  0x000000000000053e      0xc09 ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(ConnectedOldtimerCode.o)
+ .debug_abbrev  0x0000000000001147      0xbe8 ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(TinyGPS++.o)
+ .debug_abbrev  0x0000000000001d2f       0x62 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_can.o)
+ .debug_abbrev  0x0000000000001d91       0x62 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_concurrent.o)
+ .debug_abbrev  0x0000000000001df3       0x62 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_core.o)
+ .debug_abbrev  0x0000000000001e55       0x62 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_dynalib.o)
+ .debug_abbrev  0x0000000000001eb7       0x62 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_gpio.o)
+ .debug_abbrev  0x0000000000001f19       0x62 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_i2c.o)
+ .debug_abbrev  0x0000000000001f7b       0x62 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_spi.o)
+ .debug_abbrev  0x0000000000001fdd       0x62 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_usart.o)
+ .debug_abbrev  0x000000000000203f       0x92 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_usb.o)
+ .debug_abbrev  0x00000000000020d1       0x6d ../../../build/target/system-dynalib/platform-10-m//libsystem-dynalib.a(system_dynalib.o)
+ .debug_abbrev  0x000000000000213e       0x62 ../../../build/target/system-dynalib/platform-10-m//libsystem-dynalib.a(system_dynalib_cloud.o)
+ .debug_abbrev  0x00000000000021a0       0x62 ../../../build/target/system-dynalib/platform-10-m//libsystem-dynalib.a(system_dynalib_net.o)
+ .debug_abbrev  0x0000000000002202       0x6d ../../../build/target/rt-dynalib/platform-10-m//librt-dynalib.a(rt_dynalib.o)
+ .debug_abbrev  0x000000000000226f      0x7e1 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_can.o)
+ .debug_abbrev  0x0000000000002a50      0x6f5 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_cellular.o)
+ .debug_abbrev  0x0000000000003145      0xebb ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_cloud.o)
+ .debug_abbrev  0x0000000000004000      0x7f5 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_i2c.o)
+ .debug_abbrev  0x00000000000047f5      0x61c ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_ipaddress.o)
+ .debug_abbrev  0x0000000000004e11     0x143f ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_logging.o)
+ .debug_abbrev  0x0000000000006250      0x6b2 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_print.o)
+ .debug_abbrev  0x0000000000006902      0x9b6 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_rgb.o)
+ .debug_abbrev  0x00000000000072b8      0xa3a ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_spi.o)
+ .debug_abbrev  0x0000000000007cf2      0xaeb ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_system.o)
+ .debug_abbrev  0x00000000000087dd      0xe59 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_time.o)
+ .debug_abbrev  0x0000000000009636      0x6b9 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usartserial.o)
+ .debug_abbrev  0x0000000000009cef      0x83b ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usbserial.o)
+ .debug_abbrev  0x000000000000a52a      0xa32 ../../../build/target/wiring/platform-10-m//libwiring.a(user.o)
+ .debug_abbrev  0x000000000000af5c      0xa95 ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(spark_wiring_gpio.o)
+ .debug_abbrev  0x000000000000b9f1      0x91f ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(spark_wiring_watchdog.o)
+ .debug_abbrev  0x000000000000c310      0x5aa ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(wiring_globals_i2c.o)
+ .debug_abbrev  0x000000000000c8ba      0x4ce ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(wiring_globals_ipaddress.o)
+ .debug_abbrev  0x000000000000cd88      0x8ed ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(wiring_globals_spi.o)
 
-.debug_loc      0x0000000000000000    0x101b5
+.debug_loc      0x0000000000000000    0x1019d
  .debug_loc     0x0000000000000000      0x182 /Users/heath/Documents/workspace/Connected-Oldtimer/ConnectedOldtimerCode/target//obj/src/module_info.o
  .debug_loc     0x0000000000000182       0x8b /Users/heath/Documents/workspace/Connected-Oldtimer/ConnectedOldtimerCode/target//obj/src/user_export.o
  .debug_loc     0x000000000000020d      0x105 /Users/heath/Documents/workspace/Connected-Oldtimer/ConnectedOldtimerCode/target//obj/src/newlib_stubs.o
- .debug_loc     0x0000000000000312      0x310 ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(ConnectedOldtimerCode.o)
- .debug_loc     0x0000000000000622     0x11ef ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(TinyGPS++.o)
- .debug_loc     0x0000000000001811      0x2dd ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_can.o)
- .debug_loc     0x0000000000001aee      0x5d4 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_cellular.o)
- .debug_loc     0x00000000000020c2     0x1fb6 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_cloud.o)
- .debug_loc     0x0000000000004078      0x806 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_i2c.o)
- .debug_loc     0x000000000000487e      0x3ed ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_ipaddress.o)
- .debug_loc     0x0000000000004c6b     0x61d1 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_logging.o)
- .debug_loc     0x000000000000ae3c     0x15e2 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_print.o)
- .debug_loc     0x000000000000c41e      0xa58 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_rgb.o)
- .debug_loc     0x000000000000ce76      0xc90 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_spi.o)
- .debug_loc     0x000000000000db06      0x4be ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_system.o)
- .debug_loc     0x000000000000dfc4      0x9df ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_time.o)
- .debug_loc     0x000000000000e9a3      0x4a8 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usartserial.o)
- .debug_loc     0x000000000000ee4b      0x462 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usbserial.o)
- .debug_loc     0x000000000000f2ad      0x182 ../../../build/target/wiring/platform-10-m//libwiring.a(user.o)
- .debug_loc     0x000000000000f42f      0x7f5 ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(spark_wiring_gpio.o)
- .debug_loc     0x000000000000fc24      0x413 ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(spark_wiring_watchdog.o)
- .debug_loc     0x0000000000010037       0x9e ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(wiring_globals_i2c.o)
- .debug_loc     0x00000000000100d5       0x76 ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(wiring_globals_ipaddress.o)
- .debug_loc     0x000000000001014b       0x6a ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(wiring_globals_spi.o)
+ .debug_loc     0x0000000000000312      0x2f8 ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(ConnectedOldtimerCode.o)
+ .debug_loc     0x000000000000060a     0x11ef ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(TinyGPS++.o)
+ .debug_loc     0x00000000000017f9      0x2dd ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_can.o)
+ .debug_loc     0x0000000000001ad6      0x5d4 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_cellular.o)
+ .debug_loc     0x00000000000020aa     0x1fb6 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_cloud.o)
+ .debug_loc     0x0000000000004060      0x806 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_i2c.o)
+ .debug_loc     0x0000000000004866      0x3ed ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_ipaddress.o)
+ .debug_loc     0x0000000000004c53     0x61d1 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_logging.o)
+ .debug_loc     0x000000000000ae24     0x15e2 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_print.o)
+ .debug_loc     0x000000000000c406      0xa58 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_rgb.o)
+ .debug_loc     0x000000000000ce5e      0xc90 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_spi.o)
+ .debug_loc     0x000000000000daee      0x4be ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_system.o)
+ .debug_loc     0x000000000000dfac      0x9df ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_time.o)
+ .debug_loc     0x000000000000e98b      0x4a8 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usartserial.o)
+ .debug_loc     0x000000000000ee33      0x462 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usbserial.o)
+ .debug_loc     0x000000000000f295      0x182 ../../../build/target/wiring/platform-10-m//libwiring.a(user.o)
+ .debug_loc     0x000000000000f417      0x7f5 ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(spark_wiring_gpio.o)
+ .debug_loc     0x000000000000fc0c      0x413 ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(spark_wiring_watchdog.o)
+ .debug_loc     0x000000000001001f       0x9e ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(wiring_globals_i2c.o)
+ .debug_loc     0x00000000000100bd       0x76 ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(wiring_globals_ipaddress.o)
+ .debug_loc     0x0000000000010133       0x6a ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(wiring_globals_spi.o)
 
 .debug_aranges  0x0000000000000000     0x1b48
  .debug_aranges
@@ -32670,45 +32670,45 @@ OUTPUT(/Users/heath/Documents/workspace/Connected-Oldtimer/ConnectedOldtimerCode
  .debug_macro   0x0000000000020ecc      0x529 ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(wiring_globals_ipaddress.o)
  .debug_macro   0x00000000000213f5      0xc7f ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(wiring_globals_spi.o)
 
-.debug_line     0x0000000000000000    0x1ebd3
+.debug_line     0x0000000000000000    0x1ebd5
  .debug_line    0x0000000000000000      0x2e8 /Users/heath/Documents/workspace/Connected-Oldtimer/ConnectedOldtimerCode/target//obj/src/module_info.o
  .debug_line    0x00000000000002e8      0x780 /Users/heath/Documents/workspace/Connected-Oldtimer/ConnectedOldtimerCode/target//obj/src/user_export.o
  .debug_line    0x0000000000000a68       0x54 /Users/heath/Documents/workspace/Connected-Oldtimer/ConnectedOldtimerCode/target//obj/src/user_module.o
  .debug_line    0x0000000000000abc      0x3cf /Users/heath/Documents/workspace/Connected-Oldtimer/ConnectedOldtimerCode/target//obj/src/newlib_stubs.o
- .debug_line    0x0000000000000e8b     0x1f91 ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(ConnectedOldtimerCode.o)
- .debug_line    0x0000000000002e1c     0x210e ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(TinyGPS++.o)
- .debug_line    0x0000000000004f2a      0x10a ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_can.o)
- .debug_line    0x0000000000005034      0x238 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_concurrent.o)
- .debug_line    0x000000000000526c      0x2ab ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_core.o)
- .debug_line    0x0000000000005517      0x1fa ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_dynalib.o)
- .debug_line    0x0000000000005711      0x2d1 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_gpio.o)
- .debug_line    0x00000000000059e2      0x1be ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_i2c.o)
- .debug_line    0x0000000000005ba0      0x16a ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_spi.o)
- .debug_line    0x0000000000005d0a      0x1fa ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_usart.o)
- .debug_line    0x0000000000005f04      0x710 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_usb.o)
- .debug_line    0x0000000000006614      0x50f ../../../build/target/system-dynalib/platform-10-m//libsystem-dynalib.a(system_dynalib.o)
- .debug_line    0x0000000000006b23      0x17f ../../../build/target/system-dynalib/platform-10-m//libsystem-dynalib.a(system_dynalib_cloud.o)
- .debug_line    0x0000000000006ca2      0x17b ../../../build/target/system-dynalib/platform-10-m//libsystem-dynalib.a(system_dynalib_net.o)
- .debug_line    0x0000000000006e1d      0x347 ../../../build/target/rt-dynalib/platform-10-m//librt-dynalib.a(rt_dynalib.o)
- .debug_line    0x0000000000007164     0x1766 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_can.o)
- .debug_line    0x00000000000088ca      0xee2 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_cellular.o)
- .debug_line    0x00000000000097ac     0x1a58 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_cloud.o)
- .debug_line    0x000000000000b204      0xfb4 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_i2c.o)
- .debug_line    0x000000000000c1b8      0xc7c ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_ipaddress.o)
- .debug_line    0x000000000000ce34     0x29d6 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_logging.o)
- .debug_line    0x000000000000f80a      0xd8c ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_print.o)
- .debug_line    0x0000000000010596      0xf62 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_rgb.o)
- .debug_line    0x00000000000114f8     0x1988 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_spi.o)
- .debug_line    0x0000000000012e80     0x18b4 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_system.o)
- .debug_line    0x0000000000014734     0x180d ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_time.o)
- .debug_line    0x0000000000015f41      0xd34 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usartserial.o)
- .debug_line    0x0000000000016c75     0x15b3 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usbserial.o)
- .debug_line    0x0000000000018228     0x16c9 ../../../build/target/wiring/platform-10-m//libwiring.a(user.o)
- .debug_line    0x00000000000198f1     0x18d4 ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(spark_wiring_gpio.o)
- .debug_line    0x000000000001b1c5      0xc25 ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(spark_wiring_watchdog.o)
- .debug_line    0x000000000001bdea      0xbce ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(wiring_globals_i2c.o)
- .debug_line    0x000000000001c9b8      0xb28 ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(wiring_globals_ipaddress.o)
- .debug_line    0x000000000001d4e0     0x16f3 ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(wiring_globals_spi.o)
+ .debug_line    0x0000000000000e8b     0x1f93 ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(ConnectedOldtimerCode.o)
+ .debug_line    0x0000000000002e1e     0x210e ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(TinyGPS++.o)
+ .debug_line    0x0000000000004f2c      0x10a ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_can.o)
+ .debug_line    0x0000000000005036      0x238 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_concurrent.o)
+ .debug_line    0x000000000000526e      0x2ab ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_core.o)
+ .debug_line    0x0000000000005519      0x1fa ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_dynalib.o)
+ .debug_line    0x0000000000005713      0x2d1 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_gpio.o)
+ .debug_line    0x00000000000059e4      0x1be ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_i2c.o)
+ .debug_line    0x0000000000005ba2      0x16a ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_spi.o)
+ .debug_line    0x0000000000005d0c      0x1fa ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_usart.o)
+ .debug_line    0x0000000000005f06      0x710 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_usb.o)
+ .debug_line    0x0000000000006616      0x50f ../../../build/target/system-dynalib/platform-10-m//libsystem-dynalib.a(system_dynalib.o)
+ .debug_line    0x0000000000006b25      0x17f ../../../build/target/system-dynalib/platform-10-m//libsystem-dynalib.a(system_dynalib_cloud.o)
+ .debug_line    0x0000000000006ca4      0x17b ../../../build/target/system-dynalib/platform-10-m//libsystem-dynalib.a(system_dynalib_net.o)
+ .debug_line    0x0000000000006e1f      0x347 ../../../build/target/rt-dynalib/platform-10-m//librt-dynalib.a(rt_dynalib.o)
+ .debug_line    0x0000000000007166     0x1766 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_can.o)
+ .debug_line    0x00000000000088cc      0xee2 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_cellular.o)
+ .debug_line    0x00000000000097ae     0x1a58 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_cloud.o)
+ .debug_line    0x000000000000b206      0xfb4 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_i2c.o)
+ .debug_line    0x000000000000c1ba      0xc7c ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_ipaddress.o)
+ .debug_line    0x000000000000ce36     0x29d6 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_logging.o)
+ .debug_line    0x000000000000f80c      0xd8c ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_print.o)
+ .debug_line    0x0000000000010598      0xf62 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_rgb.o)
+ .debug_line    0x00000000000114fa     0x1988 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_spi.o)
+ .debug_line    0x0000000000012e82     0x18b4 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_system.o)
+ .debug_line    0x0000000000014736     0x180d ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_time.o)
+ .debug_line    0x0000000000015f43      0xd34 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usartserial.o)
+ .debug_line    0x0000000000016c77     0x15b3 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usbserial.o)
+ .debug_line    0x000000000001822a     0x16c9 ../../../build/target/wiring/platform-10-m//libwiring.a(user.o)
+ .debug_line    0x00000000000198f3     0x18d4 ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(spark_wiring_gpio.o)
+ .debug_line    0x000000000001b1c7      0xc25 ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(spark_wiring_watchdog.o)
+ .debug_line    0x000000000001bdec      0xbce ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(wiring_globals_i2c.o)
+ .debug_line    0x000000000001c9ba      0xb28 ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(wiring_globals_ipaddress.o)
+ .debug_line    0x000000000001d4e2     0x16f3 ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(wiring_globals_spi.o)
 
 .debug_str      0x0000000000000000    0x969fd
  .debug_str     0x0000000000000000     0x3bb1 /Users/heath/Documents/workspace/Connected-Oldtimer/ConnectedOldtimerCode/target//obj/src/module_info.o
@@ -32788,56 +32788,56 @@ OUTPUT(/Users/heath/Documents/workspace/Connected-Oldtimer/ConnectedOldtimerCode
  .debug_str     0x00000000000969cf       0x2e ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(wiring_globals_spi.o)
                                       0x666c7 (size before relaxing)
 
-.debug_frame    0x0000000000000000     0xac0c
+.debug_frame    0x0000000000000000     0xac18
  .debug_frame   0x0000000000000000       0x90 /Users/heath/Documents/workspace/Connected-Oldtimer/ConnectedOldtimerCode/target//obj/src/module_info.o
  .debug_frame   0x0000000000000090       0x70 /Users/heath/Documents/workspace/Connected-Oldtimer/ConnectedOldtimerCode/target//obj/src/user_export.o
  .debug_frame   0x0000000000000100       0xe8 /Users/heath/Documents/workspace/Connected-Oldtimer/ConnectedOldtimerCode/target//obj/src/newlib_stubs.o
- .debug_frame   0x00000000000001e8      0x154 ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(ConnectedOldtimerCode.o)
- .debug_frame   0x000000000000033c      0x354 ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(TinyGPS++.o)
- .debug_frame   0x0000000000000690       0xb0 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_can.o)
- .debug_frame   0x0000000000000740      0x1d0 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_concurrent.o)
- .debug_frame   0x0000000000000910      0x240 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_core.o)
- .debug_frame   0x0000000000000b50      0x190 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_dynalib.o)
- .debug_frame   0x0000000000000ce0      0x260 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_gpio.o)
- .debug_frame   0x0000000000000f40      0x150 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_i2c.o)
- .debug_frame   0x0000000000001090      0x110 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_spi.o)
- .debug_frame   0x00000000000011a0      0x180 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_usart.o)
- .debug_frame   0x0000000000001320      0x1a0 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_usb.o)
- .debug_frame   0x00000000000014c0      0x2c0 ../../../build/target/system-dynalib/platform-10-m//libsystem-dynalib.a(system_dynalib.o)
- .debug_frame   0x0000000000001780      0x110 ../../../build/target/system-dynalib/platform-10-m//libsystem-dynalib.a(system_dynalib_cloud.o)
- .debug_frame   0x0000000000001890      0x110 ../../../build/target/system-dynalib/platform-10-m//libsystem-dynalib.a(system_dynalib_net.o)
- .debug_frame   0x00000000000019a0      0x100 ../../../build/target/rt-dynalib/platform-10-m//librt-dynalib.a(rt_dynalib.o)
- .debug_frame   0x0000000000001aa0       0xd4 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_can.o)
- .debug_frame   0x0000000000001b74      0x154 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_cellular.o)
- .debug_frame   0x0000000000001cc8      0x330 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_cloud.o)
- .debug_frame   0x0000000000001ff8      0x22c ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_i2c.o)
- .debug_frame   0x0000000000002224      0x14c ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_ipaddress.o)
- .debug_frame   0x0000000000002370      0x938 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_logging.o)
- .debug_frame   0x0000000000002ca8      0x2f0 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_print.o)
- .debug_frame   0x0000000000002f98      0x1d8 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_rgb.o)
- .debug_frame   0x0000000000003170      0x270 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_spi.o)
- .debug_frame   0x00000000000033e0      0x16c ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_system.o)
- .debug_frame   0x000000000000354c      0x3bc ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_time.o)
- .debug_frame   0x0000000000003908      0x18c ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usartserial.o)
- .debug_frame   0x0000000000003a94      0x1bc ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usbserial.o)
- .debug_frame   0x0000000000003c50       0xe0 ../../../build/target/wiring/platform-10-m//libwiring.a(user.o)
- .debug_frame   0x0000000000003d30      0x208 ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(spark_wiring_gpio.o)
- .debug_frame   0x0000000000003f38       0x80 ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(spark_wiring_watchdog.o)
- .debug_frame   0x0000000000003fb8       0x84 ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(wiring_globals_i2c.o)
- .debug_frame   0x000000000000403c       0x58 ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(wiring_globals_ipaddress.o)
- .debug_frame   0x0000000000004094       0x5c ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(wiring_globals_spi.o)
- .debug_frame   0x00000000000040f0       0x20 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libstdc++_nano.a(atexit_arm.o)
- .debug_frame   0x0000000000004110     0x2094 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libstdc++_nano.a(wlocale-inst.o)
- .debug_frame   0x00000000000061a4     0x1384 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libstdc++_nano.a(cxx11-locale-inst.o)
- .debug_frame   0x0000000000007528     0x1380 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libstdc++_nano.a(cxx11-wlocale-inst.o)
- .debug_frame   0x00000000000088a8     0x20b8 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libstdc++_nano.a(locale-inst.o)
- .debug_frame   0x000000000000a960       0x30 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-atol.o)
- .debug_frame   0x000000000000a990       0x28 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-cxa_atexit.o)
- .debug_frame   0x000000000000a9b8      0x11c /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-findfp.o)
- .debug_frame   0x000000000000aad4       0x28 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-memcpy-stub.o)
- .debug_frame   0x000000000000aafc       0x20 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-memset.o)
- .debug_frame   0x000000000000ab1c       0x44 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-rand.o)
- .debug_frame   0x000000000000ab60       0x20 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-strcmp.o)
- .debug_frame   0x000000000000ab80       0x20 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-strcpy.o)
- .debug_frame   0x000000000000aba0       0x28 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-strncpy.o)
- .debug_frame   0x000000000000abc8       0x44 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-strtol.o)
+ .debug_frame   0x00000000000001e8      0x160 ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(ConnectedOldtimerCode.o)
+ .debug_frame   0x0000000000000348      0x354 ../../../build/target/user/platform-10-m/ConnectedOldtimerCode//libuser.a(TinyGPS++.o)
+ .debug_frame   0x000000000000069c       0xb0 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_can.o)
+ .debug_frame   0x000000000000074c      0x1d0 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_concurrent.o)
+ .debug_frame   0x000000000000091c      0x240 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_core.o)
+ .debug_frame   0x0000000000000b5c      0x190 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_dynalib.o)
+ .debug_frame   0x0000000000000cec      0x260 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_gpio.o)
+ .debug_frame   0x0000000000000f4c      0x150 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_i2c.o)
+ .debug_frame   0x000000000000109c      0x110 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_spi.o)
+ .debug_frame   0x00000000000011ac      0x180 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_usart.o)
+ .debug_frame   0x000000000000132c      0x1a0 ../../../build/target/hal-dynalib/platform-10-m//libhal-dynalib.a(hal_usb.o)
+ .debug_frame   0x00000000000014cc      0x2c0 ../../../build/target/system-dynalib/platform-10-m//libsystem-dynalib.a(system_dynalib.o)
+ .debug_frame   0x000000000000178c      0x110 ../../../build/target/system-dynalib/platform-10-m//libsystem-dynalib.a(system_dynalib_cloud.o)
+ .debug_frame   0x000000000000189c      0x110 ../../../build/target/system-dynalib/platform-10-m//libsystem-dynalib.a(system_dynalib_net.o)
+ .debug_frame   0x00000000000019ac      0x100 ../../../build/target/rt-dynalib/platform-10-m//librt-dynalib.a(rt_dynalib.o)
+ .debug_frame   0x0000000000001aac       0xd4 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_can.o)
+ .debug_frame   0x0000000000001b80      0x154 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_cellular.o)
+ .debug_frame   0x0000000000001cd4      0x330 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_cloud.o)
+ .debug_frame   0x0000000000002004      0x22c ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_i2c.o)
+ .debug_frame   0x0000000000002230      0x14c ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_ipaddress.o)
+ .debug_frame   0x000000000000237c      0x938 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_logging.o)
+ .debug_frame   0x0000000000002cb4      0x2f0 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_print.o)
+ .debug_frame   0x0000000000002fa4      0x1d8 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_rgb.o)
+ .debug_frame   0x000000000000317c      0x270 ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_spi.o)
+ .debug_frame   0x00000000000033ec      0x16c ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_system.o)
+ .debug_frame   0x0000000000003558      0x3bc ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_time.o)
+ .debug_frame   0x0000000000003914      0x18c ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usartserial.o)
+ .debug_frame   0x0000000000003aa0      0x1bc ../../../build/target/wiring/platform-10-m//libwiring.a(spark_wiring_usbserial.o)
+ .debug_frame   0x0000000000003c5c       0xe0 ../../../build/target/wiring/platform-10-m//libwiring.a(user.o)
+ .debug_frame   0x0000000000003d3c      0x208 ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(spark_wiring_gpio.o)
+ .debug_frame   0x0000000000003f44       0x80 ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(spark_wiring_watchdog.o)
+ .debug_frame   0x0000000000003fc4       0x84 ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(wiring_globals_i2c.o)
+ .debug_frame   0x0000000000004048       0x58 ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(wiring_globals_ipaddress.o)
+ .debug_frame   0x00000000000040a0       0x5c ../../../build/target/wiring_globals/platform-10-m//libwiring_globals.a(wiring_globals_spi.o)
+ .debug_frame   0x00000000000040fc       0x20 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libstdc++_nano.a(atexit_arm.o)
+ .debug_frame   0x000000000000411c     0x2094 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libstdc++_nano.a(wlocale-inst.o)
+ .debug_frame   0x00000000000061b0     0x1384 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libstdc++_nano.a(cxx11-locale-inst.o)
+ .debug_frame   0x0000000000007534     0x1380 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libstdc++_nano.a(cxx11-wlocale-inst.o)
+ .debug_frame   0x00000000000088b4     0x20b8 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libstdc++_nano.a(locale-inst.o)
+ .debug_frame   0x000000000000a96c       0x30 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-atol.o)
+ .debug_frame   0x000000000000a99c       0x28 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-cxa_atexit.o)
+ .debug_frame   0x000000000000a9c4      0x11c /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-findfp.o)
+ .debug_frame   0x000000000000aae0       0x28 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-memcpy-stub.o)
+ .debug_frame   0x000000000000ab08       0x20 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-memset.o)
+ .debug_frame   0x000000000000ab28       0x44 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-rand.o)
+ .debug_frame   0x000000000000ab6c       0x20 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-strcmp.o)
+ .debug_frame   0x000000000000ab8c       0x20 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-strcpy.o)
+ .debug_frame   0x000000000000abac       0x28 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-strncpy.o)
+ .debug_frame   0x000000000000abd4       0x44 /Users/heath/.particle/toolchains/gcc-arm/5.3.1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m/libg_nano.a(lib_a-strtol.o)
