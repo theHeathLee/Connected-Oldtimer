@@ -11,6 +11,7 @@ SYSTEM_THREAD(ENABLED);
 TinyGPSPlus gps;
 static const uint32_t GPSBaud = 9600;
 double speed =0;
+uint8_t nextionSpeed = 69;
 CANChannel can(CAN_D1_D2);
 uint16_t motorTemperature = 0;
 uint16_t motorRPM = 0;
@@ -41,7 +42,7 @@ canReceive();
 // while (Serial5.available() > 0)
 //     if (gps.encode(Serial5.read()))
 //       displayInfo();
-smartDelay(1000);
+smartDelay(500);
 
   // To blink the LED, first we'll turn it on...
   digitalWrite(led1, HIGH);
@@ -52,28 +53,29 @@ smartDelay(1000);
 
   if (gps.location.isValid()) {
     speed = gps.speed.kmph();
+    speed = gps.speed.kmph();
     Serial.println(speed);
-    Serial.println(gps.speed.kmph());
+    nextionSpeed = (uint8_t)speed;
   }
   else {
-    speed = 10; // we know that gps is not valid/
+    nextionSpeed = 10; // we know that gps is not valid/
     Serial.println("speed invalid");
   }
-
-  Serial.println("counting");
-  delay(200);
+  
+  //Serial.println("counting");
   //speed = gps.speed.kmph();
   //Serial.print(speed);
   // Then we'll turn it off...
   digitalWrite(led1, LOW);
   digitalWrite(led2, LOW);
   Serial4.printf("n0.val=");
-  Serial4.print(speed);
+  Serial4.print(nextionSpeed);
   Serial4.write(0xff);
   Serial4.write(0xff);
   Serial4.write(0xff);
+  Serial.println("nextion send");
   // Wait 1 second...
-  delay(500);
+  //delay(500);
   //Serial.printlnf("printooooboi");
 
   // And repeat!
@@ -165,6 +167,6 @@ static void smartDelay(unsigned long ms)
   {
     while (Serial5.available())
       gps.encode(Serial5.read());
-      displayInfo();
+      //displayInfo();
   } while (millis() - start < ms);
 }
