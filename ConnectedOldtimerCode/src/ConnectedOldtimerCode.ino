@@ -52,8 +52,8 @@ smartDelay(500);
   //collect speed
 
   if (gps.location.isValid()) {
-    //speed = gps.speed.kmph();
-    speed = 102.4;
+    speed = gps.speed.kmph();
+    //speed = 102.4;
     Serial.println(speed);
     speed = speed + 0.5 - (speed<0);
     nextionSpeed = (uint8_t)speed;
