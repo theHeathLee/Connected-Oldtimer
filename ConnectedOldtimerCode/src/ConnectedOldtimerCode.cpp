@@ -10,6 +10,7 @@ static void smartDelay(unsigned long ms);
 int led1 = D0; 
 int led2 = D7; 
 SYSTEM_THREAD(ENABLED);
+//SYSTEM_MODE(SEMI_AUTOMATIC);
 #include "Serial4/Serial4.h"
 #include "Serial5/Serial5.h"
 #include "../lib/TinyGPS++/src/TinyGPS++.h"
@@ -24,9 +25,11 @@ CANChannel can(CAN_D1_D2);
 uint16_t motorTemperature = 0;
 uint16_t motorRPM = 0;
 uint8_t fuelLevel = 0;
+int demoConnectivityValue = 69;
 
 void setup() {
 
+  Particle.variable("dummyValue", demoConnectivityValue);
   can.begin(125000); // pick the baud rate for your network
     // accept one message. If no filter added by user then accept all messages
   can.addFilter(0x100, 0x7FF);
