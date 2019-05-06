@@ -5,7 +5,7 @@ void setup();
 void loop();
 void displayInfo();
 void canReceive();
-static void smartDelay(unsigned long ms);
+static void speedFetch(unsigned long ms);
 #line 2 "/Users/heath/Documents/workspace/Connected-Oldtimer/ConnectedOldtimerCode/src/ConnectedOldtimerCode.ino"
 int led1 = D0; 
 int led2 = D7; 
@@ -14,6 +14,8 @@ SYSTEM_THREAD(ENABLED);
 #include "Serial5/Serial5.h"
 #include "../lib/TinyGPS++/src/TinyGPS++.h"
 //#include "Serial1/Serial1.h"
+//#include "Particle.h";
+#include "../lib/MAX6675-Library-master/max6675.h"
 
 
 TinyGPSPlus gps;
@@ -24,9 +26,17 @@ CANChannel can(CAN_D1_D2);
 uint16_t motorTemperature = 0;
 uint16_t motorRPM = 0;
 uint8_t fuelLevel = 0;
-
+//int tempSS = A2;
+int SO = A4;
+int CS = A2;
+int CLK = A3;
+int units = 1;
+float temperature = 0.0;
+//MAX6675 temp0(thermoCS,thermoDO,thermoCLK,units);
+MAX6675 temp(CS,SO,CLK,units);
 void setup() {
 
+  //SPI.begin(tempSS);
   can.begin(125000); // pick the baud rate for your network
     // accept one message. If no filter added by user then accept all messages
   can.addFilter(0x100, 0x7FF);
@@ -50,7 +60,21 @@ canReceive();
 // while (Serial5.available() > 0)
 //     if (gps.encode(Serial5.read()))
 //       displayInfo();
-smartDelay(500);
+speedFetch(500);
+//tempFetch(1000);
+
+temperature = temp.read_temp();
+
+	if(temperature < 0) {                   
+		// If there is an error with the TC, temperature will be < 0
+		Serial.print("Thermocouple Error on CS");
+		Serial.println( temperature ); 
+		digitalWrite(LED1, HIGH);
+	} else {
+		Serial.print("Current Temperature: ");
+		Serial.println( temperature ); 
+		digitalWrite(LED1, LOW);
+	} 
 
   // To blink the LED, first we'll turn it on...
   digitalWrite(led1, HIGH);
@@ -169,7 +193,7 @@ void canReceive(){
 }  
 
 
-static void smartDelay(unsigned long ms)
+static void speedFetch(unsigned long ms)
 {
   unsigned long start = millis();
   do 
@@ -179,3 +203,24 @@ static void smartDelay(unsigned long ms)
       //displayInfo();
   } while (millis() - start < ms);
 }
+
+// static void tempFetch(unsigned long ms)
+// {
+//   unsigned long start2 = millis();
+//   do 
+//   {
+//    temperature = temp0.read_temp();
+
+// 	if(temperature < 0) {                   
+// 		// If there is an error with the TC, temperature will be < 0
+// 		Serial.print("Thermocouple Error on CS");
+// 		Serial.println( temperature ); 
+// 		digitalWrite(LED1, HIGH);
+// 	} else {
+// 		Serial.print("Current Temperature: ");
+// 		Serial.println( temperature ); 
+// 		digitalWrite(LED1, LOW);
+// 	} 
+
+//   } while (millis() - start2 < ms);
+// }
