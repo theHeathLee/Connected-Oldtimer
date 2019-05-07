@@ -1,0 +1,14 @@
+
+*.ipch
+
+*.bin
+
+*.elf
+
+*.hex
+
+*.lst
+
+*.map
+
+*.no_crc
