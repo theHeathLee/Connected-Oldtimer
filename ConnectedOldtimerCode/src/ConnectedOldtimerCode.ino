@@ -22,9 +22,9 @@ int demoConnectivityValue = 69;
 void setup() {
 
   Particle.variable("dummyValue", demoConnectivityValue);
-  can.begin(125000); // pick the baud rate for your network
+  can.begin(250000); // pick the baud rate for your network
     // accept one message. If no filter added by user then accept all messages
-  can.addFilter(0x100, 0x7FF);
+  //can.addFilter(0x100, 0x7FF);
 
   Serial.begin(9600); //usb debugging
   Serial4.begin(9600); // uart for nextion c2 & c3
