@@ -16,10 +16,10 @@ Disclaimer: Still in beginning phase
 - Motor Temperature
 - Movement Sensor
 
-### to be implemented
+### To be implemented:
 
 - Fine Dust Report (for [Open Data Project](https://luftdaten.info/)
-- motor RPM
+- Motor RPM
 - Fuel Level
 
 ### Parts List:
