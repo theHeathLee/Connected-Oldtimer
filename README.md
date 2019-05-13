@@ -6,16 +6,16 @@ Disclaimer: Still in beginning phase
 
 ### Things implemented:
 
-Gps velocity and location tracking and desplay
-CAN Bus
-Motor Temperature
-Movement Sensror
+- Gps velocity and location tracking and desplay
+- CAN Bus
+- Motor Temperature
+- Movement Sensror
 
 ### to be implemented
 
-Fine Dust Measure
-motor RPM
-Fuel Level
+- Fine Dust Measure
+- motor RPM
+- Fuel Level
 
 ### Parts List:
 
