@@ -8,9 +8,8 @@ Alongside remote monitoring I have implmented an HMI using a 3.5" Display that f
 
 A low speed CAN network is set up throughout the vehicle to easily add extra sensors.
 
-http://progressed.io/bar/25
 
-Still in the __beginning phase__. All hardware has been selected and unit tested.
+![Progress](http://progressed.io/bar/25)  Still in the __beginning phase__. All hardware has been selected and unit tested.
 
 ### Software used:
 - Visual Studio Code w/ [Particle Workbench Extentsion](https://marketplace.visualstudio.com/items?itemName=particle.particle-vscode-pack)🤘
