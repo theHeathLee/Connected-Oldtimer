@@ -1,6 +1,6 @@
 # Connected-Oldtimer
 
-The aim of theis project to modernize my old Volkswagen T2 by adding sensors everywhere and make it part of the internet of things. This project is not vehicle specific and can be implimented in any pre OBD vehicle.
+The aim of this project to modernize my old Volkswagen T2 by adding sensors everywhere and make it part of the internet of things. This project is not vehicle specific and can be implimented in any pre OBD vehicle.
 
 The goal here is first to make remote monitoring possible. Motion sensing for anti theft will be implemented as the vehicle does a lot of sitting. (my bicycle has x4 the ammount of kms per year on it as the bus). Additionaly the able to remotely view levels (battery charge, fuel level etc..)
 
