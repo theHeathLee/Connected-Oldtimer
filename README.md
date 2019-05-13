@@ -9,7 +9,7 @@ Alongside remote monitoring I have implmented an HMI using a 3.5" Display that f
 A low speed CAN network is set up throughout the vehicle to easily add extra sensors.
 
 
-![Progress](http://progressed.io/bar/25)  Still in the __beginning phase__. All hardware has been selected and unit tested.
+Disclaimer: Still in the __beginning phase__. All hardware has been selected and unit tested.
 
 ### Software used:
 - Visual Studio Code w/ [Particle Workbench Extentsion](https://marketplace.visualstudio.com/items?itemName=particle.particle-vscode-pack)🤘
@@ -25,7 +25,7 @@ A low speed CAN network is set up throughout the vehicle to easily add extra sen
 
 ### To be implemented:
 
-- Fine Dust Report (for [Open Data Project](https://luftdaten.info/)
+- Fine Dust Report (for [Open Data Project](https://luftdaten.info/))
 - Motor RPM
 - Fuel Level
 
