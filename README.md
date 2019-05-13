@@ -28,6 +28,8 @@ Disclaimer: Still in the __beginning phase__. All hardware has been selected and
 - Fine Dust Report (for [Open Data Project](https://luftdaten.info/))
 - Motor RPM
 - Fuel Level
+- Fuel Flow
+- daylight sensor
 
 ### Parts List:
 
