@@ -17,11 +17,11 @@ A low speed CAN network is set up throughout the vehicle to easily add extra sen
 
 ### Things implemented:
 
-- 3G Connectivity and vehicle to [cloud](https://www.particle.io/device-cloud/) data transfer
-- Gps velocity and location tracking and display
-- CAN Bus
-- Motor Temperature
-- Movement Sensor
+- 3G Connectivity and vehicle to [cloud](https://www.particle.io/device-cloud/) data transfer   ![Progress](http://progressed.io/bar/100)
+- Gps velocity and location tracking and display  ![Progress](http://progressed.io/bar/25)
+- CAN Bus ![Progress](http://progressed.io/bar/100)
+- Motor Temperature ![Progress](http://progressed.io/bar/80)
+- Movement Sensor ![Progress](http://progressed.io/bar/25)
 
 ### To be implemented:
 
