@@ -21,11 +21,11 @@ Fuel Level
 
 - [I'm an inline-style link](https://www.google.com)
 
-- [Particle Electron]https://www.particle.io/cellular/)
+- [Particle Electron](https://www.particle.io/cellular/)
 - [Adafruit Ultimage GPS](https://www.adafruit.com/product/746)
-- [CAN Bus Tranceiver Module (TJA1051)]https://www.ebay.de/itm/TJA1051-CAN-Bus-Transceiver-Communication-Module-for-Arduino-Replace-- TJA1050/162746170890?hash=item25e46d7e0a:g:dhgAAOSwXrdaBQs4)
+- [CAN Bus Tranceiver Module (TJA1051)](https://www.ebay.de/itm/TJA1051-CAN-Bus-Transceiver-Communication-Module-for-Arduino-Replace-- TJA1050/162746170890?hash=item25e46d7e0a:g:dhgAAOSwXrdaBQs4)
 - [K-Type Thermocouple amplifier](https://www.ebay.de/itm/DC-5V-MAX6675-Module-K-Type-Thermocouple-Temperature-Sensor-M6-for-Arduino/172165516851?hash=item2815dd4e33:g:~eMAAOSw0QFXDRCH)
-- [Fuel Flow Meter]https://www.conrad.com/p/bt-bio-tech-fch-m-pom-lc-ad-6-mm-low-flow-flowmeter-non-corrosive-liquids-water-diesel-oil-150392?searchTerm=150392&searchType=suggest&searchSuggest=product)
+- [Fuel Flow Meter](https://www.conrad.com/p/bt-bio-tech-fch-m-pom-lc-ad-6-mm-low-flow-flowmeter-non-corrosive-liquids-water-diesel-oil-150392?searchTerm=150392&searchType=suggest&searchSuggest=product)
 
 
 
