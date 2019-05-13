@@ -22,6 +22,7 @@ Disclaimer: Still in the __beginning phase__. All hardware has been selected and
 - CAN Bus ![Progress](http://progressed.io/bar/100)
 - Motor Temperature ![Progress](http://progressed.io/bar/80)
 - Movement Sensor ![Progress](http://progressed.io/bar/25)
+- 3D Printed Display mount ([Thingiverse](https://www.thingiverse.com/thing:2223484))![Progress](http://progressed.io/bar/80)
 
 ### To be implemented:
 
