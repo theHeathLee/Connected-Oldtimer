@@ -41,6 +41,7 @@ void setup() {
 void loop() {
 
 canReceive();
+canSend();
 
 // while (Serial5.available() > 0)
 //     if (gps.encode(Serial5.read()))
@@ -161,6 +162,18 @@ void canReceive(){
       digitalWrite(fuelLevel, !message.data[0]);
     }
   }
+}  
+
+void canSend(){
+  CANMessage messageOut;
+
+  messageOut.id = 0x200;
+  messageOut.len = 1;
+  messageOut.data[0] = 0xff;
+
+  can.transmit(messageOut);
+
+  delay(100);
 }  
 
 
