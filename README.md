@@ -19,6 +19,8 @@ Fuel Level
 
 ### Parts List:
 
+- [I'm an inline-style link](https://www.google.com)
+
 - [Particle Electron]https://www.particle.io/cellular/)
 - [Adafruit Ultimage GPS](https://www.adafruit.com/product/746)
 - [CAN Bus Tranceiver Module (TJA1051)]https://www.ebay.de/itm/TJA1051-CAN-Bus-Transceiver-Communication-Module-for-Arduino-Replace-- TJA1050/162746170890?hash=item25e46d7e0a:g:dhgAAOSwXrdaBQs4)
