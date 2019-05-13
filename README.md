@@ -8,7 +8,8 @@ Alongside remote monitoring I have implmented an HMI using a 3.5" Display that f
 
 A low speed CAN network is set up throughout the vehicle to easily add extra sensors.
 
-[Progress](http://progressed.io/bar/25)  
+http://progressed.io/bar/25
+
 Still in the __beginning phase__. All hardware has been selected and unit tested.
 
 ### Software used:
