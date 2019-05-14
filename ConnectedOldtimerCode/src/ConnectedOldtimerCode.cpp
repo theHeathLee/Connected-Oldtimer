@@ -1,15 +1,16 @@
 #include "application.h"
 #line 1 "c:/workspace/Connected-Oldtimer/ConnectedOldtimerCode/src/ConnectedOldtimerCode.ino"
 
+
 void setup();
 void loop();
 void displayInfo();
 void canReceive();
 void canSend();
 static void smartDelay(unsigned long ms);
-#line 2 "c:/workspace/Connected-Oldtimer/ConnectedOldtimerCode/src/ConnectedOldtimerCode.ino"
-int led1 = D0; 
-int led2 = D7; 
+void statusLED();
+#line 3 "c:/workspace/Connected-Oldtimer/ConnectedOldtimerCode/src/ConnectedOldtimerCode.ino"
+int led = D7; 
 SYSTEM_THREAD(ENABLED);
 //SYSTEM_MODE(SEMI_AUTOMATIC);
 #include "Serial4/Serial4.h"
@@ -28,6 +29,8 @@ uint16_t motorRPM = 0;
 uint8_t fuelLevel = 0;
 int demoConnectivityValue = 69;
 
+unsigned long start = millis();
+
 void setup() {
 
   Particle.variable("dummyValue", demoConnectivityValue);
@@ -40,8 +43,7 @@ void setup() {
   Serial1.blockOnOverrun(true);
   Serial5.begin(GPSBaud); // uart for GPS
   Serial1.begin(GPSBaud); // 
-  pinMode(led1, OUTPUT);
-  pinMode(led2, OUTPUT);
+  pinMode(led, OUTPUT);
   //Serial.print("started");
 
 }
@@ -58,8 +60,6 @@ canSend();
 smartDelay(500);
 
   // To blink the LED, first we'll turn it on...
-  digitalWrite(led1, HIGH);
-  digitalWrite(led2, HIGH);
 
   // We'll leave it on for 1 second...
   //collect speed
@@ -80,8 +80,7 @@ smartDelay(500);
   //speed = gps.speed.kmph();
   //Serial.print(speed);
   // Then we'll turn it off...
-  digitalWrite(led1, LOW);
-  digitalWrite(led2, LOW);
+
   Serial4.printf("n0.val=");
   Serial4.print(nextionSpeed);
   Serial4.write(0xff);
@@ -188,7 +187,7 @@ void canSend(){
 
 static void smartDelay(unsigned long ms)
 {
-  unsigned long start = millis();
+  //unsigned long start = millis();
   do 
   {
     while (Serial5.available())
@@ -196,3 +195,16 @@ static void smartDelay(unsigned long ms)
       //displayInfo();
   } while (millis() - start < ms);
 }
+
+void statusLED(){
+  unsigned long ledDelay1 = 500;
+  unsigned long ledDelay2 = 1000;
+  do 
+  {
+    do
+    {
+     digitalWrite(led, HIGH);
+    } while (millis() - start < ledDelay1);
+    digitalWrite(led, LOW);
+  } while (millis() - start < ledDelay2);
+}  
