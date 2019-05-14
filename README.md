@@ -2,7 +2,7 @@
 
 The aim of this project to modernize my old Volkswagen T2 by adding sensors everywhere and make it part of the internet of things. This project is not vehicle specific and can be implimented in any pre OBD vehicle.
 
-The goal here is first to make remote monitoring possible. Motion sensing for anti theft will be implemented as the vehicle does a lot of sitting. (my bicycle has x4 the ammount of kms per year on it as the bus). Additionaly the able to remotely view levels (battery charge, fuel level etc..)
+The goal here is first to make remote monitoring possible. Motion sensing for anti theft will be implemented as the vehicle does a lot of sitting. (my bicycle has x4 the ammount of kms per year on it as the bus). Additionaly the ability to remotely view levels (battery charge, fuel level etc..)
 
 Alongside remote monitoring I have implmented an HMI using a 3.5" Display that fits in the dash area originally inteded for the RPM guage. This display shows the instantanious data such as speed, RPM, and Temperature.
 
@@ -26,11 +26,11 @@ Disclaimer: Still in the __beginning phase__. All hardware has been selected and
 
 ### To be implemented:
 
-- Fine Dust Report (for [Open Data Project](https://luftdaten.info/))
 - Motor RPM
 - Fuel Level
 - Fuel Flow
 - daylight sensor
+- Fine Dust Report (for [Open Data Project](https://luftdaten.info/))
 
 ### Parts List:
 
