@@ -6,8 +6,6 @@ SYSTEM_THREAD(ENABLED);
 #include "Serial4/Serial4.h"
 #include "Serial5/Serial5.h"
 #include "../lib/TinyGPS++/src/TinyGPS++.h"
-//#include "Serial1/Serial1.h"
-
 
 TinyGPSPlus gps;
 static const uint32_t GPSBaud = 9600;
@@ -22,20 +20,14 @@ int demoConnectivityValue = 69;
 unsigned long start = millis();
 
 void setup() {
-
   Particle.variable("dummyValue", demoConnectivityValue);
-  can.begin(250000); // pick the baud rate for your network
-    // accept one message. If no filter added by user then accept all messages
-  //can.addFilter(0x100, 0x7FF);
-
+  can.begin(250000); // initialize can at 250 kbs
   Serial.begin(9600); //usb debugging
   Serial4.begin(9600); // uart for nextion c2 & c3
   Serial1.blockOnOverrun(true);
   Serial5.begin(GPSBaud); // uart for GPS
   Serial1.begin(GPSBaud); // 
   pinMode(led, OUTPUT);
-  //Serial.print("started");
-
 }
 
 
@@ -43,33 +35,19 @@ void loop() {
 
 canReceive();
 canSend();
-
-// while (Serial5.available() > 0)
-//     if (gps.encode(Serial5.read()))
-//       displayInfo();
-smartDelay(500);
-
-  // To blink the LED, first we'll turn it on...
-
-  // We'll leave it on for 1 second...
-  //collect speed
+statusLED();
 
   if (gps.location.isValid()) {
     speed = gps.speed.kmph();
-    //speed = 102.4;
     Serial.println(speed);
     speed = speed + 0.5 - (speed<0);
     nextionSpeed = (uint8_t)speed;
   }
   else {
-    nextionSpeed = 10; // we know that gps is not valid/
+    nextionSpeed = 10; // for debugging so we know that gps is not valid/
     Serial.println("speed invalid");
   }
   
-  //Serial.println("counting");
-  //speed = gps.speed.kmph();
-  //Serial.print(speed);
-  // Then we'll turn it off...
 
   Serial4.printf("n0.val=");
   Serial4.print(nextionSpeed);
@@ -77,73 +55,7 @@ smartDelay(500);
   Serial4.write(0xff);
   Serial4.write(0xff);
   Serial.println("nextion send");
-  // Wait 1 second...
-  //delay(500);
-  //Serial.printlnf("printooooboi");
-
-  // And repeat!
 }
-
-
-
-
-//gps info for debugging
-
-void displayInfo()
-{
-  Serial.print(F("Location: ")); 
-  if (gps.location.isValid())
-  {
-    Serial.print(gps.location.lat(), 6);
-    Serial.print(F(","));
-    Serial.print(gps.location.lng(), 6);
-  }
-  else
-  {
-    Serial.print(F("INVALID"));
-  }
-
-  Serial.print(F("  Date/Time: "));
-  if (gps.date.isValid())
-  {
-    Serial.print(gps.date.month());
-    Serial.print(F("/"));
-    Serial.print(gps.date.day());
-    Serial.print(F("/"));
-    Serial.print(gps.date.year());
-  }
-  else
-  {
-    Serial.print(F("INVALID"));
-  }
-
-  Serial.print(F(" "));
-  if (gps.time.isValid())
-  {
-    // if (gps.time.hour() < 10) Serial.print(F("0"));
-    // Serial.print(gps.time.hour());
-    // Serial.print(F(":"));
-    // if (gps.time.minute() < 10) Serial.print(F("0"));
-    // Serial.print(gps.time.minute());
-    // Serial.print(F(":"));
-    // if (gps.time.second() < 10) Serial.print(F("0"));
-    // Serial.print(gps.time.second());
-    // Serial.print(F("."));
-    // if (gps.time.centisecond() < 10) Serial.print(F("0"));
-    // Serial.print(gps.time.centisecond());
-
-    //Serial.print("Speed= ");
-
-    
-  }
-  else
-  {
-    Serial.print(F("INVALID"));
-  }
-
-  Serial.println();
-}
-
 
 void canReceive(){
   
@@ -175,16 +87,6 @@ void canSend(){
 }  
 
 
-static void smartDelay(unsigned long ms)
-{
-  //unsigned long start = millis();
-  do 
-  {
-    while (Serial5.available())
-      gps.encode(Serial5.read());
-      //displayInfo();
-  } while (millis() - start < ms);
-}
 
 void statusLED(){
   unsigned long ledDelay1 = 500;
