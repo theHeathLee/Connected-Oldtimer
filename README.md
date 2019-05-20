@@ -1,3 +1,5 @@
+![alt tag](https://github.com/theHeathLee/Connected-Oldtimer/blob/master/Photos/banner.png?raw=true "G.A.R.Y. attached to test stand")
+
 # Connected-Oldtimer
 
 The aim of this project to modernize my old Volkswagen T2 by adding sensors everywhere and make it part of the internet of things. This project is not vehicle specific and can be implimented in any pre OBD vehicle.
