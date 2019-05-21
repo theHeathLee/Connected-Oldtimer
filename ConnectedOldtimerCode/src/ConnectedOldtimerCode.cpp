@@ -120,8 +120,10 @@ void getGpsInfo() {
 } 
 
 void updateDisplay() {
-
-  nextionSpeed = (uint8_t)speed; // converts double from gps to unsigned byte for the nextion
+  unsigned long displayUpdateDelay = 200;
+  do
+  {
+    nextionSpeed = (uint8_t)speed; // converts double from gps to unsigned byte for the nextion
   // sends data to display
   Serial4.printf("n0.val=");
   Serial4.print(nextionSpeed);
@@ -131,4 +133,7 @@ void updateDisplay() {
   Serial4.write(0xff);
   Serial4.write(0xff);
   Serial.println("nextion send");
+  } while (millis() - start < displayUpdateDelay);
+  
+  
 }
