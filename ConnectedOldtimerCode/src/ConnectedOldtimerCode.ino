@@ -11,6 +11,9 @@ int demoConnectivityValue = 69;
 static const uint32_t GPSBaud = 9600;
 unsigned long start = millis();
 unsigned long ledStart = millis();
+unsigned long canSendStart = millis();
+unsigned long GpsGetStart = millis();
+unsigned long displayUpdateStart = millis();
 double speed =0;
 int led = D7; 
 
@@ -65,7 +68,7 @@ void canSend(){
   CANMessage messageOut;
   unsigned long canSendRate = 100;
   messageOut.id = 0x555;
-  messageOut.len = 1;
+  messageOut.len = 3;
   messageOut.data[0] = 0xC0;
   messageOut.data[1] = 0xff;
   messageOut.data[2] = 0xEE;
@@ -103,7 +106,7 @@ void getGpsInfo() {
     else {
       Serial.println("speed invalid");
     }
-    } while (millis() - start < gpsDelay);
+    } while (millis() - GpsGetStart < gpsDelay);
 } 
 
 void updateDisplay() {
