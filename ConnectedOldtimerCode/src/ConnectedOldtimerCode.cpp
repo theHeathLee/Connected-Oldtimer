@@ -1,5 +1,5 @@
 #include "application.h"
-#line 1 "c:/workspace/Connected-Oldtimer/ConnectedOldtimerCode/src/ConnectedOldtimerCode.ino"
+#line 1 "/Users/heath/Documents/workspace/Connected-Oldtimer/ConnectedOldtimerCode/src/ConnectedOldtimerCode.ino"
 void setup();
 void loop();
 void canReceive();
@@ -7,7 +7,7 @@ void canSend();
 void statusLED();
 void getGpsInfo();
 void updateDisplay();
-#line 1 "c:/workspace/Connected-Oldtimer/ConnectedOldtimerCode/src/ConnectedOldtimerCode.ino"
+#line 1 "/Users/heath/Documents/workspace/Connected-Oldtimer/ConnectedOldtimerCode/src/ConnectedOldtimerCode.ino"
 SYSTEM_THREAD(ENABLED);
 #include "Serial4/Serial4.h"
 #include "Serial5/Serial5.h"
@@ -20,6 +20,7 @@ uint16_t motorRPM = 0;
 int demoConnectivityValue = 69;
 static const uint32_t GPSBaud = 9600;
 unsigned long start = millis();
+unsigned long ledStart = millis();
 double speed =0;
 int led = D7; 
 
@@ -92,16 +93,11 @@ void canSend(){
 
 
 void statusLED(){
-  unsigned long ledDelay1 = 500;
-  unsigned long ledDelay2 = 1000;
-  do 
-  {
-    do
-    {
-     digitalWrite(led, HIGH);
-    } while (millis() - start < ledDelay1);
-    digitalWrite(led, LOW);
-  } while (millis() - start < ledDelay2);
+  
+  if (millis() >= ledStart + 1000 ) {
+    digitalWrite(led, !digitalRead(led));
+    ledStart = millis();
+  }
 }  
 
 void getGpsInfo() {

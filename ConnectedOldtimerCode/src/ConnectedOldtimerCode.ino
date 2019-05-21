@@ -10,6 +10,7 @@ uint16_t motorRPM = 0;
 int demoConnectivityValue = 69;
 static const uint32_t GPSBaud = 9600;
 unsigned long start = millis();
+unsigned long ledStart = millis();
 double speed =0;
 int led = D7; 
 
@@ -82,16 +83,11 @@ void canSend(){
 
 
 void statusLED(){
-  unsigned long ledDelay1 = 500;
-  unsigned long ledDelay2 = 1000;
-  do 
-  {
-    do
-    {
-     digitalWrite(led, HIGH);
-    } while (millis() - start < ledDelay1);
-    digitalWrite(led, LOW);
-  } while (millis() - start < ledDelay2);
+  
+  if (millis() >= ledStart + 1000 ) {
+    digitalWrite(led, !digitalRead(led));
+    ledStart = millis();
+  }
 }  
 
 void getGpsInfo() {
