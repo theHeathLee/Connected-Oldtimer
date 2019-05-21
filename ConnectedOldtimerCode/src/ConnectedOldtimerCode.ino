@@ -1,189 +1,129 @@
-
-int led1 = D0; 
-int led2 = D7; 
 SYSTEM_THREAD(ENABLED);
-//SYSTEM_MODE(SEMI_AUTOMATIC);
 #include "Serial4/Serial4.h"
 #include "Serial5/Serial5.h"
 #include "../lib/TinyGPS++/src/TinyGPS++.h"
-//#include "Serial1/Serial1.h"
 
-
-TinyGPSPlus gps;
-static const uint32_t GPSBaud = 9600;
-double speed =0;
 uint8_t nextionSpeed = 69;
-CANChannel can(CAN_D1_D2);
+uint8_t fuelLevel = 0;
 uint16_t motorTemperature = 0;
 uint16_t motorRPM = 0;
-uint8_t fuelLevel = 0;
 int demoConnectivityValue = 69;
+static const uint32_t GPSBaud = 9600;
+unsigned long start = millis();
+unsigned long ledStart = millis();
+unsigned long canSendStart = millis();
+unsigned long GpsGetStart = millis();
+unsigned long displayUpdateStart = millis();
+double speed =0;
+int led = D7; 
+
+TinyGPSPlus gps;
+CANChannel can(CAN_D1_D2);
+
 
 void setup() {
-
   Particle.variable("dummyValue", demoConnectivityValue);
-  can.begin(250000); // pick the baud rate for your network
-    // accept one message. If no filter added by user then accept all messages
-  //can.addFilter(0x100, 0x7FF);
-
+  can.begin(250000); // initialize can at 250 kbs 
   Serial.begin(9600); //usb debugging
   Serial4.begin(9600); // uart for nextion c2 & c3
   Serial1.blockOnOverrun(true);
   Serial5.begin(GPSBaud); // uart for GPS
   Serial1.begin(GPSBaud); // 
-  pinMode(led1, OUTPUT);
-  pinMode(led2, OUTPUT);
-  //Serial.print("started");
-
+  pinMode(led, OUTPUT);
 }
 
 
 void loop() {
 
+statusLED();
 canReceive();
 canSend();
+getGpsInfo(),
+updateDisplay();
 
-// while (Serial5.available() > 0)
-//     if (gps.encode(Serial5.read()))
-//       displayInfo();
-smartDelay(500);
-
-  // To blink the LED, first we'll turn it on...
-  digitalWrite(led1, HIGH);
-  digitalWrite(led2, HIGH);
-
-  // We'll leave it on for 1 second...
-  //collect speed
-
-  if (gps.location.isValid()) {
-    speed = gps.speed.kmph();
-    //speed = 102.4;
-    Serial.println(speed);
-    speed = speed + 0.5 - (speed<0);
-    nextionSpeed = (uint8_t)speed;
-  }
-  else {
-    nextionSpeed = 10; // we know that gps is not valid/
-    Serial.println("speed invalid");
-  }
-  
-  //Serial.println("counting");
-  //speed = gps.speed.kmph();
-  //Serial.print(speed);
-  // Then we'll turn it off...
-  digitalWrite(led1, LOW);
-  digitalWrite(led2, LOW);
-  Serial4.printf("n0.val=");
-  Serial4.print(nextionSpeed);
-  Serial4.write(0xff);
-  Serial4.write(0xff);
-  Serial4.write(0xff);
-  Serial.println("nextion send");
-  // Wait 1 second...
-  //delay(500);
-  //Serial.printlnf("printooooboi");
-
-  // And repeat!
 }
-
-
-
-
-//gps info for debugging
-
-void displayInfo()
-{
-  Serial.print(F("Location: ")); 
-  if (gps.location.isValid())
-  {
-    Serial.print(gps.location.lat(), 6);
-    Serial.print(F(","));
-    Serial.print(gps.location.lng(), 6);
-  }
-  else
-  {
-    Serial.print(F("INVALID"));
-  }
-
-  Serial.print(F("  Date/Time: "));
-  if (gps.date.isValid())
-  {
-    Serial.print(gps.date.month());
-    Serial.print(F("/"));
-    Serial.print(gps.date.day());
-    Serial.print(F("/"));
-    Serial.print(gps.date.year());
-  }
-  else
-  {
-    Serial.print(F("INVALID"));
-  }
-
-  Serial.print(F(" "));
-  if (gps.time.isValid())
-  {
-    // if (gps.time.hour() < 10) Serial.print(F("0"));
-    // Serial.print(gps.time.hour());
-    // Serial.print(F(":"));
-    // if (gps.time.minute() < 10) Serial.print(F("0"));
-    // Serial.print(gps.time.minute());
-    // Serial.print(F(":"));
-    // if (gps.time.second() < 10) Serial.print(F("0"));
-    // Serial.print(gps.time.second());
-    // Serial.print(F("."));
-    // if (gps.time.centisecond() < 10) Serial.print(F("0"));
-    // Serial.print(gps.time.centisecond());
-
-    //Serial.print("Speed= ");
-
-    
-  }
-  else
-  {
-    Serial.print(F("INVALID"));
-  }
-
-  Serial.println();
-}
-
 
 void canReceive(){
   
   CANMessage message;
 
-  while(can.receive(message)) {
-    if (message.id == 0x100) {
-      digitalWrite(motorTemperature, !message.data[0]);
-    }
-    if (message.id == 0x200) {
-      digitalWrite(motorRPM, !message.data[0]);
-    }
-    if (message.id == 0x300) {
-      digitalWrite(fuelLevel, !message.data[0]);
-    }
+  switch (message.id)
+  {
+  case 0x100:
+    motorTemperature = message.data[0];
+    break;
+  case 0x200:
+    motorRPM = message.data[0];
+  case 0x300:
+    fuelLevel = message.data[0];
+  default:
+    break;
   }
+
+  
 }  
 
 void canSend(){
+
   CANMessage messageOut;
+  unsigned long canSendRate = 100;
+  messageOut.id = 0x555;
+  messageOut.len = 3;
+  messageOut.data[0] = 0xC0;
+  messageOut.data[1] = 0xff;
+  messageOut.data[2] = 0xEE;
 
-  messageOut.id = 0x200;
-  messageOut.len = 1;
-  messageOut.data[0] = 0xff;
-
-  can.transmit(messageOut);
+  do
+  {
+    can.transmit(messageOut);
+  } while (millis() - start < canSendRate);
+  
+  
 
   delay(100);
 }  
 
 
-static void smartDelay(unsigned long ms)
-{
-  unsigned long start = millis();
-  do 
+
+void statusLED(){
+  
+  if (millis() >= ledStart + 1000 ) {
+    digitalWrite(led, !digitalRead(led));
+    ledStart = millis();
+  }
+}  
+
+void getGpsInfo() {
+  unsigned long gpsDelay = 200;
+  do
   {
-    while (Serial5.available())
-      gps.encode(Serial5.read());
-      //displayInfo();
-  } while (millis() - start < ms);
+    /* code */
+    if (gps.location.isValid()) {
+      speed = gps.speed.kmph();
+      Serial.println(speed);
+      speed = speed + 0.5 - (speed<0);
+    }
+    else {
+      Serial.println("speed invalid");
+    }
+    } while (millis() - GpsGetStart < gpsDelay);
+} 
+
+void updateDisplay() {
+  unsigned long displayUpdateDelay = 100;
+  do
+  {
+    nextionSpeed = (uint8_t)speed; // converts double from gps to unsigned byte for the nextion
+  // sends data to display
+  Serial4.printf("n0.val=");
+  Serial4.print(nextionSpeed);
+
+  // next 3 writes must be made for the Nextion to accept the update
+  Serial4.write(0xff);
+  Serial4.write(0xff);
+  Serial4.write(0xff);
+  Serial.println("nextion send");
+  } while (millis() - start < displayUpdateDelay);
+  
+  
 }

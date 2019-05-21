@@ -12,3 +12,5 @@
 *.map
 
 *.no_crc
+
+*.dfu
