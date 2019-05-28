@@ -2,7 +2,6 @@
 #line 1 "/Users/heath/Documents/workspace/Connected-Oldtimer/ConnectedOldtimerCode/src/ConnectedOldtimerCode.ino"
 void setup();
 void loop();
-void canReceive();
 void canSend();
 void statusLED();
 void getGpsInfo();
@@ -12,11 +11,13 @@ SYSTEM_THREAD(ENABLED);
 #include "Serial4/Serial4.h"
 #include "Serial5/Serial5.h"
 #include "../lib/TinyGPS++/src/TinyGPS++.h"
+//#include "OldtimerCAN.h"
 
 uint8_t nextionSpeed = 69;
-uint8_t fuelLevel = 0;
-uint16_t motorTemperature = 0;
-uint16_t motorRPM = 0;
+// uint8_t fuelLevel = 0;
+// uint16_t motorTemperature = 0;
+// uint16_t motorRPM = 0;
+OldtimerValues ot;
 int demoConnectivityValue = 69;
 static const uint32_t GPSBaud = 9600;
 unsigned long start = millis();
@@ -46,32 +47,32 @@ void setup() {
 void loop() {
 
 statusLED();
-canReceive();
+canReceive(&ot);
 canSend();
 getGpsInfo(),
 updateDisplay();
 
 }
 
-void canReceive(){
+// void canReceive(){
   
-  CANMessage message;
+//   CANMessage message;
 
-  switch (message.id)
-  {
-  case 0x100:
-    motorTemperature = message.data[0];
-    break;
-  case 0x200:
-    motorRPM = message.data[0];
-  case 0x300:
-    fuelLevel = message.data[0];
-  default:
-    break;
-  }
+//   switch (message.id)
+//   {
+//   case 0x100:
+//     motorTemperature = message.data[0];
+//     break;
+//   case 0x200:
+//     motorRPM = message.data[0];
+//   case 0x300:
+//     fuelLevel = message.data[0];
+//   default:
+//     break;
+//   }
 
   
-}  
+// }  
 
 void canSend(){
 
@@ -120,7 +121,7 @@ void getGpsInfo() {
 } 
 
 void updateDisplay() {
-  unsigned long displayUpdateDelay = 200;
+  unsigned long displayUpdateDelay = 100;
   do
   {
     nextionSpeed = (uint8_t)speed; // converts double from gps to unsigned byte for the nextion
