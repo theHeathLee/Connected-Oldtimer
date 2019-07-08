@@ -2,7 +2,7 @@ SYSTEM_THREAD(ENABLED);
 #include "Serial4/Serial4.h"
 #include "Serial5/Serial5.h"
 #include "../lib/TinyGPS++/src/TinyGPS++.h"
-#include "FramI2C.h"
+#include "../lib/MB85RC256V-FRAM-RK/src/MB85RC256V-FRAM-RK.h"
 
 uint8_t nextionSpeed = 69;
 uint8_t fuelLevel = 0;
@@ -21,6 +21,10 @@ int led = D7;
 TinyGPSPlus gps;
 CANChannel can(CAN_D1_D2);
 
+//FRAM Stuff
+MB85RC256V fram(Wire, 0);
+
+
 
 void setup() {
   Particle.variable("dummyValue", demoConnectivityValue);
@@ -31,6 +35,11 @@ void setup() {
   Serial5.begin(GPSBaud); // uart for GPS
   Serial1.begin(GPSBaud); // 
   pinMode(led, OUTPUT);
+
+  Serial.println("contorller running");
+
+  //FRAM Setup stuff
+  fram.begin();
 }
 
 
@@ -106,7 +115,7 @@ void getGpsInfo() {
       speed = speed + 0.5 - (speed<0);
     }
     else {
-      Serial.println("speed invalid");
+      //Serial.println("speed invalid");
     }
     } while (millis() - GpsGetStart < gpsDelay);
 } 
@@ -124,7 +133,7 @@ void updateDisplay() {
   Serial4.write(0xff);
   Serial4.write(0xff);
   Serial4.write(0xff);
-  Serial.println("nextion send");
+  //Serial.println("nextion send");
   } while (millis() - start < displayUpdateDelay);
   
   
