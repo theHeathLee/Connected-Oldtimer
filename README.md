@@ -39,6 +39,7 @@ Disclaimer: Still in the __beginning phase__. All hardware has been selected and
 - [Particle Electron](https://www.particle.io/cellular/)
 - [Nextion 3.5" Display](https://www.itead.cc/nextion-nx4832t035.html)
 - [Adafruit Ultimage GPS](https://www.adafruit.com/product/746)
+- [Adafruit I2C FRAM](hhttps://www.adafruit.com/product/1895)
 - [Piezoelectric Sensor](https://www.digikey.de/product-detail/de/murata-electronics/7BB-20-6L0/490-7712-ND/4358152?utm_adgroup=Buzzer+Elements%2C+Piezo+Benders&mkwid=sdpYcvxN4&pcrid=340842080350&pkw=&pmt=&pdv=c&productid=4358152&slid=&gclid=CjwKCAjwq-TmBRBdEiwAaO1en7SKzERGe0ExhqXDZEztK8s2fRCffiLP5_EfisI5quuC8e3fuQmO5BoC3RUQAvD_BwE)
 - [CAN Bus Tranceiver Module (TJA1051)](https://www.nxp.com/products/analog/interfaces/in-vehicle-network/can-transceiver-and-controllers/high-speed-can-transceiver:TJA1051)
 - [K-Type Thermocouple amplifier](https://www.ebay.de/itm/DC-5V-MAX6675-Module-K-Type-Thermocouple-Temperature-Sensor-M6-for-Arduino/172165516851?hash=item2815dd4e33:g:~eMAAOSw0QFXDRCH)
