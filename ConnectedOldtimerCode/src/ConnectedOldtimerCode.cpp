@@ -1,3 +1,7 @@
+/******************************************************/
+//       THIS IS A GENERATED FILE - DO NOT EDIT       //
+/******************************************************/
+
 #include "application.h"
 #line 1 "/Users/heath/Documents/workspace/Connected-Oldtimer/ConnectedOldtimerCode/src/ConnectedOldtimerCode.ino"
 void setup();
@@ -7,11 +11,13 @@ void canSend();
 void statusLED();
 void getGpsInfo();
 void updateDisplay();
+void writeToFRAM ();
 #line 1 "/Users/heath/Documents/workspace/Connected-Oldtimer/ConnectedOldtimerCode/src/ConnectedOldtimerCode.ino"
 SYSTEM_THREAD(ENABLED);
 #include "Serial4/Serial4.h"
 #include "Serial5/Serial5.h"
 #include "../lib/TinyGPS++/src/TinyGPS++.h"
+#include "FramI2C.h"
 
 uint8_t nextionSpeed = 69;
 uint8_t fuelLevel = 0;
@@ -50,6 +56,7 @@ canReceive();
 canSend();
 getGpsInfo(),
 updateDisplay();
+writeToFRAM();
 
 }
 
@@ -120,7 +127,7 @@ void getGpsInfo() {
 } 
 
 void updateDisplay() {
-  unsigned long displayUpdateDelay = 200;
+  unsigned long displayUpdateDelay = 100;
   do
   {
     nextionSpeed = (uint8_t)speed; // converts double from gps to unsigned byte for the nextion
@@ -136,4 +143,9 @@ void updateDisplay() {
   } while (millis() - start < displayUpdateDelay);
   
   
+}
+
+void writeToFRAM (){
+
+
 }

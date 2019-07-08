@@ -2,6 +2,7 @@ SYSTEM_THREAD(ENABLED);
 #include "Serial4/Serial4.h"
 #include "Serial5/Serial5.h"
 #include "../lib/TinyGPS++/src/TinyGPS++.h"
+#include "FramI2C.h"
 
 uint8_t nextionSpeed = 69;
 uint8_t fuelLevel = 0;
@@ -40,6 +41,7 @@ canReceive();
 canSend();
 getGpsInfo(),
 updateDisplay();
+writeToFRAM();
 
 }
 
@@ -126,4 +128,9 @@ void updateDisplay() {
   } while (millis() - start < displayUpdateDelay);
   
   
+}
+
+void writeToFRAM (){
+
+
 }
