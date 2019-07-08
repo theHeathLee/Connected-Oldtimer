@@ -14,3 +14,5 @@
 *.no_crc
 
 *.dfu
+
+ConnectedOldtimerCode/lib/MB85RC256V-FRAM-RK/
