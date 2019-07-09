@@ -8,6 +8,7 @@ uint8_t nextionSpeed = 69;
 uint8_t fuelLevel = 0;
 uint16_t motorTemperature = 0;
 uint16_t motorRPM = 0;
+uint32_t odometerValue;
 int demoConnectivityValue = 69;
 static const uint32_t GPSBaud = 9600;
 unsigned long start = millis();
@@ -17,6 +18,7 @@ unsigned long GpsGetStart = millis();
 unsigned long displayUpdateStart = millis();
 double speed =0;
 int led = D7; 
+
 
 TinyGPSPlus gps;
 CANChannel can(CAN_D1_D2);
@@ -36,7 +38,7 @@ void setup() {
   Serial1.begin(GPSBaud); // 
   pinMode(led, OUTPUT);
 
-  Serial.println("contorller running");
+  Serial.println("contoroller running");
 
   //FRAM Setup stuff
   fram.begin();
@@ -141,5 +143,10 @@ void updateDisplay() {
 
 void writeToFRAM (){
 
-
+  unsigned long framRate = 200;
+  
+  do
+  {
+    fram.readData(0, (uint8_t *)&odometerValue, sizeof(odometerValue));
+  } while (millis() - start < framRate);
 }
