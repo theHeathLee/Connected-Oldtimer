@@ -8,7 +8,7 @@ uint8_t nextionSpeed = 69;
 uint8_t fuelLevel = 0;
 uint16_t motorTemperature = 0;
 uint16_t motorRPM = 0;
-uint32_t odometerValue;
+uint32_t odometerValue = 0;
 int demoConnectivityValue = 69;
 static const uint32_t GPSBaud = 9600;
 unsigned long start = millis();
@@ -42,17 +42,19 @@ void setup() {
 
   //FRAM Setup stuff
   fram.begin();
+  readFromFRAM();
 }
 
 
 void loop() {
+
 
 statusLED();
 canReceive();
 canSend();
 getGpsInfo(),
 updateDisplay();
-writeToFRAM();
+storeToFRAM();
 
 }
 
@@ -141,16 +143,34 @@ void updateDisplay() {
   
 }
 
-void writeToFRAM (){
+//run at startup
+void readFromFRAM () {
+
+  
+  fram.get(0, odometerValue);
+  fram.get(1, fuelLevel);
+
+}
+
+
+void storeToFRAM (){
 
   unsigned long framRate = 200;
   
   do
   {
-    fram.writeData(0, (uint8_t *)&odometerValue, sizeof(odometerValue));
-    delay(200);
-    fram.readData(0, (uint8_t *)&odometerValue, sizeof(odometerValue));
+    //fram.writeData(0, (uint8_t *)&odometerValue, sizeof(odometerValue));
+    fram.put(0, odometerValue);
+    fram.put(1, fuelLevel);
+    Serial.print (" odometer:  ");
     Serial.println(odometerValue);
+    Serial.print (" fuel:  ");
+    Serial.print(fuelLevel);
+    Serial.print(sizeof(odometerValue));
+    fuelLevel ++;
     odometerValue ++;
+    if (fuelLevel >=100){
+      fuelLevel = 0;
+    }
   } while (millis() - start < framRate);
 }
