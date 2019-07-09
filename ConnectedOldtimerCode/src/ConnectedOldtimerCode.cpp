@@ -108,10 +108,6 @@ void canSend(){
   {
     can.transmit(messageOut);
   } while (millis() - start < canSendRate);
-  
-  
-
-  delay(100);
 }  
 
 
@@ -161,17 +157,15 @@ void updateDisplay() {
 
 //run at startup
 void readFromFRAM () {
-
-  
   fram.get(0, odometerValue);
   fram.get(1, fuelLevel);
-
 }
 
 
+// stores data to FRAM chip every 5 seconds
 void storeToFRAM (){
 
-  unsigned long framRate = 200;
+  unsigned long framRate = 5000;
   
   do
   {
@@ -182,11 +176,5 @@ void storeToFRAM (){
     Serial.println(odometerValue);
     Serial.print (" fuel:  ");
     Serial.print(fuelLevel);
-    Serial.print(sizeof(odometerValue));
-    fuelLevel ++;
-    odometerValue ++;
-    if (fuelLevel >=100){
-      fuelLevel = 0;
-    }
   } while (millis() - start < framRate);
 }
