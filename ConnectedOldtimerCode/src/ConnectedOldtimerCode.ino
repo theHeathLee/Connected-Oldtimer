@@ -147,6 +147,10 @@ void writeToFRAM (){
   
   do
   {
+    fram.writeData(0, (uint8_t *)&odometerValue, sizeof(odometerValue));
+    delay(200);
     fram.readData(0, (uint8_t *)&odometerValue, sizeof(odometerValue));
+    Serial.println(odometerValue);
+    odometerValue ++;
   } while (millis() - start < framRate);
 }
