@@ -2,11 +2,13 @@ SYSTEM_THREAD(ENABLED);
 #include "Serial4/Serial4.h"
 #include "Serial5/Serial5.h"
 #include "../lib/TinyGPS++/src/TinyGPS++.h"
+#include "../lib/MB85RC256V-FRAM-RK/src/MB85RC256V-FRAM-RK.h"
 
 uint8_t nextionSpeed = 69;
 uint8_t fuelLevel = 0;
 uint16_t motorTemperature = 0;
 uint16_t motorRPM = 0;
+uint32_t odometerValue = 0;
 int demoConnectivityValue = 69;
 static const uint32_t GPSBaud = 9600;
 unsigned long start = millis();
@@ -17,8 +19,13 @@ unsigned long displayUpdateStart = millis();
 double speed =0;
 int led = D7; 
 
+
 TinyGPSPlus gps;
 CANChannel can(CAN_D1_D2);
+
+//FRAM Stuff
+MB85RC256V fram(Wire, 0);
+
 
 
 void setup() {
@@ -30,16 +37,24 @@ void setup() {
   Serial5.begin(GPSBaud); // uart for GPS
   Serial1.begin(GPSBaud); // 
   pinMode(led, OUTPUT);
+
+  Serial.println("contoroller running");
+
+  //FRAM Setup stuff
+  fram.begin();
+  readFromFRAM();
 }
 
 
 void loop() {
+
 
 statusLED();
 canReceive();
 canSend();
 getGpsInfo(),
 updateDisplay();
+storeToFRAM();
 
 }
 
@@ -77,10 +92,6 @@ void canSend(){
   {
     can.transmit(messageOut);
   } while (millis() - start < canSendRate);
-  
-  
-
-  delay(100);
 }  
 
 
@@ -104,7 +115,7 @@ void getGpsInfo() {
       speed = speed + 0.5 - (speed<0);
     }
     else {
-      Serial.println("speed invalid");
+      //Serial.println("speed invalid");
     }
     } while (millis() - GpsGetStart < gpsDelay);
 } 
@@ -122,8 +133,32 @@ void updateDisplay() {
   Serial4.write(0xff);
   Serial4.write(0xff);
   Serial4.write(0xff);
-  Serial.println("nextion send");
+  //Serial.println("nextion send");
   } while (millis() - start < displayUpdateDelay);
   
   
+}
+
+//run at startup
+void readFromFRAM () {
+  fram.get(0, odometerValue);
+  fram.get(1, fuelLevel);
+}
+
+
+// stores data to FRAM chip every 5 seconds
+void storeToFRAM (){
+
+  unsigned long framRate = 5000;
+  
+  do
+  {
+    //fram.writeData(0, (uint8_t *)&odometerValue, sizeof(odometerValue));
+    fram.put(0, odometerValue);
+    fram.put(1, fuelLevel);
+    Serial.print (" odometer:  ");
+    Serial.println(odometerValue);
+    Serial.print (" fuel:  ");
+    Serial.print(fuelLevel);
+  } while (millis() - start < framRate);
 }
