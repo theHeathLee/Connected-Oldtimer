@@ -21,7 +21,7 @@ int led = D7;
 
 
 TinyGPSPlus gps;
-CANChannel can(CAN_D1_D2);
+CANChannel can(CAN_C4_C5);
 
 //FRAM Stuff
 MB85RC256V fram(Wire, 0);
