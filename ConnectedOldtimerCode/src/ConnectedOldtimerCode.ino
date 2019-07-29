@@ -105,7 +105,7 @@ void canSend(){
     // can.transmit(messageOut);
     // canSendStart = millis();
   // } while (millis() - canSendStart == canSendRate);
-  Serial.print("fuck you");
+
 
 }  
 
