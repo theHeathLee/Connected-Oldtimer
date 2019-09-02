@@ -67,10 +67,10 @@ C1
 Text GLabel 4950 5300 0    50   Input ~ 0
 C0
 $Comp
-L Connector_Generic:Conn_01x04 J5
+L Connector_Generic:Conn_01x04 J1
 U 1 1 5D676AB8
 P 7900 1750
-F 0 "J5" H 7980 1742 50  0000 L CNN
+F 0 "J1" H 7980 1742 50  0000 L CNN
 F 1 "CAN_Bus_Connector" H 7980 1651 50  0000 L CNN
 F 2 "" H 7900 1750 50  0001 C CNN
 F 3 "~" H 7900 1750 50  0001 C CNN
@@ -85,17 +85,17 @@ Text GLabel 7700 1850 0    50   Input ~ 0
 CAN_H
 Text GLabel 7700 1950 0    50   Input ~ 0
 CAN_L
-Text GLabel 7800 3150 0    50   Input ~ 0
+Text GLabel 7750 3750 0    50   Input ~ 0
 3V3
-Text GLabel 7800 3250 0    50   Input ~ 0
+Text GLabel 7750 3850 0    50   Input ~ 0
 GND
-Text GLabel 7800 3350 0    50   Input ~ 0
+Text GLabel 7750 3950 0    50   Input ~ 0
 A0
 $Comp
-L HeathsComponents:CANTranceiverModule U?
+L HeathsComponents:CANTranceiverModule U3
 U 1 1 5D6CF6EA
 P 5800 1950
-F 0 "U?" H 5827 2096 50  0000 L CNN
+F 0 "U3" H 5827 2096 50  0000 L CNN
 F 1 "CANTranceiverModule" H 5827 2005 50  0000 L CNN
 F 2 "" H 5800 1950 50  0001 C CNN
 F 3 "" H 5800 1950 50  0001 C CNN
@@ -103,10 +103,10 @@ F 3 "" H 5800 1950 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L HeathsComponents:ParticleElectron U?
+L HeathsComponents:ParticleElectron U1
 U 1 1 5D6D05D3
 P 3100 2300
-F 0 "U?" H 3075 3165 50  0000 C CNN
+F 0 "U1" H 3075 3165 50  0000 C CNN
 F 1 "ParticleElectron" H 3075 3074 50  0000 C CNN
 F 2 "" H 3100 2300 50  0001 C CNN
 F 3 "" H 3100 2300 50  0001 C CNN
@@ -150,10 +150,10 @@ C1
 Text GLabel 3800 3400 2    50   Input ~ 0
 C0
 $Comp
-L HeathsComponents:AdafruitFRAM U?
+L HeathsComponents:AdafruitFRAM U4
 U 1 1 5D6D08AC
 P 5450 3450
-F 0 "U?" H 5928 3396 50  0000 L CNN
+F 0 "U4" H 5928 3396 50  0000 L CNN
 F 1 "AdafruitFRAM" H 5928 3305 50  0000 L CNN
 F 2 "" H 5450 3450 50  0001 C CNN
 F 3 "" H 5450 3450 50  0001 C CNN
@@ -161,10 +161,10 @@ F 3 "" H 5450 3450 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L HeathsComponents:AdafruitUltimateGPS U?
+L HeathsComponents:AdafruitUltimateGPS U5
 U 1 1 5D6D0C95
 P 5600 5350
-F 0 "U?" H 5977 5421 50  0000 L CNN
+F 0 "U5" H 5977 5421 50  0000 L CNN
 F 1 "AdafruitUltimateGPS" H 5977 5330 50  0000 L CNN
 F 2 "" H 5600 5350 50  0001 C CNN
 F 3 "" H 5600 5350 50  0001 C CNN
@@ -172,14 +172,53 @@ F 3 "" H 5600 5350 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L HeathsComponents:MotionSensor U?
+L HeathsComponents:MotionSensor U6
 U 1 1 5D6D1163
-P 8200 3250
-F 0 "U?" H 8277 3296 50  0000 L CNN
-F 1 "MotionSensor" H 8277 3205 50  0000 L CNN
-F 2 "" H 8200 3250 50  0001 C CNN
-F 3 "" H 8200 3250 50  0001 C CNN
-	1    8200 3250
+P 8150 3850
+F 0 "U6" H 8227 3896 50  0000 L CNN
+F 1 "MotionSensor" H 8227 3805 50  0000 L CNN
+F 2 "" H 8150 3850 50  0001 C CNN
+F 3 "" H 8150 3850 50  0001 C CNN
+	1    8150 3850
 	1    0    0    -1  
 $EndComp
+$Comp
+L DCDC:TSR_2-2450 U2
+U 1 1 5D6D21AF
+P 2700 4950
+F 0 "U2" H 2755 5417 50  0000 C CNN
+F 1 "TSR_2-2450" H 2755 5326 50  0000 C CNN
+F 2 "SIP750W46P254L1400H1010Q3" H 2700 4950 50  0001 L BNN
+F 3 "SIP-3 Tracopower" H 2700 4950 50  0001 L BNN
+F 4 "TSR 2-2450" H 2700 4950 50  0001 L BNN "Field4"
+F 5 "Unavailable" H 2700 4950 50  0001 L BNN "Field5"
+F 6 "Traco Power" H 2700 4950 50  0001 L BNN "Field6"
+F 7 "None" H 2700 4950 50  0001 L BNN "Field7"
+F 8 "DC-DC Point of Load _POL_ Converter PCB mount; Input 6.5-36Vdc; Output 5Vdc at 2A; SIP Through hole package" H 2700 4950 50  0001 L BNN "Field8"
+	1    2700 4950
+	1    0    0    -1  
+$EndComp
+Text GLabel 3000 4750 2    50   Input ~ 0
+12VIN
+Text GLabel 3000 4950 2    50   Input ~ 0
+GND
+Text GLabel 3000 5150 2    50   Input ~ 0
+VIN
+$Comp
+L Connector_Generic:Conn_01x03 J2
+U 1 1 5D6D26A0
+P 7900 2400
+F 0 "J2" H 7979 2442 50  0000 L CNN
+F 1 "MainConnector" H 7979 2351 50  0000 L CNN
+F 2 "" H 7900 2400 50  0001 C CNN
+F 3 "~" H 7900 2400 50  0001 C CNN
+	1    7900 2400
+	1    0    0    -1  
+$EndComp
+Text GLabel 7700 2300 0    50   Input ~ 0
+12VIN
+Text GLabel 7700 2400 0    50   Input ~ 0
+IGN
+Text GLabel 7700 2500 0    50   Input ~ 0
+GND
 $EndSCHEMATC
