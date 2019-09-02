@@ -1,11 +1,11 @@
 EESchema-LIBRARY Version 2.4
 #encoding utf-8
 #
-# Connected-OldtimerHardware-rescue_AdafruitFRAM-HeathsComponents
+# AdafruitFRAM-HeathsComponents
 #
-DEF Connected-OldtimerHardware-rescue_AdafruitFRAM-HeathsComponents U 0 40 Y Y 1 F N
+DEF AdafruitFRAM-HeathsComponents U 0 40 Y Y 1 F N
 F0 "U" 0 400 50 H V C CNN
-F1 "Connected-OldtimerHardware-rescue_AdafruitFRAM-HeathsComponents" 100 -600 50 H V C CNN
+F1 "AdafruitFRAM-HeathsComponents" 100 -600 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 DRAW
@@ -21,11 +21,11 @@ X VCC 8 -450 250 100 R 50 50 1 1 I
 ENDDRAW
 ENDDEF
 #
-# Connected-OldtimerHardware-rescue_AdafruitUltimateGPS-HeathsComponents
+# AdafruitUltimateGPS-HeathsComponents
 #
-DEF Connected-OldtimerHardware-rescue_AdafruitUltimateGPS-HeathsComponents U 0 40 Y Y 1 F N
+DEF AdafruitUltimateGPS-HeathsComponents U 0 40 Y Y 1 F N
 F0 "U" -100 600 50 H V C CNN
-F1 "Connected-OldtimerHardware-rescue_AdafruitUltimateGPS-HeathsComponents" 0 -600 50 H V C CNN
+F1 "AdafruitUltimateGPS-HeathsComponents" 0 -600 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 DRAW
@@ -42,11 +42,11 @@ X 3V3 9 -650 450 100 R 50 50 1 1 I
 ENDDRAW
 ENDDEF
 #
-# Connected-OldtimerHardware-rescue_CANTranceiverModule-HeathsComponents
+# CANTranceiverModule-HeathsComponents
 #
-DEF Connected-OldtimerHardware-rescue_CANTranceiverModule-HeathsComponents U 0 40 Y Y 1 F N
+DEF CANTranceiverModule-HeathsComponents U 0 40 Y Y 1 F N
 F0 "U" -350 650 50 H V C CNN
-F1 "Connected-OldtimerHardware-rescue_CANTranceiverModule-HeathsComponents" -300 -450 50 H V C CNN
+F1 "CANTranceiverModule-HeathsComponents" -300 -450 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 DRAW
@@ -62,11 +62,11 @@ X NC 8 -800 -250 100 R 50 50 1 1 I
 ENDDRAW
 ENDDEF
 #
-# Connected-OldtimerHardware-rescue_MotionSensor-HeathsComponents
+# MotionSensor-HeathsComponents
 #
-DEF Connected-OldtimerHardware-rescue_MotionSensor-HeathsComponents U 0 40 Y Y 1 F N
+DEF MotionSensor-HeathsComponents U 0 40 Y Y 1 F N
 F0 "U" -100 250 50 H V C CNN
-F1 "Connected-OldtimerHardware-rescue_MotionSensor-HeathsComponents" -50 -250 50 H V C CNN
+F1 "MotionSensor-HeathsComponents" -50 -250 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 DRAW
@@ -77,11 +77,11 @@ X 3V3 3 -400 100 100 R 50 50 1 1 I
 ENDDRAW
 ENDDEF
 #
-# Connected-OldtimerHardware-rescue_ParticleElectron-HeathsComponents
+# ParticleElectron-HeathsComponents
 #
-DEF Connected-OldtimerHardware-rescue_ParticleElectron-HeathsComponents U 0 40 Y Y 1 F N
+DEF ParticleElectron-HeathsComponents U 0 40 Y Y 1 F N
 F0 "U" 0 750 50 H V C CNN
-F1 "Connected-OldtimerHardware-rescue_ParticleElectron-HeathsComponents" 300 -1250 50 H V C CNN
+F1 "ParticleElectron-HeathsComponents" 300 -1250 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 DRAW
@@ -125,11 +125,11 @@ X A3 9 -750 -200 100 R 50 50 1 1 I
 ENDDRAW
 ENDDEF
 #
-# Connected-OldtimerHardware-rescue_SFH618A-2-Optothingo
+# SFH618A-2-Optothingo
 #
-DEF Connected-OldtimerHardware-rescue_SFH618A-2-Optothingo U 0 40 Y N 1 L N
+DEF SFH618A-2-Optothingo U 0 40 Y N 1 L N
 F0 "U" -200 220 50 H V L BNN
-F1 "Connected-OldtimerHardware-rescue_SFH618A-2-Optothingo" -200 -300 50 H V L BNN
+F1 "SFH618A-2-Optothingo" -200 -300 50 H V L BNN
 F2 "DIP762W50P254L458H480Q4" 0 0 50 H I L BNN
 F3 "DIP-4 Vishay" 0 0 50 H I L BNN
 F4 "SFH618A-2" 0 0 50 H I L BNN
@@ -177,11 +177,11 @@ X CO 4 600 100 200 L 40 40 0 0 P
 ENDDRAW
 ENDDEF
 #
-# Connected-OldtimerHardware-rescue_TSR_2-2450-DCDC
+# TSR_2-2450-DCDC
 #
-DEF Connected-OldtimerHardware-rescue_TSR_2-2450-DCDC U 0 40 Y Y 1 L N
+DEF TSR_2-2450-DCDC U 0 40 Y Y 1 L N
 F0 "U" -200 320 50 H V L BNN
-F1 "Connected-OldtimerHardware-rescue_TSR_2-2450-DCDC" -200 -400 50 H V L BNN
+F1 "TSR_2-2450-DCDC" -200 -400 50 H V L BNN
 F2 "SIP750W46P254L1400H1010Q3" 0 0 50 H I L BNN
 F3 "SIP-3 Tracopower" 0 0 50 H I L BNN
 F4 "TSR 2-2450" 0 0 50 H I L BNN
@@ -197,122 +197,6 @@ P 2 0 0 10 200 300 200 -300 N
 X +VIN 1 300 200 100 L 40 40 0 0 W
 X GND 2 300 0 100 L 40 40 0 0 W
 X +VOUT 3 300 -200 100 L 40 40 0 0 W
-ENDDRAW
-ENDDEF
-#
-# Connector_Generic_Conn_01x03
-#
-DEF Connector_Generic_Conn_01x03 J 0 40 Y N 1 F N
-F0 "J" 0 200 50 H V C CNN
-F1 "Connector_Generic_Conn_01x03" 0 -200 50 H V C CNN
-F2 "" 0 0 50 H I C CNN
-F3 "" 0 0 50 H I C CNN
-$FPLIST
- Connector*:*_1x??_*
-$ENDFPLIST
-DRAW
-S -50 -95 0 -105 1 1 6 N
-S -50 5 0 -5 1 1 6 N
-S -50 105 0 95 1 1 6 N
-S -50 150 50 -150 1 1 10 f
-X Pin_1 1 -200 100 150 R 50 50 1 1 P
-X Pin_2 2 -200 0 150 R 50 50 1 1 P
-X Pin_3 3 -200 -100 150 R 50 50 1 1 P
-ENDDRAW
-ENDDEF
-#
-# Connector_Generic_Conn_01x04
-#
-DEF Connector_Generic_Conn_01x04 J 0 40 Y N 1 F N
-F0 "J" 0 200 50 H V C CNN
-F1 "Connector_Generic_Conn_01x04" 0 -300 50 H V C CNN
-F2 "" 0 0 50 H I C CNN
-F3 "" 0 0 50 H I C CNN
-$FPLIST
- Connector*:*_1x??_*
-$ENDFPLIST
-DRAW
-S -50 -195 0 -205 1 1 6 N
-S -50 -95 0 -105 1 1 6 N
-S -50 5 0 -5 1 1 6 N
-S -50 105 0 95 1 1 6 N
-S -50 150 50 -250 1 1 10 f
-X Pin_1 1 -200 100 150 R 50 50 1 1 P
-X Pin_2 2 -200 0 150 R 50 50 1 1 P
-X Pin_3 3 -200 -100 150 R 50 50 1 1 P
-X Pin_4 4 -200 -200 150 R 50 50 1 1 P
-ENDDRAW
-ENDDEF
-#
-# Device_R_US
-#
-DEF Device_R_US R 0 0 N Y 1 F N
-F0 "R" 100 0 50 V V C CNN
-F1 "Device_R_US" -100 0 50 V V C CNN
-F2 "" 40 -10 50 V I C CNN
-F3 "" 0 0 50 H I C CNN
-$FPLIST
- R_*
-$ENDFPLIST
-DRAW
-P 2 0 1 0 0 -90 0 -100 N
-P 2 0 1 0 0 90 0 100 N
-P 5 0 1 0 0 -30 40 -45 0 -60 -40 -75 0 -90 N
-P 5 0 1 0 0 30 40 15 0 0 -40 -15 0 -30 N
-P 5 0 1 0 0 90 40 75 0 60 -40 45 0 30 N
-X ~ 1 0 150 50 D 50 50 1 1 P
-X ~ 2 0 -150 50 U 50 50 1 1 P
-ENDDRAW
-ENDDEF
-#
-# Transistor_BJT_2N3906
-#
-DEF Transistor_BJT_2N3906 Q 0 0 Y N 1 F N
-F0 "Q" 200 75 50 H V L CNN
-F1 "Transistor_BJT_2N3906" 200 0 50 H V L CNN
-F2 "Package_TO_SOT_THT:TO-92_Inline" 200 -75 50 H I L CIN
-F3 "" 0 0 50 H I L CNN
-ALIAS 2N3905
-$FPLIST
- TO?92*
-$ENDFPLIST
-DRAW
-C 50 0 111 0 1 10 N
-P 2 0 1 0 25 25 100 100 N
-P 3 0 1 0 25 -25 100 -100 100 -100 N
-P 3 0 1 20 25 75 25 -75 25 -75 N
-P 5 0 1 0 90 -70 70 -90 50 -50 90 -70 90 -70 F
-X E 1 100 -200 100 U 50 50 1 1 P
-X B 2 -200 0 225 R 50 50 1 1 I
-X C 3 100 200 100 D 50 50 1 1 P
-ENDDRAW
-ENDDEF
-#
-# power_GND
-#
-DEF power_GND #PWR 0 0 Y Y 1 F P
-F0 "#PWR" 0 -250 50 H I C CNN
-F1 "power_GND" 0 -150 50 H V C CNN
-F2 "" 0 0 50 H I C CNN
-F3 "" 0 0 50 H I C CNN
-DRAW
-P 6 0 1 0 0 0 0 -50 50 -50 0 -100 -50 -50 0 -50 N
-X GND 1 0 0 0 D 50 50 1 1 W N
-ENDDRAW
-ENDDEF
-#
-# pspice_DIODE
-#
-DEF pspice_DIODE D 0 40 Y N 1 F N
-F0 "D" 0 150 50 H V C CNN
-F1 "pspice_DIODE" 0 -175 50 H V C CNN
-F2 "" 0 0 50 H I C CNN
-F3 "" 0 0 50 H I C CNN
-DRAW
-P 2 0 1 0 75 100 75 -100 N
-P 3 0 1 0 -75 100 -75 -100 75 0 F
-X K 1 -200 0 150 R 50 50 1 1 I
-X A 2 200 0 150 L 50 50 1 1 I
 ENDDRAW
 ENDDEF
 #

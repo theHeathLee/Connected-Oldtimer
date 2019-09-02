@@ -1,6 +1,6 @@
 EESchema Schematic File Version 4
 LIBS:Connected-OldtimerHardware-cache
-EELAYER 26 0
+EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -92,7 +92,7 @@ GND
 Text GLabel 6900 3300 0    50   Input ~ 0
 A0
 $Comp
-L HeathsComponents:CANTranceiverModule U3
+L Connected-OldtimerHardware-rescue:CANTranceiverModule-HeathsComponents U3
 U 1 1 5D6CF6EA
 P 4950 1300
 F 0 "U3" H 4977 1446 50  0000 L CNN
@@ -103,7 +103,7 @@ F 3 "" H 4950 1300 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L HeathsComponents:ParticleElectron U1
+L Connected-OldtimerHardware-rescue:ParticleElectron-HeathsComponents U1
 U 1 1 5D6D05D3
 P 2250 1650
 F 0 "U1" H 2225 2515 50  0000 C CNN
@@ -150,7 +150,7 @@ C1
 Text GLabel 2950 2750 2    50   Input ~ 0
 C0
 $Comp
-L HeathsComponents:AdafruitFRAM U4
+L Connected-OldtimerHardware-rescue:AdafruitFRAM-HeathsComponents U4
 U 1 1 5D6D08AC
 P 4600 2800
 F 0 "U4" H 5078 2746 50  0000 L CNN
@@ -161,7 +161,7 @@ F 3 "" H 4600 2800 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L HeathsComponents:AdafruitUltimateGPS U5
+L Connected-OldtimerHardware-rescue:AdafruitUltimateGPS-HeathsComponents U5
 U 1 1 5D6D0C95
 P 4750 4700
 F 0 "U5" H 5127 4771 50  0000 L CNN
@@ -172,7 +172,7 @@ F 3 "" H 4750 4700 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L HeathsComponents:MotionSensor U6
+L Connected-OldtimerHardware-rescue:MotionSensor-HeathsComponents U6
 U 1 1 5D6D1163
 P 7300 3200
 F 0 "U6" H 7377 3246 50  0000 L CNN
@@ -183,7 +183,7 @@ F 3 "" H 7300 3200 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L DCDC:TSR_2-2450 U2
+L Connected-OldtimerHardware-rescue:TSR_2-2450-DCDC U2
 U 1 1 5D6D21AF
 P 1850 4300
 F 0 "U2" H 1905 4767 50  0000 C CNN
@@ -241,7 +241,7 @@ Nextion_TX
 Text GLabel 6850 2450 0    50   Input ~ 0
 Nextion_RX
 $Comp
-L Optothingo:SFH618A-2 U?
+L Connected-OldtimerHardware-rescue:SFH618A-2-Optothingo U?
 U 1 1 5D6D2FE4
 P 3500 6300
 F 0 "U?" H 3500 6670 50  0000 C CNN
@@ -291,50 +291,114 @@ Wire Wire Line
 Connection ~ 2900 7200
 Wire Wire Line
 	2900 7250 2900 7200
-$Comp
-L Device:R R?
-U 1 1 5D6D3908
-P 2600 6200
-F 0 "R?" V 2807 6200 50  0000 C CNN
-F 1 "R" V 2716 6200 50  0000 C CNN
-F 2 "" V 2530 6200 50  0001 C CNN
-F 3 "~" H 2600 6200 50  0001 C CNN
-	1    2600 6200
-	0    -1   -1   0   
-$EndComp
-$Comp
-L Device:R R?
-U 1 1 5D6D3C45
-P 2000 6200
-F 0 "R?" V 2207 6200 50  0000 C CNN
-F 1 "R" V 2116 6200 50  0000 C CNN
-F 2 "" V 1930 6200 50  0001 C CNN
-F 3 "~" H 2000 6200 50  0001 C CNN
-	1    2000 6200
-	0    -1   -1   0   
-$EndComp
-$Comp
-L pspice:DIODE D?
-U 1 1 5D6D3CCC
-P 1550 6200
-F 0 "D?" H 1550 6465 50  0000 C CNN
-F 1 "DIODE" H 1550 6374 50  0000 C CNN
-F 2 "" H 1550 6200 50  0001 C CNN
-F 3 "~" H 1550 6200 50  0001 C CNN
-	1    1550 6200
-	1    0    0    -1  
-$EndComp
 Text GLabel 1350 6200 0    50   Input ~ 0
 IGN
 Wire Wire Line
-	2900 6200 2750 6200
+	2300 6200 2150 6200
+$Comp
+L Device:R_US R?
+U 1 1 5D6D76D5
+P 4250 6050
+F 0 "R?" H 4318 6096 50  0000 L CNN
+F 1 "10K" H 4318 6005 50  0000 L CNN
+F 2 "" V 4290 6040 50  0001 C CNN
+F 3 "~" H 4250 6050 50  0001 C CNN
+	1    4250 6050
+	1    0    0    -1  
+$EndComp
+$Comp
+L Transistor_BJT:2N3906 Q?
+U 1 1 5D6DA052
+P 5000 6200
+F 0 "Q?" H 5190 6246 50  0000 L CNN
+F 1 "2N3906" H 5190 6155 50  0000 L CNN
+F 2 "Package_TO_SOT_THT:TO-92_Inline" H 5200 6125 50  0001 L CIN
+F 3 "https://www.fairchildsemi.com/datasheets/2N/2N3906.pdf" H 5000 6200 50  0001 L CNN
+	1    5000 6200
+	1    0    0    -1  
+$EndComp
+Text GLabel 5100 6400 3    50   Input ~ 0
+3V3
+$Comp
+L Device:R_US R?
+U 1 1 5D6DD806
+P 5650 6000
+F 0 "R?" V 5445 6000 50  0000 C CNN
+F 1 "10K" V 5536 6000 50  0000 C CNN
+F 2 "" V 5690 5990 50  0001 C CNN
+F 3 "~" H 5650 6000 50  0001 C CNN
+	1    5650 6000
+	0    1    1    0   
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5D6DF4C3
+P 5950 6100
+F 0 "#PWR?" H 5950 5850 50  0001 C CNN
+F 1 "GND" H 5955 5927 50  0000 C CNN
+F 2 "" H 5950 6100 50  0001 C CNN
+F 3 "" H 5950 6100 50  0001 C CNN
+	1    5950 6100
+	1    0    0    -1  
+$EndComp
 Wire Wire Line
-	2450 6200 2300 6200
+	4100 6200 4250 6200
+Connection ~ 4250 6200
+Wire Wire Line
+	5100 6000 5500 6000
+Wire Wire Line
+	5800 6000 5950 6000
+Wire Wire Line
+	5950 6000 5950 6100
+$Comp
+L Device:R_US R?
+U 1 1 5D6E30DE
+P 4650 6200
+F 0 "R?" V 4445 6200 50  0000 C CNN
+F 1 "47K" V 4536 6200 50  0000 C CNN
+F 2 "" V 4690 6190 50  0001 C CNN
+F 3 "~" H 4650 6200 50  0001 C CNN
+	1    4650 6200
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	4250 6200 4500 6200
+Text GLabel 4250 5750 1    50   Input ~ 0
+3V3
+Wire Wire Line
+	4250 5750 4250 5900
+Text GLabel 5100 5800 1    50   Input ~ 0
+IGNSignal
+Wire Wire Line
+	5100 5800 5100 6000
+Connection ~ 5100 6000
+$Comp
+L power:GND #PWR?
+U 1 1 5D6E5F9A
+P 4100 6700
+F 0 "#PWR?" H 4100 6450 50  0001 C CNN
+F 1 "GND" H 4105 6527 50  0000 C CNN
+F 2 "" H 4100 6700 50  0001 C CNN
+F 3 "" H 4100 6700 50  0001 C CNN
+	1    4100 6700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4100 6400 4100 6700
+$Comp
+L Device:R_US R?
+U 1 1 5D6E71F5
+P 2000 6200
+F 0 "R?" V 1795 6200 50  0000 C CNN
+F 1 "7.5K" V 1886 6200 50  0000 C CNN
+F 2 "" V 2040 6190 50  0001 C CNN
+F 3 "~" H 2000 6200 50  0001 C CNN
+	1    2000 6200
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	2300 6200 2900 6200
 Connection ~ 2300 6200
 Wire Wire Line
-	2300 6200 2150 6200
-Wire Wire Line
-	1850 6200 1750 6200
-Text GLabel 4100 6200 2    50   Input ~ 0
-3V3
+	1850 6200 1350 6200
 $EndSCHEMATC
