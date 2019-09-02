@@ -182,4 +182,26 @@ F 3 "" H 8200 3250 50  0001 C CNN
 	1    8200 3250
 	1    0    0    -1  
 $EndComp
+$Comp
+L DCDC:TSR_2-2450 U?
+U 1 1 5D6D21AF
+P 2700 4950
+F 0 "U?" H 2755 5417 50  0000 C CNN
+F 1 "TSR_2-2450" H 2755 5326 50  0000 C CNN
+F 2 "SIP750W46P254L1400H1010Q3" H 2700 4950 50  0001 L BNN
+F 3 "SIP-3 Tracopower" H 2700 4950 50  0001 L BNN
+F 4 "TSR 2-2450" H 2700 4950 50  0001 L BNN "Field4"
+F 5 "Unavailable" H 2700 4950 50  0001 L BNN "Field5"
+F 6 "Traco Power" H 2700 4950 50  0001 L BNN "Field6"
+F 7 "None" H 2700 4950 50  0001 L BNN "Field7"
+F 8 "DC-DC Point of Load _POL_ Converter PCB mount; Input 6.5-36Vdc; Output 5Vdc at 2A; SIP Through hole package" H 2700 4950 50  0001 L BNN "Field8"
+	1    2700 4950
+	1    0    0    -1  
+$EndComp
+Text GLabel 3000 4750 2    50   Input ~ 0
+12VIN
+Text GLabel 3000 4950 2    50   Input ~ 0
+GND
+Text GLabel 3000 5150 2    50   Input ~ 0
+VIN
 $EndSCHEMATC
