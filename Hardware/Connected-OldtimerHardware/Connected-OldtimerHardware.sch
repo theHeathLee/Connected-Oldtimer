@@ -1,6 +1,6 @@
 EESchema Schematic File Version 4
 LIBS:Connected-OldtimerHardware-cache
-EELAYER 30 0
+EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -98,17 +98,6 @@ RESET
 Text GLabel 3000 2050 2    50   Input ~ 0
 3V3
 $Comp
-L Connector_Generic:Conn_01x08 J2
-U 1 1 5D6706F9
-P 5450 2000
-F 0 "J2" H 5530 1992 50  0000 L CNN
-F 1 "CAN_Tranceiver" H 5530 1901 50  0000 L CNN
-F 2 "" H 5450 2000 50  0001 C CNN
-F 3 "~" H 5450 2000 50  0001 C CNN
-	1    5450 2000
-	1    0    0    -1  
-$EndComp
-$Comp
 L Connector_Generic:Conn_01x08 J3
 U 1 1 5D6737BE
 P 5500 3450
@@ -130,14 +119,6 @@ F 3 "~" H 5500 5100 50  0001 C CNN
 	1    5500 5100
 	1    0    0    -1  
 $EndComp
-Text GLabel 5250 1700 0    50   Input ~ 0
-VIN
-Text GLabel 5250 1800 0    50   Input ~ 0
-GND
-Text GLabel 5250 2100 0    50   Input ~ 0
-CAN_H
-Text GLabel 5250 2200 0    50   Input ~ 0
-CAN_L
 Text GLabel 5300 3150 0    50   Input ~ 0
 VIN
 Text GLabel 5300 3250 0    50   Input ~ 0
@@ -190,4 +171,15 @@ Text GLabel 7700 2750 0    50   Input ~ 0
 GND
 Text GLabel 7700 2850 0    50   Input ~ 0
 A0
+$Comp
+L HeathsComponents:CANTranceiverModule U?
+U 1 1 5D6CF6EA
+P 5800 1950
+F 0 "U?" H 5827 2096 50  0000 L CNN
+F 1 "CANTranceiverModule" H 5827 2005 50  0000 L CNN
+F 2 "" H 5800 1950 50  0001 C CNN
+F 3 "" H 5800 1950 50  0001 C CNN
+	1    5800 1950
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
