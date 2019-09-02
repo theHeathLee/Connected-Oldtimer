@@ -50,43 +50,21 @@ Text GLabel 2350 3300 0    50   Input ~ 0
 B1
 Text GLabel 2350 3400 0    50   Input ~ 0
 B0
-$Comp
-L Connector_Generic:Conn_01x08 J3
-U 1 1 5D6737BE
-P 5500 3450
-F 0 "J3" H 5580 3442 50  0000 L CNN
-F 1 "FRAM" H 5580 3351 50  0000 L CNN
-F 2 "" H 5500 3450 50  0001 C CNN
-F 3 "~" H 5500 3450 50  0001 C CNN
-	1    5500 3450
-	1    0    0    -1  
-$EndComp
-$Comp
-L Connector_Generic:Conn_01x09 J4
-U 1 1 5D673A38
-P 5500 5100
-F 0 "J4" H 5580 5142 50  0000 L CNN
-F 1 "GPS_Module" H 5580 5051 50  0000 L CNN
-F 2 "" H 5500 5100 50  0001 C CNN
-F 3 "~" H 5500 5100 50  0001 C CNN
-	1    5500 5100
-	1    0    0    -1  
-$EndComp
-Text GLabel 5300 3150 0    50   Input ~ 0
+Text GLabel 5000 3200 0    50   Input ~ 0
 VIN
-Text GLabel 5300 3250 0    50   Input ~ 0
+Text GLabel 5000 3300 0    50   Input ~ 0
 GND
-Text GLabel 5300 3450 0    50   Input ~ 0
+Text GLabel 5000 3500 0    50   Input ~ 0
 D1
-Text GLabel 5300 3550 0    50   Input ~ 0
+Text GLabel 5000 3600 0    50   Input ~ 0
 D0
-Text GLabel 5300 5400 0    50   Input ~ 0
+Text GLabel 4950 5600 0    50   Input ~ 0
 VIN
-Text GLabel 5300 5300 0    50   Input ~ 0
+Text GLabel 4950 5500 0    50   Input ~ 0
 GND
-Text GLabel 5300 5200 0    50   Input ~ 0
+Text GLabel 4950 5400 0    50   Input ~ 0
 C1
-Text GLabel 5300 5100 0    50   Input ~ 0
+Text GLabel 4950 5300 0    50   Input ~ 0
 C0
 $Comp
 L Connector_Generic:Conn_01x04 J5
@@ -107,22 +85,11 @@ Text GLabel 7700 1850 0    50   Input ~ 0
 CAN_H
 Text GLabel 7700 1950 0    50   Input ~ 0
 CAN_L
-$Comp
-L Connector_Generic:Conn_01x03 J6
-U 1 1 5D67913E
-P 7900 2750
-F 0 "J6" H 7980 2792 50  0000 L CNN
-F 1 "Motion_Sensor" H 7980 2701 50  0000 L CNN
-F 2 "" H 7900 2750 50  0001 C CNN
-F 3 "~" H 7900 2750 50  0001 C CNN
-	1    7900 2750
-	1    0    0    -1  
-$EndComp
-Text GLabel 7700 2650 0    50   Input ~ 0
+Text GLabel 7800 3150 0    50   Input ~ 0
 3V3
-Text GLabel 7700 2750 0    50   Input ~ 0
+Text GLabel 7800 3250 0    50   Input ~ 0
 GND
-Text GLabel 7700 2850 0    50   Input ~ 0
+Text GLabel 7800 3350 0    50   Input ~ 0
 A0
 $Comp
 L HeathsComponents:CANTranceiverModule U?
@@ -182,4 +149,37 @@ Text GLabel 3800 3300 2    50   Input ~ 0
 C1
 Text GLabel 3800 3400 2    50   Input ~ 0
 C0
+$Comp
+L HeathsComponents:AdafruitFRAM U?
+U 1 1 5D6D08AC
+P 5450 3450
+F 0 "U?" H 5928 3396 50  0000 L CNN
+F 1 "AdafruitFRAM" H 5928 3305 50  0000 L CNN
+F 2 "" H 5450 3450 50  0001 C CNN
+F 3 "" H 5450 3450 50  0001 C CNN
+	1    5450 3450
+	1    0    0    -1  
+$EndComp
+$Comp
+L HeathsComponents:AdafruitUltimateGPS U?
+U 1 1 5D6D0C95
+P 5600 5350
+F 0 "U?" H 5977 5421 50  0000 L CNN
+F 1 "AdafruitUltimateGPS" H 5977 5330 50  0000 L CNN
+F 2 "" H 5600 5350 50  0001 C CNN
+F 3 "" H 5600 5350 50  0001 C CNN
+	1    5600 5350
+	1    0    0    -1  
+$EndComp
+$Comp
+L HeathsComponents:MotionSensor U?
+U 1 1 5D6D1163
+P 8200 3250
+F 0 "U?" H 8277 3296 50  0000 L CNN
+F 1 "MotionSensor" H 8277 3205 50  0000 L CNN
+F 2 "" H 8200 3250 50  0001 C CNN
+F 3 "" H 8200 3250 50  0001 C CNN
+	1    8200 3250
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
