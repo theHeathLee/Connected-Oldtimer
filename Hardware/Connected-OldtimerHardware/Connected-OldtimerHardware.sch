@@ -174,7 +174,7 @@ U 1 1 5D6D21AF
 P 1850 4300
 F 0 "U2" H 1905 4767 50  0000 C CNN
 F 1 "TSR_2-2450" H 1905 4676 50  0000 C CNN
-F 2 "SIP750W46P254L1400H1010Q3" H 1850 4300 50  0001 L BNN
+F 2 "heathsfootprints:heathsTRS_2_2450" H 1850 4300 50  0001 L BNN
 F 3 "SIP-3 Tracopower" H 1850 4300 50  0001 L BNN
 F 4 "TSR 2-2450" H 1850 4300 50  0001 L BNN "Field4"
 F 5 "Unavailable" H 1850 4300 50  0001 L BNN "Field5"
@@ -186,7 +186,7 @@ F 8 "DC-DC Point of Load _POL_ Converter PCB mount; Input 6.5-36Vdc; Output 5Vdc
 $EndComp
 Text GLabel 2150 4100 2    50   Input ~ 0
 12VIN
-Text GLabel 2800 4900 2    50   Input ~ 0
+Text GLabel 2900 5250 2    50   Input ~ 0
 5VDC
 $Comp
 L Connector_Generic:Conn_01x03 J2
@@ -536,7 +536,7 @@ F 3 "~" H 6650 1200 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	6500 1200 6250 1200
+	6500 1200 6300 1200
 Wire Wire Line
 	7050 1450 6950 1450
 Wire Wire Line
@@ -548,22 +548,66 @@ Wire Wire Line
 $Comp
 L Device:Polyfuse F1
 U 1 1 5D6ED997
-P 2450 4750
-F 0 "F1" H 2538 4796 50  0000 L CNN
-F 1 "Polyfuse 2000mA" H 2538 4705 50  0000 L CNN
-F 2 "Fuse:Fuse_Littelfuse-LVR200" H 2500 4550 50  0001 L CNN
-F 3 "~" H 2450 4750 50  0001 C CNN
-	1    2450 4750
+P 2550 5100
+F 0 "F1" H 2638 5146 50  0000 L CNN
+F 1 "Polyfuse 2000mA" H 2638 5055 50  0000 L CNN
+F 2 "Fuse:Fuse_Littelfuse-LVR200" H 2600 4900 50  0001 L CNN
+F 3 "~" H 2550 5100 50  0001 C CNN
+	1    2550 5100
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	2800 4900 2450 4900
-Wire Wire Line
-	2450 4600 2450 4500
-Wire Wire Line
-	2450 4500 2150 4500
+	2900 5250 2550 5250
 Wire Wire Line
 	6350 3650 7100 3650
 Wire Wire Line
 	3550 2650 4150 2650
+$Comp
+L Device:Polyfuse F3
+U 1 1 5D6F203B
+P 6650 850
+F 0 "F3" V 6425 850 50  0000 C CNN
+F 1 "Polyfuse SMD 1000mA" V 6516 850 50  0000 C CNN
+F 2 "Capacitor_SMD:C_1210_3225Metric_Pad1.42x2.65mm_HandSolder" H 6700 650 50  0001 L CNN
+F 3 "~" H 6650 850 50  0001 C CNN
+	1    6650 850 
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6300 850  6300 1200
+Wire Wire Line
+	6300 850  6500 850 
+Connection ~ 6300 1200
+Wire Wire Line
+	6300 1200 6250 1200
+Wire Wire Line
+	6800 850  6950 850 
+Wire Wire Line
+	6950 850  6950 1200
+Connection ~ 6950 1200
+$Comp
+L Device:Polyfuse F4
+U 1 1 5D6F5FCB
+P 1700 5100
+F 0 "F4" H 1788 5146 50  0000 L CNN
+F 1 "Polyfuse SMD 2000mA" H 1788 5055 50  0000 L CNN
+F 2 "Fuse:Fuse_Littelfuse-LVR200" H 1750 4900 50  0001 L CNN
+F 3 "~" H 1700 5100 50  0001 C CNN
+	1    1700 5100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1700 4950 1700 4850
+Wire Wire Line
+	2150 4500 2550 4500
+Wire Wire Line
+	2550 4500 2550 4850
+Wire Wire Line
+	1700 4850 2550 4850
+Connection ~ 2550 4850
+Wire Wire Line
+	2550 4850 2550 4950
+Wire Wire Line
+	2550 5250 1700 5250
+Connection ~ 2550 5250
 $EndSCHEMATC
