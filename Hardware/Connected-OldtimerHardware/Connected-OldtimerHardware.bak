@@ -1,6 +1,6 @@
 EESchema Schematic File Version 4
 LIBS:Connected-OldtimerHardware-cache
-EELAYER 30 0
+EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -59,7 +59,7 @@ D1
 Text GLabel 4150 2950 0    50   Input ~ 0
 D0
 Text GLabel 4100 4950 0    50   Input ~ 0
-VIN
+3V3
 Text GLabel 4100 4850 0    50   Input ~ 0
 GND
 Text GLabel 4100 4750 0    50   Input ~ 0
