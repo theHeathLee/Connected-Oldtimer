@@ -16,8 +16,6 @@ Comment4 ""
 $EndDescr
 Text GLabel 1500 1050 0    50   Input ~ 0
 VIN
-Text GLabel 1500 1150 0    50   Input ~ 0
-GND
 Text GLabel 1500 1250 0    50   Input ~ 0
 TX
 Text GLabel 1500 1350 0    50   Input ~ 0
@@ -37,7 +35,7 @@ A2
 Text GLabel 1500 2050 0    50   Input ~ 0
 A1
 Text GLabel 1500 2150 0    50   Input ~ 0
-A0
+Shock_Signal
 Text GLabel 1500 2250 0    50   Input ~ 0
 B5
 Text GLabel 1500 2350 0    50   Input ~ 0
@@ -52,20 +50,16 @@ Text GLabel 1500 2750 0    50   Input ~ 0
 B0
 Text GLabel 4150 2550 0    50   Input ~ 0
 VIN
-Text GLabel 4150 2650 0    50   Input ~ 0
-GND
 Text GLabel 4150 2850 0    50   Input ~ 0
-D1
+FRAM_SCL
 Text GLabel 4150 2950 0    50   Input ~ 0
-D0
+FRAM_SDA
 Text GLabel 4100 4950 0    50   Input ~ 0
 3V3
-Text GLabel 4100 4850 0    50   Input ~ 0
-GND
 Text GLabel 4100 4750 0    50   Input ~ 0
-C1
+GPS_RX
 Text GLabel 4100 4650 0    50   Input ~ 0
-C0
+GPS_TX
 $Comp
 L Connector_Generic:Conn_01x04 J1
 U 1 1 5D676AB8
@@ -79,18 +73,14 @@ F 3 "~" H 7050 1100 50  0001 C CNN
 $EndComp
 Text GLabel 6850 1000 0    50   Input ~ 0
 VIN
-Text GLabel 6850 1100 0    50   Input ~ 0
-GND
 Text GLabel 6850 1200 0    50   Input ~ 0
 CAN_H
 Text GLabel 6850 1300 0    50   Input ~ 0
 CAN_L
 Text GLabel 6900 3100 0    50   Input ~ 0
 3V3
-Text GLabel 6900 3200 0    50   Input ~ 0
-GND
 Text GLabel 6900 3300 0    50   Input ~ 0
-A0
+Shock_Signal
 $Comp
 L Connected-OldtimerHardware-rescue:CANTranceiverModule-HeathsComponents U3
 U 1 1 5D6CF6EA
@@ -134,21 +124,17 @@ D3
 Text GLabel 2950 1950 2    50   Input ~ 0
 D2
 Text GLabel 2950 2050 2    50   Input ~ 0
-D1
+FRAM_SCL
 Text GLabel 2950 2150 2    50   Input ~ 0
-D0
-Text GLabel 2950 2250 2    50   Input ~ 0
-C5
-Text GLabel 2950 2350 2    50   Input ~ 0
-C4
+FRAM_SDA
 Text GLabel 2950 2450 2    50   Input ~ 0
-C3
+Nextion_RX
 Text GLabel 2950 2550 2    50   Input ~ 0
-C2
+Nextion_TX
 Text GLabel 2950 2650 2    50   Input ~ 0
-C1
+GPS_RX
 Text GLabel 2950 2750 2    50   Input ~ 0
-C0
+GPS_TX
 $Comp
 L Connected-OldtimerHardware-rescue:AdafruitFRAM-HeathsComponents U4
 U 1 1 5D6D08AC
@@ -200,8 +186,6 @@ F 8 "DC-DC Point of Load _POL_ Converter PCB mount; Input 6.5-36Vdc; Output 5Vdc
 $EndComp
 Text GLabel 2150 4100 2    50   Input ~ 0
 12VIN
-Text GLabel 2150 4300 2    50   Input ~ 0
-GND
 Text GLabel 2150 4500 2    50   Input ~ 0
 VIN
 $Comp
@@ -219,12 +203,8 @@ Text GLabel 6850 1650 0    50   Input ~ 0
 12VIN
 Text GLabel 6850 1750 0    50   Input ~ 0
 IGN
-Text GLabel 6850 1850 0    50   Input ~ 0
-GND
 Text GLabel 6850 2150 0    50   Input ~ 0
 VIN
-Text GLabel 6850 2250 0    50   Input ~ 0
-GND
 Text GLabel 6850 2350 0    50   Input ~ 0
 Nextion_TX
 Text GLabel 6850 2450 0    50   Input ~ 0
@@ -401,4 +381,153 @@ F 3 "~" H 7050 2350 50  0001 C CNN
 	1    7050 2350
 	1    0    0    -1  
 $EndComp
+Text GLabel 4150 850  0    50   Input ~ 0
+VIN
+$Comp
+L power:GND #PWR?
+U 1 1 5D6E3912
+P 3700 1150
+F 0 "#PWR?" H 3700 900 50  0001 C CNN
+F 1 "GND" H 3705 977 50  0000 C CNN
+F 2 "" H 3700 1150 50  0001 C CNN
+F 3 "" H 3700 1150 50  0001 C CNN
+	1    3700 1150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4150 950  3700 950 
+Wire Wire Line
+	3700 950  3700 1150
+Text GLabel 4150 1250 0    50   Input ~ 0
+CAN_H
+Text GLabel 4150 1350 0    50   Input ~ 0
+CAN_L
+Text GLabel 4150 1050 0    50   Input ~ 0
+CAN_TX
+Text GLabel 4150 1150 0    50   Input ~ 0
+CAN_RX
+Text GLabel 2950 2350 2    50   Input ~ 0
+CAN_TX
+Text GLabel 2950 2250 2    50   Input ~ 0
+CAN_RX
+$Comp
+L power:GND #PWR?
+U 1 1 5D6E4235
+P 3700 2800
+F 0 "#PWR?" H 3700 2550 50  0001 C CNN
+F 1 "GND" H 3705 2627 50  0000 C CNN
+F 2 "" H 3700 2800 50  0001 C CNN
+F 3 "" H 3700 2800 50  0001 C CNN
+	1    3700 2800
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4150 2650 3700 2650
+Wire Wire Line
+	3700 2650 3700 2800
+$Comp
+L power:GND #PWR?
+U 1 1 5D6E45EA
+P 3650 5000
+F 0 "#PWR?" H 3650 4750 50  0001 C CNN
+F 1 "GND" H 3655 4827 50  0000 C CNN
+F 2 "" H 3650 5000 50  0001 C CNN
+F 3 "" H 3650 5000 50  0001 C CNN
+	1    3650 5000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4100 4850 3650 4850
+Wire Wire Line
+	3650 4850 3650 5000
+$Comp
+L power:GND #PWR?
+U 1 1 5D6E50E1
+P 6300 1150
+F 0 "#PWR?" H 6300 900 50  0001 C CNN
+F 1 "GND" H 6305 977 50  0000 C CNN
+F 2 "" H 6300 1150 50  0001 C CNN
+F 3 "" H 6300 1150 50  0001 C CNN
+	1    6300 1150
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5D6E5123
+P 6200 2350
+F 0 "#PWR?" H 6200 2100 50  0001 C CNN
+F 1 "GND" H 6205 2177 50  0000 C CNN
+F 2 "" H 6200 2350 50  0001 C CNN
+F 3 "" H 6200 2350 50  0001 C CNN
+	1    6200 2350
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5D6E51A5
+P 6450 3450
+F 0 "#PWR?" H 6450 3200 50  0001 C CNN
+F 1 "GND" H 6455 3277 50  0000 C CNN
+F 2 "" H 6450 3450 50  0001 C CNN
+F 3 "" H 6450 3450 50  0001 C CNN
+	1    6450 3450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6900 3200 6450 3200
+Wire Wire Line
+	6450 3200 6450 3450
+Wire Wire Line
+	6850 2250 6200 2250
+Wire Wire Line
+	6200 2250 6200 2350
+Wire Wire Line
+	6850 1100 6300 1100
+Wire Wire Line
+	6300 1100 6300 1150
+$Comp
+L power:GND #PWR?
+U 1 1 5D6E5CD7
+P 6300 1900
+F 0 "#PWR?" H 6300 1650 50  0001 C CNN
+F 1 "GND" H 6305 1727 50  0000 C CNN
+F 2 "" H 6300 1900 50  0001 C CNN
+F 3 "" H 6300 1900 50  0001 C CNN
+	1    6300 1900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6850 1850 6300 1850
+Wire Wire Line
+	6300 1850 6300 1900
+$Comp
+L power:GND #PWR?
+U 1 1 5D6E6529
+P 2550 4400
+F 0 "#PWR?" H 2550 4150 50  0001 C CNN
+F 1 "GND" H 2555 4227 50  0000 C CNN
+F 2 "" H 2550 4400 50  0001 C CNN
+F 3 "" H 2550 4400 50  0001 C CNN
+	1    2550 4400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2150 4300 2550 4300
+Wire Wire Line
+	2550 4300 2550 4400
+$Comp
+L power:GND #PWR?
+U 1 1 5D6E6E4F
+P 1150 1250
+F 0 "#PWR?" H 1150 1000 50  0001 C CNN
+F 1 "GND" H 1155 1077 50  0000 C CNN
+F 2 "" H 1150 1250 50  0001 C CNN
+F 3 "" H 1150 1250 50  0001 C CNN
+	1    1150 1250
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1500 1150 1150 1150
+Wire Wire Line
+	1150 1150 1150 1250
 $EndSCHEMATC
