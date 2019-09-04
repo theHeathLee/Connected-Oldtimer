@@ -20,34 +20,10 @@ Text GLabel 1500 1250 0    50   Input ~ 0
 TX
 Text GLabel 1500 1350 0    50   Input ~ 0
 RX
-Text GLabel 1500 1450 0    50   Input ~ 0
-WKP
 Text GLabel 1500 1550 0    50   Input ~ 0
 DAC
-Text GLabel 1500 1650 0    50   Input ~ 0
-A5
-Text GLabel 1500 1750 0    50   Input ~ 0
-A4
-Text GLabel 1500 1850 0    50   Input ~ 0
-A3
-Text GLabel 1500 1950 0    50   Input ~ 0
-A2
-Text GLabel 1500 2050 0    50   Input ~ 0
-A1
-Text GLabel 1500 2150 0    50   Input ~ 0
+Text GLabel 1500 1450 0    50   Input ~ 0
 Shock_Signal
-Text GLabel 1500 2250 0    50   Input ~ 0
-B5
-Text GLabel 1500 2350 0    50   Input ~ 0
-B4
-Text GLabel 1500 2450 0    50   Input ~ 0
-B3
-Text GLabel 1500 2550 0    50   Input ~ 0
-B2
-Text GLabel 1500 2650 0    50   Input ~ 0
-B1
-Text GLabel 1500 2750 0    50   Input ~ 0
-B0
 Text GLabel 4150 2550 0    50   Input ~ 0
 5VDC
 Text GLabel 4150 2850 0    50   Input ~ 0
@@ -66,7 +42,7 @@ U 1 1 5D676AB8
 P 7250 1550
 F 0 "J1" H 7330 1542 50  0000 L CNN
 F 1 "CAN_Bus_Connector" H 7330 1451 50  0000 L CNN
-F 2 "Connector_JST:JST_EH_B04B-EH-A_1x04_P2.50mm_Vertical" H 7250 1550 50  0001 C CNN
+F 2 "Connector_JST:JST_XH_B04B-XH-A_1x04_P2.50mm_Vertical" H 7250 1550 50  0001 C CNN
 F 3 "~" H 7250 1550 50  0001 C CNN
 	1    7250 1550
 	1    0    0    -1  
@@ -77,9 +53,9 @@ Text GLabel 7050 1650 0    50   Input ~ 0
 CAN_H
 Text GLabel 7050 1750 0    50   Input ~ 0
 CAN_L
-Text GLabel 7100 3550 0    50   Input ~ 0
+Text GLabel 7100 5200 0    50   Input ~ 0
 3V3
-Text GLabel 7100 3750 0    50   Input ~ 0
+Text GLabel 7100 5400 0    50   Input ~ 0
 Shock_Signal
 $Comp
 L Connected-OldtimerHardware-rescue:CANTranceiverModule-HeathsComponents U3
@@ -111,18 +87,6 @@ Text GLabel 2950 1250 2    50   Input ~ 0
 VBAT
 Text GLabel 2950 1350 2    50   Input ~ 0
 GND
-Text GLabel 2950 1450 2    50   Input ~ 0
-D7
-Text GLabel 2950 1550 2    50   Input ~ 0
-D6
-Text GLabel 2950 1650 2    50   Input ~ 0
-D5
-Text GLabel 2950 1750 2    50   Input ~ 0
-D4
-Text GLabel 2950 1850 2    50   Input ~ 0
-D3
-Text GLabel 2950 1950 2    50   Input ~ 0
-D2
 Text GLabel 2950 2050 2    50   Input ~ 0
 FRAM_SCL
 Text GLabel 2950 2150 2    50   Input ~ 0
@@ -160,12 +124,12 @@ $EndComp
 $Comp
 L Connected-OldtimerHardware-rescue:MotionSensor-HeathsComponents U6
 U 1 1 5D6D1163
-P 7500 3650
-F 0 "U6" H 7577 3696 50  0000 L CNN
-F 1 "MotionSensor" H 7577 3605 50  0000 L CNN
-F 2 "heathsfootprints:ShockSensor" H 7500 3650 50  0001 C CNN
-F 3 "" H 7500 3650 50  0001 C CNN
-	1    7500 3650
+P 7500 5300
+F 0 "U6" H 7577 5346 50  0000 L CNN
+F 1 "MotionSensor" H 7577 5255 50  0000 L CNN
+F 2 "heathsfootprints:ShockSensor" H 7500 5300 50  0001 C CNN
+F 3 "" H 7500 5300 50  0001 C CNN
+	1    7500 5300
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -463,16 +427,16 @@ $EndComp
 $Comp
 L power:GND #PWR0109
 U 1 1 5D6E51A5
-P 6350 3900
-F 0 "#PWR0109" H 6350 3650 50  0001 C CNN
-F 1 "GND" H 6355 3727 50  0000 C CNN
-F 2 "" H 6350 3900 50  0001 C CNN
-F 3 "" H 6350 3900 50  0001 C CNN
-	1    6350 3900
+P 6350 5550
+F 0 "#PWR0109" H 6350 5300 50  0001 C CNN
+F 1 "GND" H 6355 5377 50  0000 C CNN
+F 2 "" H 6350 5550 50  0001 C CNN
+F 3 "" H 6350 5550 50  0001 C CNN
+	1    6350 5550
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	6350 3650 6350 3900
+	6350 5300 6350 5550
 Wire Wire Line
 	7050 2700 6400 2700
 Wire Wire Line
@@ -512,18 +476,16 @@ Wire Wire Line
 $Comp
 L power:GND #PWR0112
 U 1 1 5D6E6E4F
-P 1150 1250
-F 0 "#PWR0112" H 1150 1000 50  0001 C CNN
-F 1 "GND" H 1155 1077 50  0000 C CNN
-F 2 "" H 1150 1250 50  0001 C CNN
-F 3 "" H 1150 1250 50  0001 C CNN
-	1    1150 1250
+P 700 1250
+F 0 "#PWR0112" H 700 1000 50  0001 C CNN
+F 1 "GND" H 705 1077 50  0000 C CNN
+F 2 "" H 700 1250 50  0001 C CNN
+F 3 "" H 700 1250 50  0001 C CNN
+	1    700  1250
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	1500 1150 1150 1150
-Wire Wire Line
-	1150 1150 1150 1250
+	700  1150 700  1250
 $Comp
 L Device:Polyfuse F2
 U 1 1 5D6EB140
@@ -559,7 +521,7 @@ $EndComp
 Wire Wire Line
 	2900 5250 2550 5250
 Wire Wire Line
-	6350 3650 7100 3650
+	6350 5300 7100 5300
 Wire Wire Line
 	3550 2650 4150 2650
 $Comp
@@ -591,7 +553,7 @@ U 1 1 5D6F5FCB
 P 1700 5100
 F 0 "F4" H 1788 5146 50  0000 L CNN
 F 1 "Polyfuse SMD 2000mA" H 1788 5055 50  0000 L CNN
-F 2 "Fuse:Fuse_Littelfuse-LVR200" H 1750 4900 50  0001 L CNN
+F 2 "Capacitor_SMD:C_1210_3225Metric_Pad1.42x2.65mm_HandSolder" H 1750 4900 50  0001 L CNN
 F 3 "~" H 1700 5100 50  0001 C CNN
 	1    1700 5100
 	1    0    0    -1  
@@ -610,4 +572,44 @@ Wire Wire Line
 Wire Wire Line
 	2550 5250 1700 5250
 Connection ~ 2550 5250
+$Comp
+L power:GND #PWR?
+U 1 1 5D70C303
+P 6900 3750
+F 0 "#PWR?" H 6900 3500 50  0001 C CNN
+F 1 "GND" H 6905 3577 50  0000 C CNN
+F 2 "" H 6900 3750 50  0001 C CNN
+F 3 "" H 6900 3750 50  0001 C CNN
+	1    6900 3750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6900 3750 6900 3600
+Wire Wire Line
+	6900 3600 7050 3600
+Text GLabel 7050 3300 0    50   Input ~ 0
+AUX_1
+Text GLabel 7050 3400 0    50   Input ~ 0
+AUX_2
+Text GLabel 7050 3500 0    50   Input ~ 0
+AUX_3
+Text GLabel 1500 2450 0    50   Input ~ 0
+AUX_1
+Text GLabel 1500 2550 0    50   Input ~ 0
+AUX_2
+Wire Wire Line
+	700  1150 1500 1150
+Text GLabel 1500 1850 0    50   Input ~ 0
+AUX_3
+$Comp
+L Connector_Generic:Conn_01x04 J?
+U 1 1 5D717741
+P 7250 3400
+F 0 "J?" H 7330 3392 50  0000 L CNN
+F 1 "Conn_01x04" H 7330 3301 50  0000 L CNN
+F 2 "" H 7250 3400 50  0001 C CNN
+F 3 "~" H 7250 3400 50  0001 C CNN
+	1    7250 3400
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
