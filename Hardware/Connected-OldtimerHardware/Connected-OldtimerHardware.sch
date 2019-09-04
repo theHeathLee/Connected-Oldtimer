@@ -691,6 +691,4 @@ Wire Wire Line
 Connection ~ 9150 4200
 Text GLabel 1500 2150 0    50   Input ~ 0
 VMON
-Text GLabel 2950 1950 2    50   Input ~ 0
-IGNSignal
 $EndSCHEMATC
