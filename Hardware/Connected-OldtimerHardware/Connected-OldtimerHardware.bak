@@ -25,7 +25,7 @@ DAC
 Text GLabel 1500 1450 0    50   Input ~ 0
 Shock_Signal
 Text GLabel 4150 2550 0    50   Input ~ 0
-5VDC
+3V3
 Text GLabel 4150 2850 0    50   Input ~ 0
 FRAM_SCL
 Text GLabel 4150 2950 0    50   Input ~ 0
