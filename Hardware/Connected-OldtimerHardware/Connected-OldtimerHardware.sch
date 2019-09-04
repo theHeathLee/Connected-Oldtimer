@@ -25,7 +25,7 @@ DAC
 Text GLabel 1500 1450 0    50   Input ~ 0
 Shock_Signal
 Text GLabel 4150 2550 0    50   Input ~ 0
-5VDC
+3V3
 Text GLabel 4150 2850 0    50   Input ~ 0
 FRAM_SCL
 Text GLabel 4150 2950 0    50   Input ~ 0
@@ -340,7 +340,7 @@ U 1 1 5D6E0A2B
 P 7250 2800
 F 0 "J3" H 7330 2842 50  0000 L CNN
 F 1 "NextionConnector" H 7330 2751 50  0000 L CNN
-F 2 "Connector_JST:JST_XH_B05B-XH-A_1x05_P2.50mm_Vertical" H 7250 2800 50  0001 C CNN
+F 2 "Connector_JST:JST_XH_S05B-XH-A-1_1x05_P2.50mm_Horizontal" H 7250 2800 50  0001 C CNN
 F 3 "~" H 7250 2800 50  0001 C CNN
 	1    7250 2800
 	1    0    0    -1  
@@ -573,10 +573,10 @@ Wire Wire Line
 	2550 5250 1700 5250
 Connection ~ 2550 5250
 $Comp
-L power:GND #PWR?
+L power:GND #PWR0113
 U 1 1 5D70C303
 P 6900 3750
-F 0 "#PWR?" H 6900 3500 50  0001 C CNN
+F 0 "#PWR0113" H 6900 3500 50  0001 C CNN
 F 1 "GND" H 6905 3577 50  0000 C CNN
 F 2 "" H 6900 3750 50  0001 C CNN
 F 3 "" H 6900 3750 50  0001 C CNN
@@ -602,14 +602,93 @@ Wire Wire Line
 Text GLabel 1500 1850 0    50   Input ~ 0
 AUX_3
 $Comp
-L Connector_Generic:Conn_01x04 J?
+L Connector_Generic:Conn_01x04 J4
 U 1 1 5D717741
 P 7250 3400
-F 0 "J?" H 7330 3392 50  0000 L CNN
-F 1 "Conn_01x04" H 7330 3301 50  0000 L CNN
-F 2 "" H 7250 3400 50  0001 C CNN
+F 0 "J4" H 7330 3392 50  0000 L CNN
+F 1 "AUXConnector" H 7330 3301 50  0000 L CNN
+F 2 "Connector_JST:JST_XH_B04B-XH-A_1x04_P2.50mm_Vertical" H 7250 3400 50  0001 C CNN
 F 3 "~" H 7250 3400 50  0001 C CNN
 	1    7250 3400
 	1    0    0    -1  
 $EndComp
+$Comp
+L Device:R_US 31K1
+U 1 1 5D6FDF91
+P 8450 3900
+F 0 "31K1" H 8518 3946 50  0000 L CNN
+F 1 "R_US" H 8518 3855 50  0000 L CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 8490 3890 50  0001 C CNN
+F 3 "~" H 8450 3900 50  0001 C CNN
+	1    8450 3900
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_US 4.7k1
+U 1 1 5D6FE056
+P 8450 4350
+F 0 "4.7k1" H 8518 4396 50  0000 L CNN
+F 1 "R_US" H 8518 4305 50  0000 L CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 8490 4340 50  0001 C CNN
+F 3 "~" H 8450 4350 50  0001 C CNN
+	1    8450 4350
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:D_Zener D2
+U 1 1 5D6FEC30
+P 9150 4350
+F 0 "D2" V 9104 4429 50  0000 L CNN
+F 1 "D_Zener" V 9195 4429 50  0000 L CNN
+F 2 "Diode_THT:D_DO-41_SOD81_P7.62mm_Horizontal" H 9150 4350 50  0001 C CNN
+F 3 "~" H 9150 4350 50  0001 C CNN
+	1    9150 4350
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:C 1uF1
+U 1 1 5D6FED32
+P 8850 4350
+F 0 "1uF1" H 8965 4396 50  0000 L CNN
+F 1 "C" H 8965 4305 50  0000 L CNN
+F 2 "Capacitor_THT:C_Disc_D8.0mm_W2.5mm_P5.00mm" H 8888 4200 50  0001 C CNN
+F 3 "~" H 8850 4350 50  0001 C CNN
+	1    8850 4350
+	1    0    0    -1  
+$EndComp
+Text GLabel 8250 3750 0    50   Input ~ 0
+12VIN
+Text GLabel 9600 4200 2    50   Input ~ 0
+VMON
+Wire Wire Line
+	8450 4200 8850 4200
+Connection ~ 8850 4200
+Wire Wire Line
+	8850 4200 9150 4200
+Wire Wire Line
+	8450 4200 8450 4050
+Connection ~ 8450 4200
+Wire Wire Line
+	8450 3750 8250 3750
+Wire Wire Line
+	8450 4500 8850 4500
+Wire Wire Line
+	9150 4500 8850 4500
+Connection ~ 8850 4500
+$Comp
+L power:GND #PWR0114
+U 1 1 5D7056BE
+P 8850 4500
+F 0 "#PWR0114" H 8850 4250 50  0001 C CNN
+F 1 "GND" H 8855 4327 50  0000 C CNN
+F 2 "" H 8850 4500 50  0001 C CNN
+F 3 "" H 8850 4500 50  0001 C CNN
+	1    8850 4500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9600 4200 9150 4200
+Connection ~ 9150 4200
+Text GLabel 1500 2150 0    50   Input ~ 0
+VMON
 $EndSCHEMATC
