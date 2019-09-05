@@ -48,4 +48,8 @@ Disclaimer: Still in the __beginning phase__. All hardware has been selected and
 - [Fuel Flow Meter](https://www.conrad.com/p/bt-bio-tech-fch-m-pom-lc-ad-6-mm-low-flow-flowmeter-non-corrosive-liquids-water-diesel-oil-150392?searchTerm=150392&searchType=suggest&searchSuggest=product)
 
 
+Art Credits:
+[Freepik](https://www.flaticon.com/authors/freepik)
+
+
 
