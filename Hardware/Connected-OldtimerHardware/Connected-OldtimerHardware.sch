@@ -39,19 +39,19 @@ GPS_TX
 $Comp
 L Connector_Generic:Conn_01x04 J1
 U 1 1 5D676AB8
-P 7250 1550
-F 0 "J1" H 7330 1542 50  0000 L CNN
-F 1 "CAN_Bus_Connector" H 7330 1451 50  0000 L CNN
-F 2 "Connector_JST:JST_XH_B04B-XH-A_1x04_P2.50mm_Vertical" H 7250 1550 50  0001 C CNN
-F 3 "~" H 7250 1550 50  0001 C CNN
-	1    7250 1550
+P 7250 2700
+F 0 "J1" H 7330 2692 50  0000 L CNN
+F 1 "NextionConnector" H 7330 2601 50  0000 L CNN
+F 2 "Connector_JST:JST_XH_S04B-XH-A-1_1x04_P2.50mm_Horizontal" H 7250 2700 50  0001 C CNN
+F 3 "~" H 7250 2700 50  0001 C CNN
+	1    7250 2700
 	1    0    0    -1  
 $EndComp
-Text GLabel 6250 1200 0    50   Input ~ 0
+Text GLabel 6100 1800 0    50   Input ~ 0
 5VDC
-Text GLabel 7050 1650 0    50   Input ~ 0
+Text GLabel 7050 900  0    50   Input ~ 0
 CAN_H
-Text GLabel 7050 1750 0    50   Input ~ 0
+Text GLabel 7050 1000 0    50   Input ~ 0
 CAN_L
 Text GLabel 7100 5200 0    50   Input ~ 0
 3V3
@@ -167,11 +167,11 @@ Text GLabel 7050 2100 0    50   Input ~ 0
 12VIN
 Text GLabel 7050 2200 0    50   Input ~ 0
 IGN
-Text GLabel 7050 2600 0    50   Input ~ 0
+Text GLabel 7050 2900 0    50   Input ~ 0
 5VDC
 Text GLabel 7050 2800 0    50   Input ~ 0
 Nextion_TX
-Text GLabel 7050 2900 0    50   Input ~ 0
+Text GLabel 7050 2700 0    50   Input ~ 0
 Nextion_RX
 $Comp
 L Connected-OldtimerHardware-rescue:SFH618A-2-Optothingo U7
@@ -337,12 +337,12 @@ Wire Wire Line
 $Comp
 L Connector_Generic:Conn_01x05 J3
 U 1 1 5D6E0A2B
-P 7250 2800
-F 0 "J3" H 7330 2842 50  0000 L CNN
-F 1 "NextionConnector" H 7330 2751 50  0000 L CNN
-F 2 "Connector_JST:JST_XH_S05B-XH-A-1_1x05_P2.50mm_Horizontal" H 7250 2800 50  0001 C CNN
-F 3 "~" H 7250 2800 50  0001 C CNN
-	1    7250 2800
+P 7250 1000
+F 0 "J3" H 7330 1042 50  0000 L CNN
+F 1 "CAN_Bus_Connector" H 7330 951 50  0000 L CNN
+F 2 "Connector_JST:JST_XH_B05B-XH-A_1x05_P2.50mm_Vertical" H 7250 1000 50  0001 C CNN
+F 3 "~" H 7250 1000 50  0001 C CNN
+	1    7250 1000
 	1    0    0    -1  
 $EndComp
 Text GLabel 4150 850  0    50   Input ~ 0
@@ -405,23 +405,23 @@ Wire Wire Line
 $Comp
 L power:GND #PWR0107
 U 1 1 5D6E50E1
-P 6500 1600
-F 0 "#PWR0107" H 6500 1350 50  0001 C CNN
-F 1 "GND" H 6505 1427 50  0000 C CNN
-F 2 "" H 6500 1600 50  0001 C CNN
-F 3 "" H 6500 1600 50  0001 C CNN
-	1    6500 1600
+P 6500 850
+F 0 "#PWR0107" H 6500 600 50  0001 C CNN
+F 1 "GND" H 6505 677 50  0000 C CNN
+F 2 "" H 6500 850 50  0001 C CNN
+F 3 "" H 6500 850 50  0001 C CNN
+	1    6500 850 
 	1    0    0    -1  
 $EndComp
 $Comp
 L power:GND #PWR0108
 U 1 1 5D6E5123
-P 6400 2800
-F 0 "#PWR0108" H 6400 2550 50  0001 C CNN
-F 1 "GND" H 6405 2627 50  0000 C CNN
-F 2 "" H 6400 2800 50  0001 C CNN
-F 3 "" H 6400 2800 50  0001 C CNN
-	1    6400 2800
+P 6400 2700
+F 0 "#PWR0108" H 6400 2450 50  0001 C CNN
+F 1 "GND" H 6405 2527 50  0000 C CNN
+F 2 "" H 6400 2700 50  0001 C CNN
+F 3 "" H 6400 2700 50  0001 C CNN
+	1    6400 2700
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -438,13 +438,13 @@ $EndComp
 Wire Wire Line
 	6350 5300 6350 5550
 Wire Wire Line
-	7050 2700 6400 2700
+	7050 2600 6400 2600
 Wire Wire Line
-	6400 2700 6400 2800
+	6400 2600 6400 2700
 Wire Wire Line
-	7050 1550 6500 1550
+	7050 800  6500 800 
 Wire Wire Line
-	6500 1550 6500 1600
+	6500 800  6500 850 
 $Comp
 L power:GND #PWR0110
 U 1 1 5D6E5CD7
@@ -489,22 +489,18 @@ Wire Wire Line
 $Comp
 L Device:Polyfuse F2
 U 1 1 5D6EB140
-P 6650 1200
-F 0 "F2" V 6425 1200 50  0000 C CNN
-F 1 "Polyfuse 1000mA" V 6516 1200 50  0000 C CNN
-F 2 "Fuse:Fuse_Littelfuse-LVR200" H 6700 1000 50  0001 L CNN
-F 3 "~" H 6650 1200 50  0001 C CNN
-	1    6650 1200
+P 6500 1800
+F 0 "F2" V 6275 1800 50  0000 C CNN
+F 1 "Polyfuse 1000mA" V 6366 1800 50  0000 C CNN
+F 2 "Fuse:Fuse_Littelfuse-LVR200" H 6550 1600 50  0001 L CNN
+F 3 "~" H 6500 1800 50  0001 C CNN
+	1    6500 1800
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	6500 1200 6300 1200
+	6350 1800 6150 1800
 Wire Wire Line
-	7050 1450 6950 1450
-Wire Wire Line
-	6950 1450 6950 1200
-Wire Wire Line
-	6950 1200 6800 1200
+	6800 1800 6650 1800
 Wire Wire Line
 	2150 4300 3000 4300
 $Comp
@@ -527,26 +523,25 @@ Wire Wire Line
 $Comp
 L Device:Polyfuse F3
 U 1 1 5D6F203B
-P 6650 850
-F 0 "F3" V 6425 850 50  0000 C CNN
-F 1 "Polyfuse SMD 1000mA" V 6516 850 50  0000 C CNN
-F 2 "Capacitor_SMD:C_1210_3225Metric_Pad1.42x2.65mm_HandSolder" H 6700 650 50  0001 L CNN
-F 3 "~" H 6650 850 50  0001 C CNN
-	1    6650 850 
+P 6500 1450
+F 0 "F3" V 6275 1450 50  0000 C CNN
+F 1 "Polyfuse SMD 1000mA" V 6366 1450 50  0000 C CNN
+F 2 "Capacitor_SMD:C_1210_3225Metric_Pad1.42x2.65mm_HandSolder" H 6550 1250 50  0001 L CNN
+F 3 "~" H 6500 1450 50  0001 C CNN
+	1    6500 1450
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	6300 850  6300 1200
+	6150 1450 6150 1800
 Wire Wire Line
-	6300 850  6500 850 
-Connection ~ 6300 1200
+	6150 1450 6350 1450
+Connection ~ 6150 1800
 Wire Wire Line
-	6300 1200 6250 1200
+	6150 1800 6100 1800
 Wire Wire Line
-	6800 850  6950 850 
+	6650 1450 6800 1450
 Wire Wire Line
-	6950 850  6950 1200
-Connection ~ 6950 1200
+	6800 1450 6800 1800
 $Comp
 L Device:Polyfuse F4
 U 1 1 5D6F5FCB
@@ -691,4 +686,11 @@ Wire Wire Line
 Connection ~ 9150 4200
 Text GLabel 1500 2150 0    50   Input ~ 0
 VMON
+Wire Wire Line
+	6950 1450 6800 1450
+Connection ~ 6800 1450
+Wire Wire Line
+	7050 1100 6950 1100
+Wire Wire Line
+	6950 1100 6950 1450
 $EndSCHEMATC
