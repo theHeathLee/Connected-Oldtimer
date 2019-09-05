@@ -687,10 +687,10 @@ Connection ~ 9150 4200
 Text GLabel 1500 2150 0    50   Input ~ 0
 VMON
 Wire Wire Line
-	7050 1200 6950 1200
-Wire Wire Line
-	6950 1200 6950 1450
-Wire Wire Line
 	6950 1450 6800 1450
 Connection ~ 6800 1450
+Wire Wire Line
+	7050 1100 6950 1100
+Wire Wire Line
+	6950 1100 6950 1450
 $EndSCHEMATC
