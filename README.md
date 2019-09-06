@@ -1,4 +1,4 @@
-![alt tag](https://github.com/theHeathLee/Connected-Oldtimer/blob/master/Photos/banner.png?raw=true "Connected oldtimer banner)
+![alt tag](https://github.com/theHeathLee/Connected-Oldtimer/blob/master/Photos/banner.png?raw=true "Connected oldtimer banner")
 
 # Connected-Oldtimer
 
