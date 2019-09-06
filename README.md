@@ -1,4 +1,4 @@
-![alt tag](https://github.com/theHeathLee/Connected-Oldtimer/blob/master/Photos/banner.png?raw=true "G.A.R.Y. attached to test stand")
+![alt tag](https://github.com/theHeathLee/Connected-Oldtimer/blob/master/Photos/banner.png?raw=true "Connected oldtimer banner)
 
 # Connected-Oldtimer
 
@@ -46,6 +46,12 @@ Disclaimer: Still in the __beginning phase__. All hardware has been selected and
 - [CAN Bus Cable](https://www.conrad.de/de/p/busleitung-unitronic-bus-2-x-2-x-0-22-mm-violett-lapp-2170261-meterware-604030.html
 )
 - [Fuel Flow Meter](https://www.conrad.com/p/bt-bio-tech-fch-m-pom-lc-ad-6-mm-low-flow-flowmeter-non-corrosive-liquids-water-diesel-oil-150392?searchTerm=150392&searchType=suggest&searchSuggest=product)
+
+### PCB
+
+![alt tag](https://github.com/theHeathLee/Connected-Oldtimer/blob/master/Photos/PCBRenderV1.PNG?raw=true "pcb")
+
+
 
 
 Art Credits:
