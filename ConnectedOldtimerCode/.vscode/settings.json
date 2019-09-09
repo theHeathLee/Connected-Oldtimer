@@ -1,11 +1,10 @@
 {
     "extensions.ignoreRecommendations": true,
-    "C_Cpp.default.configurationProvider": "particle.particle-vscode-core",
     "files.associations": {
         "*.ino": "cpp"
     },
     "particle.targetPlatform": "electron",
-    "cortex-debug.openocdPath": "/Users/heath/.particle/toolchains/openocd/0.10.0-particle.1/bin/openocd",
+    "cortex-debug.openocdPath": "${command:particle.getDebuggerOpenocdPath}",
     "C_Cpp.intelliSenseEngineFallback": "Disabled",
     "particle.targetDevice": "electron"
 }

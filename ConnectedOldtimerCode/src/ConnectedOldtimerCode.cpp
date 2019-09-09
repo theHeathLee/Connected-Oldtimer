@@ -3,7 +3,7 @@
 /******************************************************/
 
 #include "application.h"
-#line 1 "/Users/heath/Documents/workspace/Connected-Oldtimer/ConnectedOldtimerCode/src/ConnectedOldtimerCode.ino"
+#line 1 "c:/workspace/Connected-Oldtimer/ConnectedOldtimerCode/src/ConnectedOldtimerCode.ino"
 void setup();
 void loop();
 void canReceive();
@@ -13,7 +13,7 @@ void getGpsInfo();
 void updateDisplay();
 void readFromFRAM ();
 void storeToFRAM ();
-#line 1 "/Users/heath/Documents/workspace/Connected-Oldtimer/ConnectedOldtimerCode/src/ConnectedOldtimerCode.ino"
+#line 1 "c:/workspace/Connected-Oldtimer/ConnectedOldtimerCode/src/ConnectedOldtimerCode.ino"
 SYSTEM_THREAD(ENABLED);
 #include "Serial4/Serial4.h"
 #include "Serial5/Serial5.h"
@@ -121,7 +121,7 @@ void canSend(){
     // can.transmit(messageOut);
     // canSendStart = millis();
   // } while (millis() - canSendStart == canSendRate);
-  Serial.print("fuck you");
+
 
 }  
 
