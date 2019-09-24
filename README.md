@@ -19,12 +19,12 @@ Disclaimer: Still in the __beginning phase__. All hardware has been selected and
 
 ### Things implemented:
 
-- 3G Connectivity and vehicle to [cloud](https://www.particle.io/device-cloud/) data transfer   ![Progress](http://progressed.io/bar/100)
-- Gps velocity and location tracking and display  ![Progress](http://progressed.io/bar/100)
-- CAN Bus ![Progress](http://progressed.io/bar/100)
-- Motor Temperature ![Progress](http://progressed.io/bar/80)
-- Movement Sensor ![Progress](http://progressed.io/bar/25)
-- 3D Printed Display mount ([Thingiverse](https://www.thingiverse.com/thing:2223484))![Progress](http://progressed.io/bar/80)
+- 3G Connectivity and vehicle to [cloud](https://www.particle.io/device-cloud/) data transfer   
+- Gps velocity and location tracking and display  
+- CAN Bus 
+- Motor Temperature 
+- Movement Sensor 
+- 3D Printed Display mount ([Thingiverse](https://www.thingiverse.com/thing:2223484))
 
 ### To be implemented:
 
