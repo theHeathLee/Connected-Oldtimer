@@ -56,6 +56,7 @@ getGpsInfo(),
 updateDisplay();
 //storeToFRAM();
 serialLogger();
+delay(1000);
 
 }
 
@@ -107,25 +108,31 @@ void statusLED(){
 
 void getGpsInfo() {
   unsigned long gpsDelay = 200;
+  unsigned long start = millis();
+  do 
+  {
+    while (Serial5.available())
+      gps.encode(Serial5.read());
+      //displayInfo();
+  } while (millis() - start < 200);
   do
   {
     /* code */
+
     if (gps.location.isValid()) {
       speed = gps.speed.kmph();
-      Serial.println(speed);
       speed = speed + 0.5 - (speed<0);
+      nextionSpeed = (uint8_t)speed; // converts double from gps to unsigned byte for the nextion
     }
     else {
-      //Serial.println("speed invalid");
+      Serial.println("speed invalid");
     }
     } while (millis() - GpsGetStart < gpsDelay);
 } 
 
 void updateDisplay() {
-  unsigned long displayUpdateDelay = 100;
-  do
-  {
-    nextionSpeed = (uint8_t)speed; // converts double from gps to unsigned byte for the nextion
+
+
   // sends data to display
   Serial4.printf("n0.val=");
   Serial4.print(nextionSpeed);
@@ -135,7 +142,7 @@ void updateDisplay() {
   Serial4.write(0xff);
   Serial4.write(0xff);
   //Serial.println("nextion send");
-  } while (millis() - start < displayUpdateDelay);
+
   
   
 }
@@ -165,4 +172,9 @@ void serialLogger (){
   Serial.println(odometerValue);
   Serial.print (" fuel:  ");
   Serial.print(fuelLevel);
+  Serial.print(" Speed= ");
+  Serial.print(speed);
+  Serial.print(" NextionSpeed= ");
+  Serial.print(nextionSpeed);
+
 }
