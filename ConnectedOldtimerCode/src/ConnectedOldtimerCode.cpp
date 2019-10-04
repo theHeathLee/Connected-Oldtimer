@@ -25,23 +25,19 @@ uint8_t fuelLevel = 0;
 uint16_t motorTemperature = 0;
 uint16_t motorRPM = 0;
 uint32_t odometerValue = 0;
-int demoConnectivityValue = 69;
+int demoConnectivityValue = 64;
 static const uint32_t GPSBaud = 9600;
-unsigned long currentTime = millis();
-unsigned long start = 0;
-unsigned long ledStart = 0;
-unsigned long canSendStart = 0;
-unsigned long GpsGetStart = 0;
-unsigned long displayUpdateStart = 0;
-unsigned long storeToFRAMStart = 0;
-unsigned long updateDisplayStart = 0;
-unsigned long canSendRate = 1000;
+unsigned long start = millis();
+unsigned long ledStart = millis();
+unsigned long canSendStart = millis();
+unsigned long GpsGetStart = millis();
+unsigned long displayUpdateStart = millis();
 double speed =0;
 int led = D7; 
 
 
 TinyGPSPlus gps;
-CANChannel can(CAN_C4_C5);
+CANChannel can(CAN_D1_D2);
 
 //FRAM Stuff
 MB85RC256V fram(Wire, 0);
@@ -63,22 +59,18 @@ void setup() {
   //FRAM Setup stuff
   fram.begin();
   readFromFRAM();
-  Timer timer.start;
-  
 }
 
-Timer timer(1000, canSend);
-void loop() {
-timer.start();
 
-// statusLED();
-// canReceive();
-//canSend();
-Timer timer(1000, canSend, false);
-//timer.start();
-// getGpsInfo(),
-// updateDisplay();
-// storeToFRAM();
+void loop() {
+
+
+statusLED();
+canReceive();
+canSend();
+getGpsInfo(),
+updateDisplay();
+//storeToFRAM();
 
 }
 
@@ -105,33 +97,26 @@ void canReceive(){
 void canSend(){
 
   CANMessage messageOut;
+  unsigned long canSendRate = 100;
   messageOut.id = 0x555;
   messageOut.len = 3;
   messageOut.data[0] = 0xC0;
   messageOut.data[1] = 0xff;
   messageOut.data[2] = 0xEE;
 
-  // if (currentTime - canSendStart >= canSendRate) {
-  //   can.transmit(messageOut);
-  //   canSendStart = currentTime;
-  // }
-
-  // do
-  // {
-    // can.transmit(messageOut);
-    // canSendStart = millis();
-  // } while (millis() - canSendStart == canSendRate);
-
-
+  do
+  {
+    can.transmit(messageOut);
+  } while (millis() - start < canSendRate);
 }  
 
 
 
 void statusLED(){
   
-  if (currentTime >= ledStart + 1000 ) {
+  if (millis() >= ledStart + 1000 ) {
     digitalWrite(led, !digitalRead(led));
-    ledStart = currentTime;
+    ledStart = millis();
   }
 }  
 
@@ -165,7 +150,7 @@ void updateDisplay() {
   Serial4.write(0xff);
   Serial4.write(0xff);
   //Serial.println("nextion send");
-  } while (millis() - updateDisplayStart < displayUpdateDelay);
+  } while (millis() - start < displayUpdateDelay);
   
   
 }
@@ -191,6 +176,5 @@ void storeToFRAM (){
     Serial.println(odometerValue);
     Serial.print (" fuel:  ");
     Serial.print(fuelLevel);
-    storeToFRAMStart = currentTime;
-  } while (currentTime - storeToFRAMStart >= framRate);
+  } while (millis() - start < framRate);
 }
