@@ -73,6 +73,7 @@ getGpsInfo(),
 updateDisplay();
 //storeToFRAM();
 serialLogger();
+delay(1000);
 
 }
 
@@ -182,4 +183,9 @@ void serialLogger (){
   Serial.println(odometerValue);
   Serial.print (" fuel:  ");
   Serial.print(fuelLevel);
+  Serial.print(" Speed= ");
+  Serial.print(speed);
+  Serial.print(" NextionSpeed= ");
+  Serial.print(nextionSpeed);
+
 }
