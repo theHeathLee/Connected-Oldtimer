@@ -73,7 +73,7 @@ getGpsInfo(),
 updateDisplay();
 //storeToFRAM();
 serialLogger();
-delay(1000);
+delay(200);
 
 }
 
