@@ -55,6 +55,7 @@ canSend();
 getGpsInfo(),
 updateDisplay();
 //storeToFRAM();
+serialLogger();
 
 }
 
@@ -156,9 +157,12 @@ void storeToFRAM (){
     //fram.writeData(0, (uint8_t *)&odometerValue, sizeof(odometerValue));
     fram.put(0, odometerValue);
     fram.put(1, fuelLevel);
-    Serial.print (" odometer:  ");
-    Serial.println(odometerValue);
-    Serial.print (" fuel:  ");
-    Serial.print(fuelLevel);
   } while (millis() - start < framRate);
+}
+
+void serialLogger (){
+  Serial.print (" odometer:  ");
+  Serial.println(odometerValue);
+  Serial.print (" fuel:  ");
+  Serial.print(fuelLevel);
 }

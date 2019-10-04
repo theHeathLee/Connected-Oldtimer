@@ -13,6 +13,7 @@ void getGpsInfo();
 void updateDisplay();
 void readFromFRAM ();
 void storeToFRAM ();
+void serialLogger ();
 #line 1 "c:/workspace/Connected-Oldtimer/ConnectedOldtimerCode/src/ConnectedOldtimerCode.ino"
 SYSTEM_THREAD(ENABLED);
 #include "Serial4/Serial4.h"
@@ -71,6 +72,7 @@ canSend();
 getGpsInfo(),
 updateDisplay();
 //storeToFRAM();
+serialLogger();
 
 }
 
@@ -172,9 +174,12 @@ void storeToFRAM (){
     //fram.writeData(0, (uint8_t *)&odometerValue, sizeof(odometerValue));
     fram.put(0, odometerValue);
     fram.put(1, fuelLevel);
-    Serial.print (" odometer:  ");
-    Serial.println(odometerValue);
-    Serial.print (" fuel:  ");
-    Serial.print(fuelLevel);
   } while (millis() - start < framRate);
+}
+
+void serialLogger (){
+  Serial.print (" odometer:  ");
+  Serial.println(odometerValue);
+  Serial.print (" fuel:  ");
+  Serial.print(fuelLevel);
 }
