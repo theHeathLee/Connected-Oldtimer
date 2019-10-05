@@ -21,7 +21,7 @@ int led = D7;
 
 
 TinyGPSPlus gps;
-CANChannel can(CAN_D1_D2);
+CANChannel can(CAN_C4_C5);
 
 //FRAM Stuff
 MB85RC256V fram(Wire, 0);
@@ -56,7 +56,6 @@ getGpsInfo(),
 updateDisplay();
 //storeToFRAM();
 serialLogger();
-delay(200);
 
 }
 
@@ -90,10 +89,10 @@ void canSend(){
   messageOut.data[1] = 0xff;
   messageOut.data[2] = 0xEE;
 
-  do
-  {
+  if (millis() >= canSendStart + canSendRate) {
     can.transmit(messageOut);
-  } while (millis() - start < canSendRate);
+    canSendStart = millis();
+  }
 }  
 
 
@@ -107,18 +106,8 @@ void statusLED(){
 }  
 
 void getGpsInfo() {
-  unsigned long gpsDelay = 200;
-  unsigned long start = millis();
-  do 
-  {
     while (Serial5.available())
       gps.encode(Serial5.read());
-      //displayInfo();
-  } while (millis() - start < 200);
-  do
-  {
-    /* code */
-
     if (gps.location.isValid()) {
       speed = gps.speed.kmph();
       speed = speed + 0.5 - (speed<0);
@@ -127,7 +116,6 @@ void getGpsInfo() {
     else {
       Serial.println("speed invalid");
     }
-    } while (millis() - GpsGetStart < gpsDelay);
 } 
 
 void updateDisplay() {

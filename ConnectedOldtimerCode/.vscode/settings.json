@@ -6,5 +6,6 @@
     },
     "particle.targetPlatform": "electron",
     "cortex-debug.openocdPath": "${command:particle.getDebuggerOpenocdPath}",
-    "C_Cpp.intelliSenseEngineFallback": "Disabled"
+    "C_Cpp.intelliSenseEngineFallback": "Disabled",
+    "particle.targetDevice": ""
 }
