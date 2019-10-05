@@ -28,11 +28,8 @@ uint16_t motorRPM = 0;
 uint32_t odometerValue = 0;
 int demoConnectivityValue = 64;
 static const uint32_t GPSBaud = 9600;
-unsigned long start = millis();
-unsigned long ledStart = millis();
-unsigned long canSendStart = millis();
-unsigned long GpsGetStart = millis();
-unsigned long displayUpdateStart = millis();
+unsigned long Heartbeat_200mS_Start = millis();
+unsigned long Heartbeat_1000mS_Start = millis();
 double speed =0;
 int led = D7; 
 
@@ -66,13 +63,30 @@ void setup() {
 void loop() {
 
 
-statusLED();
-canReceive();
-canSend();
-getGpsInfo(),
-updateDisplay();
-//storeToFRAM();
-serialLogger();
+if (millis() >= Heartbeat_200mS_Start + 200) {
+
+    //all funtions to be run every 200mS
+    canReceive();
+    canSend();
+    updateDisplay();
+
+    Heartbeat_200mS_Start = millis(); //reset timer
+  }
+
+if (millis() >= Heartbeat_1000mS_Start + 1000) {
+
+    //all funtions to be run every second
+    statusLED();
+    //storeToFRAM(); //Todo - comment this back in when there is a change compare
+    serialLogger();
+
+    Heartbeat_1000mS_Start = millis(); //reset timer
+  }
+
+//funtions being executed as fast as possible
+getGpsInfo();
+
+
 
 }
 
@@ -99,27 +113,20 @@ void canReceive(){
 void canSend(){
 
   CANMessage messageOut;
-  unsigned long canSendRate = 100;
   messageOut.id = 0x555;
   messageOut.len = 3;
   messageOut.data[0] = 0xC0;
   messageOut.data[1] = 0xff;
   messageOut.data[2] = 0xEE;
+  can.transmit(messageOut); //actually transmits the message 
 
-  if (millis() >= canSendStart + canSendRate) {
-    can.transmit(messageOut);
-    canSendStart = millis();
-  }
 }  
 
 
 
 void statusLED(){
   
-  if (millis() >= ledStart + 1000 ) {
     digitalWrite(led, !digitalRead(led));
-    ledStart = millis();
-  }
 }  
 
 void getGpsInfo() {
@@ -162,14 +169,9 @@ void readFromFRAM () {
 // stores data to FRAM chip every 5 seconds
 void storeToFRAM (){
 
-  unsigned long framRate = 5000;
-  
-  do
-  {
     //fram.writeData(0, (uint8_t *)&odometerValue, sizeof(odometerValue));
     fram.put(0, odometerValue);
     fram.put(1, fuelLevel);
-  } while (millis() - start < framRate);
 }
 
 void serialLogger (){
