@@ -20,6 +20,7 @@ SYSTEM_THREAD(ENABLED);
 #include "Serial5/Serial5.h"
 #include "../lib/TinyGPS++/src/TinyGPS++.h"
 #include "../lib/MB85RC256V-FRAM-RK/src/MB85RC256V-FRAM-RK.h"
+#include <math.h>
 
 uint8_t nextionSpeed = 69;
 uint8_t fuelLevel = 0;
@@ -31,6 +32,9 @@ static const uint32_t GPSBaud = 9600;
 unsigned long Heartbeat_200mS_Start = millis();
 unsigned long Heartbeat_1000mS_Start = millis();
 double speed =0;
+double locationX1, locationX2, locationY1, locationY2, locationZ1, locationZ2, latestDistanceTraveled, deltaX, deltaY, deltaZ, combinedXs, combinedYs;
+double xDisBuffer, yDisBuffer = .1;
+//double sampleLocationsX[9], sampleLocationsY[9], sampleLocationsZ[9]; delete me maybe
 int led = D7; 
 
 
@@ -132,14 +136,52 @@ void statusLED(){
 void getGpsInfo() {
     while (Serial5.available())
       gps.encode(Serial5.read());
+
+    
+    //read speed directly 
     if (gps.location.isValid()) {
-      speed = gps.speed.kmph();
-      speed = speed + 0.5 - (speed<0);
+      speed = gps.speed.kmph(); // assigns speed to a double in Kmph
+      speed = speed + 0.5 - (speed<0);// rounds speed up/down correctly
       nextionSpeed = (uint8_t)speed; // converts double from gps to unsigned byte for the nextion
     }
     else {
       Serial.println("speed invalid");
     }
+
+
+    // calculate dynamic distance traveled
+    if (gps.location.isUpdated()) { //use this instead of isValid to avoid calculation redundancy
+
+    //collect 10 location samples, saves them to an array and averages them when full
+    
+    for (int i = 0; i<9; i++ ) {
+      combinedXs = combinedXs + gps.location.lat(); // ads 10 samples of GPS Latitude
+    }
+    locationX1 = locationX2; // previous X2 is shifted to x1
+    locationX2 = combinedXs/10; // as soon as sample reached 10, the average is taken and added passed to locationX1
+    if ( abs(locationX2 - locationX1) >= xDisBuffer || abs(locationX2 - locationX1) < 1) { // if the distance is big enout to pass filter val, then delta is updated, or smaller than an impossible number
+      deltaX = abs(locationX2 - locationX1);
+    }
+      
+    for (int i = 0; i<9; i++ ) {
+      combinedYs = combinedYs + gps.location.lng(); // ads 10 samples of GPA Latitude
+    }  
+    locationY1 = locationY2; // previous X2 is shifted to x1
+    locationY2 = combinedYs/10; // as soon as sample reached 10, the average is taken and added passed to locationX1
+    if ( abs(locationY2 - locationY1) >= yDisBuffer || abs(locationY2 - locationY1) < 1) { // if the distance is big enout to pass filter val, then delta is updated
+      deltaY = abs(locationY2 - locationY1);
+    }
+
+
+
+
+
+    //calculates actual distance (non spherical) to be added to odometer valure
+    latestDistanceTraveled = sqrt(deltaX*deltaX)+(deltaY*deltaY); //pythagorians theorum to calculate actual distance
+    odometerValue = odometerValue + (uint32_t)latestDistanceTraveled;// adds new distance to odometer value after converting from doublt 
+
+    }
+
 } 
 
 void updateDisplay() {
