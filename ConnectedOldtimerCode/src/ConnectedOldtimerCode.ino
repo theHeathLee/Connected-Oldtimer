@@ -43,7 +43,7 @@ void setup() {
 
   //FRAM Setup stuff
   fram.begin();
-  readFromFRAM();
+  readFromFRAM(); // pulls FRAM values for last odo, fuel, and gps into memory
 }
 
 
@@ -188,6 +188,8 @@ void updateDisplay() {
 void readFromFRAM () {
   fram.get(0, odometerValue);
   fram.get(1, fuelLevel);
+  fram.get(2, locationX2);
+  fram.get(3, locationY2);
 }
 
 
@@ -197,6 +199,9 @@ void storeToFRAM (){
     //fram.writeData(0, (uint8_t *)&odometerValue, sizeof(odometerValue));
     fram.put(0, odometerValue);
     fram.put(1, fuelLevel);
+    fram.put(2, locationX2);
+    fram.put(3, locationY2);
+
 }
 
 void serialLogger (){
