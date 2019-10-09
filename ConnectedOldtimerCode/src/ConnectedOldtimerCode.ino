@@ -67,7 +67,7 @@ if (millis() >= Heartbeat_1000mS_Start + 1000) {
     statusLED();
     storeToFRAM(); //Todo - comment this back in when there is a change compare
     //serialLogger();
-
+    
     Heartbeat_1000mS_Start = millis(); //reset timer
   }
 
@@ -75,6 +75,7 @@ if (millis() >= Heartbeat_2000mS_Start + 2000) {
 
    updateOdometer(); 
 
+  Heartbeat_2000mS_Start = millis();
 }
 
 //funtions being executed as fast as possible
@@ -138,16 +139,11 @@ void getGpsInfo() {
       Serial.println("speed invalid");
     }
 
-
-    
-
-    
-
 } 
 
 void updateOdometer() {
 
-// calculate dynamic distance traveled
+    // calculate dynamic distance traveled
     if (gps.location.isUpdated()) { //use this instead of isValid to avoid calculation redundancy
 
     //calculate rEarth - radius of the earth at sea level and H - the offset of earths radius above sea level
@@ -201,7 +197,7 @@ void updateOdometer() {
     latestDistanceTraveled = sqrt(deltaX*deltaX)+(deltaY*deltaY); //pythagorians theorum to calculate actual distance
     odometerValue = odometerValue + (uint32_t)latestDistanceTraveled;// adds new distance to odometer value after converting from doublt 
     //odometerValue = 0;// comment in to reset odometer
-}
+    }
 }
 
 void updateDisplay() {
