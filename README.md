@@ -11,7 +11,7 @@ Alongside remote monitoring I have implmented an HMI using a 3.5" Display that f
 A low speed CAN network is set up throughout the vehicle to easily add extra sensors.
 
 
-Disclaimer: Still in the __beginning phase__. All hardware has been selected and unit tested.
+Disclaimer: Still in the __developement phase__. V1 hardware has been created and software is still in heavy developement.
 
 ### Software used:
 - Visual Studio Code w/ [Particle Workbench Extentsion](https://marketplace.visualstudio.com/items?itemName=particle.particle-vscode-pack)🤘
@@ -66,3 +66,15 @@ Art Credits:
 
 
 
+# References
+
+## GPS
+
+### NMEA Simulation
+[SatGen](https://www.labsat.co.uk/index.php/de/free-gps-nmea-simulator-software) Windows software form LabSat used for playing NMEA files over virtual coms
+
+[NMEAGen](https://nmeagen.org/) browser application for generating custom NMEA files
+
+To create a GPS simulation, first create an NMEA file in NMEAGen. after generating a .nmea file, change the file extension to .txt. The file can now be played in the Serial Output tab of SatGen.
+
+Any USB to TTL coverter can be connected to ports C0 & C1 (Serial5) of the Electron.
