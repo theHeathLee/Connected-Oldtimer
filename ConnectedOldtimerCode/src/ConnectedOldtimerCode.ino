@@ -5,6 +5,9 @@ SYSTEM_THREAD(ENABLED);
 #include "../lib/MB85RC256V-FRAM-RK/src/MB85RC256V-FRAM-RK.h"
 #include <math.h>
 
+#define R 6371
+#define TO_RAD (3.1415926536 / 180)
+
 uint8_t nextionSpeed = 69;
 uint8_t fuelLevel = 0;
 uint16_t motorTemperature = 0;
@@ -146,16 +149,13 @@ void updateOdometer() {
     // calculate dynamic distance traveled
     if (gps.location.isUpdated()) { //use this instead of isValid to avoid calculation redundancy
 
-    //calculate rEarth - radius of the earth at sea level and H - the offset of earths radius above sea level
-    double rEarth, H;
-    rEarth = sqrt(pow(6356.7523*sin(gps.location.lat()),2) + pow(6378.137*cos(gps.location.lat()),2) );
-    H = rEarth + gps.altitude.kilometers();
+
 
 
     //collect 10 location samples, saves them to an array and averages them when full
     combinedXs = 0;
     for (int i = 0; i<=9; i++ ) {
-      combinedXs = combinedXs + (H * gps.location.lng() * cos(gps.location.lat()) ) ; // ads 10 samples of GPS Latitude
+      combinedXs = combinedXs + gps.location.lng(); // ads 10 samples of GPS Latitude
     }
     locationX1 = locationX2; // previous X2 is shifted to x1
     locationX2 = combinedXs/10; // as soon as sample reached 10, the average is taken and added passed to locationX1
@@ -165,13 +165,16 @@ void updateOdometer() {
       
     combinedYs = 0;  
     for (int i = 0; i<=9; i++ ) {
-      combinedYs = combinedYs + ( H * gps.location.lat() ); // ads 10 samples of GPA Latitude
+      combinedYs = combinedYs + gps.location.lat() ; // ads 10 samples of GPA Latitude
     }  
     locationY1 = locationY2; // previous X2 is shifted to x1
     locationY2 = combinedYs/10; // as soon as sample reached 10, the average is taken and added passed to locationX1
     if ( abs(locationY2 - locationY1) >= yDisBuffer || abs(locationY2 - locationY1) < 1) { // if the distance is big enout to pass filter val, then delta is updated
       deltaY = abs(locationY2 - locationY1);
     }
+
+    latestDistanceTraveled = dist(locationX1, locationY1, locationX2, locationY2);
+    odometerValue = odometerValue + (uint32_t)latestDistanceTraveled;
 
 
     Serial.print ("Speed = ");
@@ -263,4 +266,18 @@ void serialLogger (){
   Serial.print(" NextionSpeed= ");
   Serial.print(nextionSpeed);
 
+}
+
+
+// from https://rosettacode.org/wiki/Haversine_formula#C
+double dist(double th1, double ph1, double th2, double ph2)
+{
+	double dx, dy, dz;
+	ph1 -= ph2;
+	ph1 *= TO_RAD, th1 *= TO_RAD, th2 *= TO_RAD;
+ 
+	dz = sin(th1) - sin(th2);
+	dx = cos(ph1) * cos(th1) - cos(th2);
+	dy = sin(ph1) * cos(th1);
+	return asin(sqrt(dx * dx + dy * dy + dz * dz) / 2) * 2 * R;
 }
