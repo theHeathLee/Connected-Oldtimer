@@ -10,6 +10,7 @@ void canReceive();
 void canSend();
 void statusLED();
 void getGpsInfo();
+void updateOdometer();
 void updateDisplay();
 void readFromFRAM ();
 void storeToFRAM ();
@@ -31,6 +32,7 @@ int demoConnectivityValue = 64;
 static const uint32_t GPSBaud = 9600;
 unsigned long Heartbeat_200mS_Start = millis();
 unsigned long Heartbeat_1000mS_Start = millis();
+unsigned long Heartbeat_2000mS_Start = millis();
 double speed =0;
 double locationX1, locationX2, locationY1, locationY2, locationZ1, locationZ2, latestDistanceTraveled, deltaX, deltaY, deltaZ, combinedXs, combinedYs;
 double xDisBuffer, yDisBuffer = .00001;
@@ -83,9 +85,16 @@ if (millis() >= Heartbeat_1000mS_Start + 1000) {
     statusLED();
     storeToFRAM(); //Todo - comment this back in when there is a change compare
     //serialLogger();
-
+    
     Heartbeat_1000mS_Start = millis(); //reset timer
   }
+
+if (millis() >= Heartbeat_2000mS_Start + 2000) {
+
+   updateOdometer(); 
+
+  Heartbeat_2000mS_Start = millis();
+}
 
 //funtions being executed as fast as possible
 getGpsInfo();
@@ -148,14 +157,23 @@ void getGpsInfo() {
       Serial.println("speed invalid");
     }
 
+} 
+
+void updateOdometer() {
 
     // calculate dynamic distance traveled
     if (gps.location.isUpdated()) { //use this instead of isValid to avoid calculation redundancy
 
+    //calculate rEarth - radius of the earth at sea level and H - the offset of earths radius above sea level
+    double rEarth, H;
+    rEarth = sqrt(pow(6356.7523*sin(gps.location.lat()),2) + pow(6378.137*cos(gps.location.lat()),2) );
+    H = rEarth + gps.altitude.kilometers();
+
+
     //collect 10 location samples, saves them to an array and averages them when full
     combinedXs = 0;
     for (int i = 0; i<=9; i++ ) {
-      combinedXs = combinedXs + gps.location.lat(); // ads 10 samples of GPS Latitude
+      combinedXs = combinedXs + (H * gps.location.lng() * cos(gps.location.lat()) ) ; // ads 10 samples of GPS Latitude
     }
     locationX1 = locationX2; // previous X2 is shifted to x1
     locationX2 = combinedXs/10; // as soon as sample reached 10, the average is taken and added passed to locationX1
@@ -165,7 +183,7 @@ void getGpsInfo() {
       
     combinedYs = 0;  
     for (int i = 0; i<=9; i++ ) {
-      combinedYs = combinedYs + gps.location.lng(); // ads 10 samples of GPA Latitude
+      combinedYs = combinedYs + ( H * gps.location.lat() ); // ads 10 samples of GPA Latitude
     }  
     locationY1 = locationY2; // previous X2 is shifted to x1
     locationY2 = combinedYs/10; // as soon as sample reached 10, the average is taken and added passed to locationX1
@@ -174,6 +192,8 @@ void getGpsInfo() {
     }
 
 
+    Serial.print ("Speed = ");
+    Serial.print (nextionSpeed);
     Serial.print ("x1 = ");
     Serial.print (locationX1);
     Serial.print (" x2 = ");
@@ -189,17 +209,24 @@ void getGpsInfo() {
     Serial.print (locationY2);
     Serial.print ("   Real-Y ");
     Serial.print (gps.location.lng(), 6);
+    Serial.print ("      Latest Distance  = ");
+    Serial.print (latestDistanceTraveled);
+    Serial.print ("      Odometer = ");
+    Serial.print (odometerValue);
+    
+
+
+
     Serial.println();
+
 
 
     //calculates actual distance (non spherical) to be added to odometer valure
     latestDistanceTraveled = sqrt(deltaX*deltaX)+(deltaY*deltaY); //pythagorians theorum to calculate actual distance
     odometerValue = odometerValue + (uint32_t)latestDistanceTraveled;// adds new distance to odometer value after converting from doublt 
     //odometerValue = 0;// comment in to reset odometer
-
     }
-
-} 
+}
 
 void updateDisplay() {
 
