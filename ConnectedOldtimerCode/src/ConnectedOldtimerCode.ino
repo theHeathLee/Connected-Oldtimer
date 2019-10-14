@@ -12,7 +12,7 @@ uint8_t nextionSpeed = 69;
 uint8_t fuelLevel = 0;
 uint16_t motorTemperature = 0;
 uint16_t motorRPM = 0;
-uint32_t odometerValue = 0;
+double odometerValue = 0;
 int demoConnectivityValue = 64;
 static const uint32_t GPSBaud = 9600;
 unsigned long Heartbeat_200mS_Start = millis();
@@ -174,7 +174,7 @@ void updateOdometer() {
     }
 
     latestDistanceTraveled = dist(locationX1, locationY1, locationX2, locationY2);
-    odometerValue = odometerValue + (uint32_t)latestDistanceTraveled;
+    odometerValue = odometerValue + latestDistanceTraveled;
 
 
     Serial.print ("Speed = ");
@@ -195,9 +195,9 @@ void updateOdometer() {
     Serial.print ("   Real-Y ");
     Serial.print (gps.location.lng(), 6);
     Serial.print ("      Latest Distance  = ");
-    Serial.print (latestDistanceTraveled);
+    Serial.print (latestDistanceTraveled, 6);
     Serial.print ("      Odometer = ");
-    Serial.print (odometerValue);
+    Serial.print (odometerValue, 6);
     
 
 
@@ -239,9 +239,9 @@ void updateDisplay() {
 //run at startup
 void readFromFRAM () {
   fram.get(0, odometerValue);// 4 bytes
-  fram.get(4, fuelLevel);// 1 byte
-  fram.get(5, locationX2);// 8 bytes
-  fram.get(13, locationY2);// 8 bytes
+  fram.get(8, fuelLevel);// 1 byte
+  fram.get(9, locationX2);// 8 bytes
+  fram.get(17, locationY2);// 8 bytes
 }
 
 
@@ -250,9 +250,9 @@ void storeToFRAM (){
 
     //fram.writeData(0, (uint8_t *)&odometerValue, sizeof(odometerValue));
     fram.put(0, odometerValue);// 4 bytes
-    fram.put(4, fuelLevel);// 1 byte
-    fram.put(5, locationX2);// 8 bytes
-    fram.put(13, locationY2);// 8 bytes
+    fram.put(8, fuelLevel);// 1 byte
+    fram.put(9, locationX2);// 8 bytes
+    fram.put(17, locationY2);// 8 bytes
 
 }
 
@@ -278,6 +278,6 @@ double dist(double th1, double ph1, double th2, double ph2)
  
 	dz = sin(th1) - sin(th2);
 	dx = cos(ph1) * cos(th1) - cos(th2);
-	dy = sin(ph1) * cos(th1);
+	dy = sin(ph1) * cos(th1); 
 	return asin(sqrt(dx * dx + dy * dy + dz * dz) / 2) * 2 * R;
 }
