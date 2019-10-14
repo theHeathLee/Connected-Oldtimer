@@ -5,8 +5,7 @@ SYSTEM_THREAD(ENABLED);
 #include "../lib/MB85RC256V-FRAM-RK/src/MB85RC256V-FRAM-RK.h"
 #include <math.h>
 
-#define R 6371
-#define TO_RAD (3.1415926536 / 180)
+#define earthRadiusKm 6371.0 // for use in haversine calculation 
 
 uint8_t nextionSpeed = 69;
 uint8_t fuelLevel = 0;
@@ -173,7 +172,8 @@ void updateOdometer() {
       deltaY = abs(locationY2 - locationY1);
     }
 
-    latestDistanceTraveled = dist(locationX1, locationY1, locationX2, locationY2);
+    //latestDistanceTraveled = dist(locationX1, locationY1, locationX2, locationY2);
+    latestDistanceTraveled =  distanceEarth( locationY1, locationX1, locationY2 ,locationX2 );
     odometerValue = odometerValue + latestDistanceTraveled;
 
 
@@ -207,8 +207,8 @@ void updateOdometer() {
 
 
     //calculates actual distance (non spherical) to be added to odometer valure
-    latestDistanceTraveled = sqrt(deltaX*deltaX)+(deltaY*deltaY); //pythagorians theorum to calculate actual distance
-    odometerValue = odometerValue + (uint32_t)latestDistanceTraveled;// adds new distance to odometer value after converting from doublt 
+   // latestDistanceTraveled = sqrt(deltaX*deltaX)+(deltaY*deltaY); //pythagorians theorum to calculate actual distance
+    //odometerValue = odometerValue + (uint32_t)latestDistanceTraveled;// adds new distance to odometer value after converting from doublt 
     //odometerValue = 0;// comment in to reset odometer
     }
 }
@@ -269,15 +269,19 @@ void serialLogger (){
 }
 
 
-// from https://rosettacode.org/wiki/Haversine_formula#C
-double dist(double th1, double ph1, double th2, double ph2)
-{
-	double dx, dy, dz;
-	ph1 -= ph2;
-	ph1 *= TO_RAD, th1 *= TO_RAD, th2 *= TO_RAD;
- 
-	dz = sin(th1) - sin(th2);
-	dx = cos(ph1) * cos(th1) - cos(th2);
-	dy = sin(ph1) * cos(th1); 
-	return asin(sqrt(dx * dx + dy * dy + dz * dz) / 2) * 2 * R;
+
+//https://stackoverflow.com/questions/10198985/calculating-the-distance-between-2-latitudes-and-longitudes-that-are-saved-in-a
+double distanceEarth(double lat1d, double lon1d, double lat2d, double lon2d) {
+  double lat1r, lon1r, lat2r, lon2r, u, v;
+  lat1r = deg2rad(lat1d);
+  lon1r = deg2rad(lon1d);
+  lat2r = deg2rad(lat2d);
+  lon2r = deg2rad(lon2d);
+  u = sin((lat2r - lat1r)/2);
+  v = sin((lon2r - lon1r)/2);
+  return 2.0 * earthRadiusKm * asin(sqrt(u * u + cos(lat1r) * cos(lat2r) * v * v));
+}
+
+double deg2rad(double deg) {
+  return (deg * 3.1415926536 / 180);
 }
