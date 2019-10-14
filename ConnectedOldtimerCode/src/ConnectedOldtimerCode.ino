@@ -193,11 +193,11 @@ void updateOdometer() {
     Serial.print (" y2 = ");
     Serial.print (locationY2);
     Serial.print ("   Real-Y ");
-    Serial.print (gps.location.lng(), 6);
+    Serial.print (gps.location.lng(), 2);
     Serial.print ("      Latest Distance  = ");
     Serial.print (latestDistanceTraveled, 6);
     Serial.print ("      Odometer = ");
-    Serial.print (odometerValue, 6);
+    Serial.print (odometerValue, 2);
     
 
 
@@ -226,7 +226,7 @@ void updateDisplay() {
 
   // updates odometer value
   Serial4.printf("n1.val=");
-  Serial4.print(odometerValue);
+  Serial4.print(odometerValue, 2);
   Serial4.write(0xff);
   Serial4.write(0xff);
   Serial4.write(0xff);
