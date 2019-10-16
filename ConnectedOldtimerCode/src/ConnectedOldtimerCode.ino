@@ -133,12 +133,10 @@ void getGpsInfo() {
     
     //read speed directly 
     if (gps.location.isValid()) {
-      speed = gps.speed.kmph(); // assigns speed to a double in Kmph
-      speed = speed + 0.5 - (speed<0);// rounds speed up/down correctly
-      nextionSpeed = (uint8_t)speed; // converts double from gps to unsigned byte for the nextion
+      nextionSpeed = (uint8_t) ( gps.speed.kmph() + 0.5 - (gps.speed.kmph()<0) ); // gets speed, rounds it and converts to an integer
     }
     else {
-      Serial.println("speed invalid");
+      Serial.println("GPS Location invalid");
     }
 
 } 
@@ -147,71 +145,45 @@ void updateOdometer() {
 
     // calculate dynamic distance traveled
     if (gps.location.isUpdated()) { //use this instead of isValid to avoid calculation redundancy
+      //shift location 2 to location one and update location 2
+      if (gps.hdop.value() <= 110) {
+        locationX1 = locationX2; 
+        locationX2 = gps.location.lng(); 
+        locationY1 = locationY2; 
+        locationY2 = gps.location.lat(); 
+      }
+      latestDistanceTraveled =  distanceEarth( locationY1, locationX1, locationY2 ,locationX2 );
+      odometerValue = odometerValue + latestDistanceTraveled;
 
 
 
-
-    //collect 10 location samples, saves them to an array and averages them when full
-    combinedXs = 0;
-    for (int i = 0; i<=9; i++ ) {
-      combinedXs = combinedXs + gps.location.lng(); // ads 10 samples of GPS Latitude
-    }
-    locationX1 = locationX2; // previous X2 is shifted to x1
-    locationX2 = combinedXs/10; // as soon as sample reached 10, the average is taken and added passed to locationX1
-    if ( abs(locationX2 - locationX1) >= xDisBuffer || abs(locationX2 - locationX1) < 1) { // if the distance is big enout to pass filter val, then delta is updated, or smaller than an impossible number
-      deltaX = abs(locationX2 - locationX1);
-    }
-      
-    combinedYs = 0;  
-    for (int i = 0; i<=9; i++ ) {
-      combinedYs = combinedYs + gps.location.lat() ; // ads 10 samples of GPA Latitude
-    }  
-    locationY1 = locationY2; // previous X2 is shifted to x1
-    locationY2 = combinedYs/10; // as soon as sample reached 10, the average is taken and added passed to locationX1
-    if ( abs(locationY2 - locationY1) >= yDisBuffer || abs(locationY2 - locationY1) < 1) { // if the distance is big enout to pass filter val, then delta is updated
-      deltaY = abs(locationY2 - locationY1);
-    }
-
-    //latestDistanceTraveled = dist(locationX1, locationY1, locationX2, locationY2);
-    latestDistanceTraveled =  distanceEarth( locationY1, locationX1, locationY2 ,locationX2 );
-    odometerValue = odometerValue + abs(latestDistanceTraveled);
-    //odometerValue = 0;
-
-
-    Serial.print ("Speed = ");
-    Serial.print (nextionSpeed);
-    Serial.print ("x1 = ");
-    Serial.print (locationX1);
-    Serial.print (" x2 = ");
-    Serial.print (locationX2);
-    Serial.print ("   Real-X ");
-    Serial.print (gps.location.lat(), 6);
-    
-
-
-    Serial.print ("      y1 = ");
-    Serial.print (locationY1);
-    Serial.print (" y2 = ");
-    Serial.print (locationY2);
-    Serial.print ("   Real-Y ");
-    Serial.print (gps.location.lng(), 2);
-    Serial.print ("      Latest Distance  = ");
-    Serial.print (latestDistanceTraveled, 6);
-    Serial.print ("      Odometer = ");
-    Serial.print (odometerValue, 2);
-    Serial.print ("   Odo to int = ");
-    Serial.print ((int32_t)odometerValue, 6);
+      Serial.print ("Speed = ");
+      Serial.print (nextionSpeed);
+      Serial.print ("  x1 = ");
+      Serial.print (locationX1);
+      Serial.print (" x2 = ");
+      Serial.print (locationX2, 6);
+      Serial.print ("   y1 = ");
+      Serial.print (locationY1);
+      Serial.print (" y2 = ");
+      Serial.print (locationY2, 6);
+      Serial.print ("   Latest Distance=");
+      Serial.print (latestDistanceTraveled, 6);
+      Serial.print ("   Odometer=");
+      Serial.print (odometerValue, 6);
+      Serial.print ("  GPS accuracy=");
+      Serial.print (gps.hdop.value());
 
 
 
-    Serial.println();
+      Serial.println();
 
 
 
-    //calculates actual distance (non spherical) to be added to odometer valure
-   // latestDistanceTraveled = sqrt(deltaX*deltaX)+(deltaY*deltaY); //pythagorians theorum to calculate actual distance
-    //odometerValue = odometerValue + (uint32_t)latestDistanceTraveled;// adds new distance to odometer value after converting from doublt 
-    //odometerValue = 0;// comment in to reset odometer
+      //calculates actual distance (non spherical) to be added to odometer valure
+    // latestDistanceTraveled = sqrt(deltaX*deltaX)+(deltaY*deltaY); //pythagorians theorum to calculate actual distance
+      //odometerValue = odometerValue + (uint32_t)latestDistanceTraveled;// adds new distance to odometer value after converting from doublt 
+      //odometerValue = 0;// comment in to reset odometer
     }
 }
 
