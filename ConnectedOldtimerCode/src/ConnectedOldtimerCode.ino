@@ -11,7 +11,7 @@ uint8_t nextionSpeed = 69;
 uint8_t fuelLevel = 0;
 uint16_t motorTemperature = 0;
 uint16_t motorRPM = 0;
-double odometerValue = 0;
+double odometerValue = 100009.6789;
 int demoConnectivityValue = 64;
 static const uint32_t GPSBaud = 9600;
 unsigned long Heartbeat_200mS_Start = millis();
@@ -46,7 +46,7 @@ void setup() {
 
   //FRAM Setup stuff
   fram.begin();
-  readFromFRAM(); // pulls FRAM values for last odo, fuel, and gps into memory
+  //readFromFRAM(); // pulls FRAM values for last odo, fuel, and gps into memory
 }
 
 
@@ -174,7 +174,8 @@ void updateOdometer() {
 
     //latestDistanceTraveled = dist(locationX1, locationY1, locationX2, locationY2);
     latestDistanceTraveled =  distanceEarth( locationY1, locationX1, locationY2 ,locationX2 );
-    odometerValue = odometerValue + latestDistanceTraveled;
+    odometerValue = odometerValue + abs(latestDistanceTraveled);
+    //odometerValue = 0;
 
 
     Serial.print ("Speed = ");
@@ -198,7 +199,8 @@ void updateOdometer() {
     Serial.print (latestDistanceTraveled, 6);
     Serial.print ("      Odometer = ");
     Serial.print (odometerValue, 2);
-    
+    Serial.print ("   Odo to int = ");
+    Serial.print ((int32_t)odometerValue, 6);
 
 
 
@@ -226,7 +228,7 @@ void updateDisplay() {
 
   // updates odometer value
   Serial4.printf("n1.val=");
-  Serial4.print(odometerValue, 2);
+  Serial4.print((uint32_t)(odometerValue + 0.5 - (odometerValue<0)));
   Serial4.write(0xff);
   Serial4.write(0xff);
   Serial4.write(0xff);
