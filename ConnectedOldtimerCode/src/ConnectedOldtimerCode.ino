@@ -46,7 +46,7 @@ void setup() {
 
   //FRAM Setup stuff
   fram.begin();
-  //readFromFRAM(); // pulls FRAM values for last odo, fuel, and gps into memory
+  readFromFRAM(); // pulls FRAM values for last odo, fuel, and gps into memory
 }
 
 
