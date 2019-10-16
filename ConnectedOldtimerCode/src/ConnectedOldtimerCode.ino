@@ -11,16 +11,13 @@ uint8_t nextionSpeed = 69;
 uint8_t fuelLevel = 0;
 uint16_t motorTemperature = 0;
 uint16_t motorRPM = 0;
-double odometerValue = 100009.6789;
+double odometerValue = 0;
 int demoConnectivityValue = 64;
 static const uint32_t GPSBaud = 9600;
 unsigned long Heartbeat_200mS_Start = millis();
 unsigned long Heartbeat_1000mS_Start = millis();
 unsigned long Heartbeat_2000mS_Start = millis();
-double speed =0;
-double locationX1, locationX2, locationY1, locationY2, locationZ1, locationZ2, latestDistanceTraveled, deltaX, deltaY, deltaZ, combinedXs, combinedYs;
-double xDisBuffer, yDisBuffer = .00001;
-//double sampleLocationsX[9], sampleLocationsY[9], sampleLocationsZ[9]; delete me maybe
+double locationX1, locationX2, locationY1, locationY2, latestDistanceTraveled;
 int led = D7; 
 
 
@@ -34,6 +31,8 @@ MB85RC256V fram(Wire, 0);
 
 void setup() {
   Particle.variable("dummyValue", demoConnectivityValue);
+  Particle.variable("Location Latitude", locationY1);
+  Particle.variable("location Longitude", locationX2);
   can.begin(250000); // initialize can at 250 kbs 
   Serial.begin(9600); //usb debugging
   Serial4.begin(9600); // uart for nextion c2 & c3
@@ -155,8 +154,6 @@ void updateOdometer() {
       latestDistanceTraveled =  distanceEarth( locationY1, locationX1, locationY2 ,locationX2 );
       odometerValue = odometerValue + latestDistanceTraveled;
 
-
-
       Serial.print ("Speed = ");
       Serial.print (nextionSpeed);
       Serial.print ("  x1 = ");
@@ -173,17 +170,7 @@ void updateOdometer() {
       Serial.print (odometerValue, 6);
       Serial.print ("  GPS accuracy=");
       Serial.print (gps.hdop.value());
-
-
-
       Serial.println();
-
-
-
-      //calculates actual distance (non spherical) to be added to odometer valure
-    // latestDistanceTraveled = sqrt(deltaX*deltaX)+(deltaY*deltaY); //pythagorians theorum to calculate actual distance
-      //odometerValue = odometerValue + (uint32_t)latestDistanceTraveled;// adds new distance to odometer value after converting from doublt 
-      //odometerValue = 0;// comment in to reset odometer
     }
 }
 
@@ -205,9 +192,6 @@ void updateDisplay() {
   Serial4.write(0xff);
   Serial4.write(0xff);
 
-
-  
-  
 }
 
 //run at startup
@@ -235,11 +219,8 @@ void serialLogger (){
   Serial.println(odometerValue);
   Serial.print (" fuel:  ");
   Serial.print(fuelLevel);
-  Serial.print(" Speed= ");
-  Serial.print(speed);
   Serial.print(" NextionSpeed= ");
   Serial.print(nextionSpeed);
-
 }
 
 
