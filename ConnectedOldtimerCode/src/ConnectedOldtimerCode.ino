@@ -11,13 +11,12 @@ uint8_t nextionSpeed = 69;
 uint8_t fuelLevel = 0;
 uint16_t motorTemperature = 0;
 uint16_t motorRPM = 0;
-double odometerValue = 0;
 int demoConnectivityValue = 64;
 static const uint32_t GPSBaud = 9600;
 unsigned long Heartbeat_200mS_Start = millis();
 unsigned long Heartbeat_1000mS_Start = millis();
 unsigned long Heartbeat_2000mS_Start = millis();
-double locationX1, locationX2, locationY1, locationY2, latestDistanceTraveled;
+double locationX1, locationX2, locationY1, locationY2, latestDistanceTraveled, odometerValue;
 int led = D7; 
 
 
@@ -143,17 +142,19 @@ void getGpsInfo() {
 void updateOdometer() {
 
     // calculate dynamic distance traveled
-    if (gps.location.isUpdated()) { //use this instead of isValid to avoid calculation redundancy
-      //shift location 2 to location one and update location 2
-      if (gps.hdop.value() <= 110) {
-        locationX1 = locationX2; 
-        locationX2 = gps.location.lng(); 
-        locationY1 = locationY2; 
-        locationY2 = gps.location.lat(); 
-      }
-      latestDistanceTraveled =  distanceEarth( locationY1, locationX1, locationY2 ,locationX2 );
-      odometerValue = odometerValue + latestDistanceTraveled;
+    if (gps.location.isValid()) { //use this instead of isValid to avoid calculation redundancy
+      locationX1 = locationX2; 
+      locationX2 = gps.location.lng(); 
+      locationY1 = locationY2; 
+      locationY2 = gps.location.lat(); 
 
+
+      latestDistanceTraveled =  distanceEarth( locationY1, locationX1, locationY2 ,locationX2 );
+      
+      // filter out impossible  distances but but allow no signal events like tunnels
+      if (latestDistanceTraveled < 20.0) {
+        odometerValue = odometerValue + latestDistanceTraveled;
+      }
       Serial.print ("Speed = ");
       Serial.print (nextionSpeed);
       Serial.print ("  x1 = ");
@@ -179,7 +180,8 @@ void updateDisplay() {
 
   // sends data to display
   Serial4.printf("n0.val=");
-  Serial4.print(nextionSpeed);
+  // Serial4.print(nextionSpeed);
+  Serial4.print(gps.hdop.value());
   // next 3 writes must be made for the Nextion to accept the update
   Serial4.write(0xff);
   Serial4.write(0xff);
