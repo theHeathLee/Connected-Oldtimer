@@ -153,7 +153,7 @@ void updateOdometer() {
       latestDistanceTraveled =  distanceEarth( locationY1, locationX1, locationY2 ,locationX2 );
       
       // filter out impossible  distances but but allow no signal events like tunnels
-      if (latestDistanceTraveled < 20.0 & gps.speed.kmph() > 3) {
+      if (latestDistanceTraveled < 20.0 & (gps.speed.kmph() > 1)) {
         odometerValue = odometerValue + latestDistanceTraveled;
       }
       Serial.print ("Speed = ");
