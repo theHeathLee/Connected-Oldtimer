@@ -17,7 +17,8 @@ unsigned long Heartbeat_200mS_Start = millis();
 unsigned long Heartbeat_1000mS_Start = millis();
 unsigned long Heartbeat_2000mS_Start = millis();
 double locationX1, locationX2, locationY1, locationY2, latestDistanceTraveled, odometerValue;
-int led = D7; 
+int led = D7;
+
 
 
 TinyGPSPlus gps;
@@ -152,7 +153,7 @@ void updateOdometer() {
       latestDistanceTraveled =  distanceEarth( locationY1, locationX1, locationY2 ,locationX2 );
       
       // filter out impossible  distances but but allow no signal events like tunnels
-      if (latestDistanceTraveled < 20.0) {
+      if (latestDistanceTraveled < 20.0 & gps.speed.kmph() > 3) {
         odometerValue = odometerValue + latestDistanceTraveled;
       }
       Serial.print ("Speed = ");
