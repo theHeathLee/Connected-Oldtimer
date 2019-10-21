@@ -180,8 +180,7 @@ void updateDisplay() {
 
   // sends data to display
   Serial4.printf("n0.val=");
-  // Serial4.print(nextionSpeed);
-  Serial4.print(gps.hdop.value());
+  Serial4.print(nextionSpeed);
   // next 3 writes must be made for the Nextion to accept the update
   Serial4.write(0xff);
   Serial4.write(0xff);
