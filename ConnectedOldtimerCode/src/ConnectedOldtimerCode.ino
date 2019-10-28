@@ -153,11 +153,11 @@ void updateOdometer() {
       latestDistanceTraveled =  distanceEarth( locationY1, locationX1, locationY2 ,locationX2 );
       
       // filter out impossible  distances but but allow no signal events like tunnels
-      if (latestDistanceTraveled < 20.0 & (gps.speed.kmph() > 1)) {
+      if (latestDistanceTraveled < 20.0 & (gps.speed.kmph() > 1.0)) {
         odometerValue = odometerValue + latestDistanceTraveled;
       }
       Serial.print ("Speed = ");
-      Serial.print (nextionSpeed);
+      Serial.print (gps.speed.kmph());
       Serial.print ("  x1 = ");
       Serial.print (locationX1);
       Serial.print (" x2 = ");
@@ -189,7 +189,7 @@ void updateDisplay() {
 
   // updates odometer value
   Serial4.printf("n1.val=");
-  Serial4.print((uint32_t)(odometerValue + 0.5 - (odometerValue<0)));
+  Serial4.print((uint32_t)((odometerValue + 0.5 - (odometerValue<0)) * 0.621371192 ));
   Serial4.write(0xff);
   Serial4.write(0xff);
   Serial4.write(0xff);
