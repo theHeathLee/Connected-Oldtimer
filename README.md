@@ -61,6 +61,11 @@ Disclaimer: Still in the __developement phase__. V1 hardware has been created an
 
 <img src="https://github.com/theHeathLee/Connected-Oldtimer/blob/master/Photos/PCBA.jpg" width="880">
 
+<img src="https://github.com/theHeathLee/Connected-Oldtimer/blob/master/Photos/basicguage.jpg" width="880">
+
+
+
+
 
 
 
