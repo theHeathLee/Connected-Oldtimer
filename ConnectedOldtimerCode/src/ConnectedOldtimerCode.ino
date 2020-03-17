@@ -80,7 +80,7 @@ if (millis() >= Heartbeat_2000mS_Start + 2000) {
 }
 
 //funtions being executed as fast as possible
-//getGpsInfo();
+getGpsInfo();
 //canReceive(); // put this back in heartbeat if possible
 
 
