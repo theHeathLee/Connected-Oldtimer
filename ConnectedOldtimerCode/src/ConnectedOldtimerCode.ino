@@ -9,7 +9,7 @@ SYSTEM_THREAD(ENABLED);
 
 uint8_t nextionSpeed = 69;
 uint8_t fuelLevel = 0;
-uint16_t motorTemperature = 0;
+uint8_t motorTemperature = 10;
 uint16_t motorRPM = 0;
 int demoConnectivityValue = 64;
 static const uint32_t GPSBaud = 9600;
@@ -80,7 +80,8 @@ if (millis() >= Heartbeat_2000mS_Start + 2000) {
 }
 
 //funtions being executed as fast as possible
-getGpsInfo();
+//getGpsInfo();
+//canReceive(); // put this back in heartbeat if possible
 
 
 
@@ -89,7 +90,7 @@ getGpsInfo();
 void canReceive(){
   
   CANMessage message;
-
+  can.receive(message);
   switch (message.id)
   {
   case 0x100:
@@ -153,7 +154,7 @@ void updateOdometer() {
       latestDistanceTraveled =  distanceEarth( locationY1, locationX1, locationY2 ,locationX2 );
       
       // filter out impossible  distances but but allow no signal events like tunnels
-      if (latestDistanceTraveled < 20.0 & (gps.speed.kmph() > 1.0)) {
+      if (latestDistanceTraveled < 20.0 && (gps.speed.kmph() > 1.0)) {
         odometerValue = odometerValue + latestDistanceTraveled;
       }
       Serial.print ("Speed = ");
@@ -193,6 +194,14 @@ void updateDisplay() {
   Serial4.write(0xff);
   Serial4.write(0xff);
   Serial4.write(0xff);
+
+  //updates temperature value
+  Serial4.printf("n2.val=");
+  Serial4.print(motorTemperature);
+  Serial4.write(0xff);
+  Serial4.write(0xff);
+  Serial4.write(0xff);
+  Serial.print(motorTemperature);
 
 }
 
