@@ -72,7 +72,11 @@ Disclaimer: Still in the __developement phase__. V1 hardware has been created an
 Art Credits:
 [Freepik](https://www.flaticon.com/authors/freepik)
 
+## CAN Matrix
 
+| Value       | ID        |DLC   | Byte Pos.|
+| ------------- |:-----:|----:|   --:|
+| Temp (C)     | 0x100 | 8 |0 |
 
 # References
 
