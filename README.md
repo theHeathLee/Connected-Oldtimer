@@ -51,7 +51,7 @@ Disclaimer: Still in the __developement phase__. V1 hardware has been created an
 
 [BOM Viewer](https://htmlpreview.github.io/?https://github.com/theHeathLee/Connected-Oldtimer/blob/master/Hardware/Connected-OldtimerHardware/bom/ibom.html)
 
-# Schematic
+### Schematic
 
 <img src="https://github.com/theHeathLee/Connected-Oldtimer/blob/master/Photos/COSchematic.PNG" width="880">
 
@@ -79,6 +79,18 @@ Art Credits:
 | Value       | ID        |DLC   | Byte Pos.|
 | ------------- |:-----:|----:|   --:|
 | Temp (C)     | 0x100 | 8 |0 |
+| RPM     | 0x200 | 8 |0, 1|
+| Fuel Level    | 0x300 | 8 |0 |
+| Fuel Flow    | 0x400 | 8 |0 |
+
+## Nextion Component Values
+
+
+| Component  | Value        |
+| ------------- |:-----:|
+Speed (Kmh) | n0
+Odometer (Km) | n1
+CHT (C) | n2
 
 # References
 
