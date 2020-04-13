@@ -51,7 +51,9 @@ Disclaimer: Still in the __developement phase__. V1 hardware has been created an
 
 [BOM Viewer](https://htmlpreview.github.io/?https://github.com/theHeathLee/Connected-Oldtimer/blob/master/Hardware/Connected-OldtimerHardware/bom/ibom.html)
 
+# Schematic
 
+<img src="https://github.com/theHeathLee/Connected-Oldtimer/blob/master/Photos/COSchematic.PNG" width="880">
 
 
 ### PCB
