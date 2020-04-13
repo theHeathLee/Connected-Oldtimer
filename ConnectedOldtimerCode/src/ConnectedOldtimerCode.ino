@@ -97,7 +97,7 @@ void canReceive(){
     motorTemperature = message.data[0];
     break;
   case 0x200:
-    motorRPM = message.data[0];
+    motorRPM =  message.data[0]| message.data[1]<<8;
   case 0x300:
     fuelLevel = message.data[0];
   default:
@@ -184,24 +184,24 @@ void updateDisplay() {
   Serial4.printf("n0.val=");
   Serial4.print(nextionSpeed);
   // next 3 writes must be made for the Nextion to accept the update
-  Serial4.write(0xff);
-  Serial4.write(0xff);
-  Serial4.write(0xff);
+  nextionTerminatMessage();
 
   // updates odometer value
   Serial4.printf("n1.val=");
   Serial4.print((uint32_t)((odometerValue + 0.5 - (odometerValue<0)) * 0.621371192 ));
-  Serial4.write(0xff);
-  Serial4.write(0xff);
-  Serial4.write(0xff);
+  nextionTerminatMessage();
 
   //updates temperature value
   Serial4.printf("n2.val=");
   Serial4.print(motorTemperature);
-  Serial4.write(0xff);
-  Serial4.write(0xff);
-  Serial4.write(0xff);
+  nextionTerminatMessage();
   Serial.print(motorTemperature);
+
+  //updates RPM value
+  Serial4.printf("va0.val=");
+  Serial4.print(motorRPM);
+  nextionTerminatMessage();
+  Serial.print(motorRPM);
 
 }
 
@@ -247,4 +247,11 @@ double distanceEarth(double lat1d, double lon1d, double lat2d, double lon2d) {
 
 double deg2rad(double deg) {
   return (deg * 3.1415926536 / 180);
+}
+
+
+void nextionTerminatMessage(){
+  Serial4.write(0xff);
+  Serial4.write(0xff);
+  Serial4.write(0xff);
 }
