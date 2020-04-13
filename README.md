@@ -91,6 +91,7 @@ Art Credits:
 Speed (Kmh) | n0
 Odometer (Km) | n1
 CHT (C) | n2
+RPM | va0
 
 # References
 
