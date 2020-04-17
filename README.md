@@ -90,6 +90,7 @@ Art Credits:
 | ------------- |:-----:|
 Speed (Kmh) | n0
 Odometer (Km) | n1
+Trip Counter (Km) | n3
 CHT (C) | n2
 RPM | va0
 
