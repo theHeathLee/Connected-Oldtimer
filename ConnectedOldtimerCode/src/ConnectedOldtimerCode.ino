@@ -7,7 +7,7 @@ SYSTEM_THREAD(ENABLED);
 
 #define earthRadiusKm 6371.0 // for use in haversine calculation 
 
-uint8_t nextionSpeed = 69;
+uint8_t nextionSpeed = 120;
 uint8_t fuelLevel = 0;
 uint8_t motorTemperature = 10;
 uint16_t motorRPM = 0;
@@ -17,6 +17,7 @@ unsigned long Heartbeat_200mS_Start = millis();
 unsigned long Heartbeat_1000mS_Start = millis();
 unsigned long Heartbeat_2000mS_Start = millis();
 double locationX1, locationX2, locationY1, locationY2, latestDistanceTraveled, odometerValue;
+double tripValue = 55;
 int led = D7;
 
 
@@ -81,6 +82,7 @@ if (millis() >= Heartbeat_2000mS_Start + 2000) {
 
 //funtions being executed as fast as possible
 getGpsInfo();
+tripResetCheck();
 //canReceive(); // put this back in heartbeat if possible
 
 
@@ -136,7 +138,7 @@ void getGpsInfo() {
       nextionSpeed = (uint8_t) ( gps.speed.kmph() + 0.5 - (gps.speed.kmph()<0) ); // gets speed, rounds it and converts to an integer
     }
     else {
-      Serial.println("GPS Location invalid");
+      //Serial.println("GPS Location invalid");
     }
 
 } 
@@ -156,6 +158,7 @@ void updateOdometer() {
       // filter out impossible  distances but but allow no signal events like tunnels
       if (latestDistanceTraveled < 20.0 && (gps.speed.kmph() > 1.0)) {
         odometerValue = odometerValue + latestDistanceTraveled;
+        tripValue = tripValue + latestDistanceTraveled;
       }
       Serial.print ("Speed = ");
       Serial.print (gps.speed.kmph());
@@ -202,6 +205,11 @@ void updateDisplay() {
   Serial4.print(motorRPM);
   nextionTerminatMessage();
   Serial.print(motorRPM);
+
+  //updates RPM value
+  Serial4.printf("n3.val=");
+  Serial4.print((uint32_t)((tripValue + 0.5 - (tripValue<0)) * 0.621371192 ));
+  nextionTerminatMessage();
 
 }
 
@@ -254,4 +262,10 @@ void nextionTerminatMessage(){
   Serial4.write(0xff);
   Serial4.write(0xff);
   Serial4.write(0xff);
+}
+
+void tripResetCheck(){
+    if(Serial4.read() == 0xff){
+    tripValue = 0;
+    }
 }
