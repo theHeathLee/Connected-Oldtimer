@@ -3,6 +3,7 @@ SYSTEM_THREAD(ENABLED);
 #include "Serial5/Serial5.h"
 #include "../lib/TinyGPS++/src/TinyGPS++.h"
 #include "../lib/MB85RC256V-FRAM-RK/src/MB85RC256V-FRAM-RK.h"
+#include "../lib/ITEADLIB_Arduino_Nextion-master/Nextion.h"
 #include <math.h>
 
 #define earthRadiusKm 6371.0 // for use in haversine calculation 
