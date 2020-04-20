@@ -1,4 +1,5 @@
 SYSTEM_THREAD(ENABLED);
+SYSTEM_MODE(AUTOMATIC);
 #include "Serial4/Serial4.h"
 #include "Serial5/Serial5.h"
 #include "../lib/TinyGPS++/src/TinyGPS++.h"
@@ -19,6 +20,8 @@ unsigned long Heartbeat_2000mS_Start = millis();
 double locationX1, locationX2, locationY1, locationY2, latestDistanceTraveled, odometerValue;
 double tripValue = 55;
 int led = D7;
+int activateLock = B2;
+int activateUnlock = B3;
 
 
 
@@ -31,9 +34,16 @@ MB85RC256V fram(Wire, 0);
 
 
 void setup() {
+
+  //particle variables
   Particle.variable("dummyValue", demoConnectivityValue);
-  Particle.variable("Location Latitude", locationY1);
-  Particle.variable("location Longitude", locationX2);
+  Particle.variable("Pos.Lat", locationY1);
+  Particle.variable("Pos.Lon", locationX2);
+
+  //particle functions
+  Particle.function("LockDrs", lockDoors);
+  Particle.function("UnlockDrs", UnlockDoors);
+
   can.begin(250000); // initialize can at 250 kbs 
   Serial.begin(9600); //usb debugging
   Serial4.begin(9600); // uart for nextion c2 & c3
@@ -41,7 +51,8 @@ void setup() {
   Serial5.begin(GPSBaud); // uart for GPS
   Serial1.begin(GPSBaud); // 
   pinMode(led, OUTPUT);
-
+  pinMode(activateLock, OUTPUT);
+  pinMode(activateUnlock, OUTPUT);
   Serial.println("contoroller running");
 
   //FRAM Setup stuff
@@ -51,7 +62,6 @@ void setup() {
 
 
 void loop() {
-
 
 if (millis() >= Heartbeat_200mS_Start + 200) {
 
@@ -198,13 +208,13 @@ void updateDisplay() {
   Serial4.printf("n2.val=");
   Serial4.print(motorTemperature);
   nextionTerminatMessage();
-  Serial.print(motorTemperature);
+  //Serial.print(motorTemperature);
 
   //updates RPM value
   Serial4.printf("va0.val=");
   Serial4.print(motorRPM);
   nextionTerminatMessage();
-  Serial.print(motorRPM);
+  //Serial.print(motorRPM);
 
   //updates RPM value
   Serial4.printf("n3.val=");
@@ -268,4 +278,18 @@ void tripResetCheck(){
     if(Serial4.read() == 0xff){
     tripValue = 0;
     }
+}
+
+int lockDoors(String args){
+  digitalWrite(activateLock, LOW);
+  digitalWrite(activateUnlock, HIGH);
+  Serial.println("door lock command received");
+  return 1;
+}
+
+int UnlockDoors(String args){
+  digitalWrite(activateUnlock, LOW);
+  digitalWrite(activateLock, HIGH);
+  Serial.println("door unlock command received");
+  return 1;
 }
