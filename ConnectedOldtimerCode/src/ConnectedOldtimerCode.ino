@@ -17,13 +17,14 @@ static const uint32_t GPSBaud = 9600;
 unsigned long Heartbeat_200mS_Start = millis();
 unsigned long Heartbeat_1000mS_Start = millis();
 unsigned long Heartbeat_2000mS_Start = millis();
-double locationX1, locationX2, locationY1, locationY2, latestDistanceTraveled, odometerValue;
+double locationX1, locationX2, locationY1, locationY2, latestDistanceTraveled, odometerValue, pbBatteryVoltage;
 double tripValue = 55;
 int led = D7;
 int activateLock = B2;
 int activateUnlock = B3;
-
-
+int pbBatVoltPin = A0;
+double batCalibrationMultiplier = 12.8151; //calculated excel
+double batCalibrationOffset = -9.9; // calculated excel
 
 TinyGPSPlus gps;
 CANChannel can(CAN_C4_C5);
@@ -39,6 +40,7 @@ void setup() {
   Particle.variable("dummyValue", demoConnectivityValue);
   Particle.variable("Pos.Lat", locationY1);
   Particle.variable("Pos.Lon", locationX2);
+  Particle.variable("PBBatVolt", pbBatteryVoltage);
 
   //particle functions
   Particle.function("LockDrs", lockDoors);
@@ -86,6 +88,8 @@ if (millis() >= Heartbeat_1000mS_Start + 1000) {
 if (millis() >= Heartbeat_2000mS_Start + 2000) {
 
    updateOdometer(); 
+   pbBatteryVoltage = double((analogRead(pbBatVoltPin)*batCalibrationMultiplier)/1000)+batCalibrationOffset;
+   //Serial.println(pbBatteryVoltage);
 
   Heartbeat_2000mS_Start = millis();
 }
@@ -94,6 +98,7 @@ if (millis() >= Heartbeat_2000mS_Start + 2000) {
 getGpsInfo();
 tripResetCheck();
 //canReceive(); // put this back in heartbeat if possible
+
 
 
 
