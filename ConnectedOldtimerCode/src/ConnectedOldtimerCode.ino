@@ -23,6 +23,9 @@ int led = D7;
 int activateLock = B2;
 int activateUnlock = B3;
 int pbBatVoltPin = A0;
+int displayPower = B4;
+int ignitionSignal = D2;
+int shockSense = WKP;
 double batCalibrationMultiplier = 12.8151; //calculated excel
 double batCalibrationOffset = -9.9; // calculated excel
 
@@ -55,6 +58,9 @@ void setup() {
   pinMode(led, OUTPUT);
   pinMode(activateLock, OUTPUT);
   pinMode(activateUnlock, OUTPUT);
+  pinMode(displayPower, OUTPUT);
+  pinMode(ignitionSignal, INPUT);
+  pinMode(shockSense, INPUT);
   Serial.println("contoroller running");
 
   //FRAM Setup stuff
@@ -95,8 +101,10 @@ if (millis() >= Heartbeat_2000mS_Start + 2000) {
 }
 
 //funtions being executed as fast as possible
+ignitionSignalCheck();
 getGpsInfo();
 tripResetCheck();
+shockSensorCheck();
 //canReceive(); // put this back in heartbeat if possible
 
 
@@ -297,4 +305,21 @@ int UnlockDoors(String args){
   digitalWrite(activateLock, HIGH);
   Serial.println("door unlock command received");
   return 1;
+}
+
+void ignitionSignalCheck(){
+  if (digitalRead(ignitionSignal) == HIGH){
+    digitalWrite(displayPower, HIGH);
+  }
+  else
+  {
+    digitalWrite(displayPower, LOW);
+  }
+  
+}
+
+void shockSensorCheck(){
+    if(digitalRead(shockSense)== HIGH){
+      Serial.println("MOVEMENT Detected!!!");
+    }
 }
