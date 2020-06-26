@@ -23,7 +23,14 @@ int led = D7;
 int activateLock = B2;
 int activateUnlock = B3;
 int pbBatVoltPin = A0;
-double batCalibrationMultiplier = 12.8151; //calculated excel
+int pwerDisplayEnable = B4;
+int ignitionSignal = D2;
+int GPSEnable = B5;
+int pwr5VoltEnable = A1;
+int shockSense = WKP;
+
+//todo change to defien 
+double batCalibrationMultiplier = 12.8151; //calculated excel todo c
 double batCalibrationOffset = -9.9; // calculated excel
 
 TinyGPSPlus gps;
@@ -45,7 +52,10 @@ void setup() {
   //particle functions
   Particle.function("LockDrs", lockDoors);
   Particle.function("UnlockDrs", UnlockDoors);
-
+  Particle.function("deepSleep", activateDeepSleep);
+  Particle.function("activate5v", activate5Volts);
+  
+  
   can.begin(250000); // initialize can at 250 kbs 
   Serial.begin(9600); //usb debugging
   Serial4.begin(9600); // uart for nextion c2 & c3
@@ -55,7 +65,16 @@ void setup() {
   pinMode(led, OUTPUT);
   pinMode(activateLock, OUTPUT);
   pinMode(activateUnlock, OUTPUT);
+  pinMode(pwerDisplayEnable, OUTPUT);
+  pinMode(GPSEnable, OUTPUT);
+  pinMode(pwr5VoltEnable, OUTPUT);
+  pinMode(ignitionSignal, INPUT);
+  pinMode(shockSense, INPUT);
   Serial.println("contoroller running");
+
+  digitalWrite(GPSEnable, HIGH);
+  //System.sleep(SLEEP_MODE_DEEP);
+  
 
   //FRAM Setup stuff
   fram.begin();
@@ -95,8 +114,10 @@ if (millis() >= Heartbeat_2000mS_Start + 2000) {
 }
 
 //funtions being executed as fast as possible
+ignitionSignalCheck();
 getGpsInfo();
 tripResetCheck();
+shockSensorCheck();
 //canReceive(); // put this back in heartbeat if possible
 
 
@@ -297,4 +318,38 @@ int UnlockDoors(String args){
   digitalWrite(activateLock, HIGH);
   Serial.println("door unlock command received");
   return 1;
+}
+
+void ignitionSignalCheck(){
+  if (digitalRead(ignitionSignal) == HIGH){
+    digitalWrite(pwerDisplayEnable, HIGH);
+    digitalWrite(pwr5VoltEnable, HIGH);
+  }
+  else
+  {
+    digitalWrite(pwerDisplayEnable, LOW);
+  }
+  
+}
+
+void shockSensorCheck(){
+    if(digitalRead(shockSense)== HIGH){
+      Serial.println("MOVEMENT Detected!!!");
+    }
+}
+
+int activateDeepSleep(String args){
+  //System.sleep(SLEEP_MODE_DEEP);
+  SystemSleepConfiguration config;
+  config.mode(SystemSleepMode::HIBERNATE)
+        .gpio(WKP, RISING)
+        .duration(60s);
+  SystemSleepResult result = System.sleep(config);
+  return 1;
+}
+
+
+int activate5Volts(String args){
+digitalWrite(pwr5VoltEnable, atoi(args));
+  return atoi(args);
 }
