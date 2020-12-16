@@ -251,23 +251,23 @@ void updateDisplay() {
 
 //run at startup
 void readFromFRAM () {
-  fram.get(0, odometerValue);// 4 bytes
+  fram.get(0, odometerValue);// 8 bytes
   fram.get(8, fuelLevel);// 1 byte
   fram.get(9, locationX2);// 8 bytes
   fram.get(17, locationY2);// 8 bytes
-  fram.put(25, tripValue);// 4 bytes
+  fram.get(25, tripValue);// 8 bytes
 }
 
 
 // stores data to FRAM chip every 5 seconds
 void storeToFRAM (){
 
-    //fram.writeData(0, (uint8_t *)&odometerValue, sizeof(odometerValue));
-    fram.put(0, odometerValue);// 4 bytes
-    fram.put(8, fuelLevel);// 1 byte
-    fram.put(9, locationX2);// 8 bytes
-    fram.put(17, locationY2);// 8 bytes
-    fram.put(25, tripValue);// 4 bytes
+  //fram.writeData(0, (uint8_t *)&odometerValue, sizeof(odometerValue));
+  fram.put(0, odometerValue);// 8 bytes
+  fram.put(8, fuelLevel);// 1 byte
+  fram.put(9, locationX2);// 8 bytes
+  fram.put(17, locationY2);// 8 bytes
+  fram.put(25, tripValue);// 8 bytes
 
 }
 
