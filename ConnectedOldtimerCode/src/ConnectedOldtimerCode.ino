@@ -242,10 +242,10 @@ void updateDisplay() {
   nextionTerminatMessage();
   //Serial.print(motorRPM);
 
-  //updates RPM value
+  //updates trip value
   Serial4.printf("n3.val=");
   Serial4.print((uint32_t)((tripValue + 0.5 - (tripValue<0)) * 0.621371192 ));
-  nextionTerminatMessage();
+  nextionTerminatMessage(); 
 
 }
 
