@@ -242,32 +242,32 @@ void updateDisplay() {
   nextionTerminatMessage();
   //Serial.print(motorRPM);
 
-  //updates RPM value
+  //updates trip value
   Serial4.printf("n3.val=");
   Serial4.print((uint32_t)((tripValue + 0.5 - (tripValue<0)) * 0.621371192 ));
-  nextionTerminatMessage();
+  nextionTerminatMessage(); 
 
 }
 
 //run at startup
 void readFromFRAM () {
-  fram.get(0, odometerValue);// 4 bytes
+  fram.get(0, odometerValue);// 8 bytes
   fram.get(8, fuelLevel);// 1 byte
   fram.get(9, locationX2);// 8 bytes
   fram.get(17, locationY2);// 8 bytes
-  fram.put(18, tripValue);// 4 bytes
+  fram.get(25, tripValue);// 8 bytes
 }
 
 
 // stores data to FRAM chip every 5 seconds
 void storeToFRAM (){
 
-    //fram.writeData(0, (uint8_t *)&odometerValue, sizeof(odometerValue));
-    fram.put(0, odometerValue);// 4 bytes
-    fram.put(8, fuelLevel);// 1 byte
-    fram.put(9, locationX2);// 8 bytes
-    fram.put(17, locationY2);// 8 bytes
-    fram.put(18, tripValue);// 4 bytes
+  //fram.writeData(0, (uint8_t *)&odometerValue, sizeof(odometerValue));
+  fram.put(0, odometerValue);// 8 bytes
+  fram.put(8, fuelLevel);// 1 byte
+  fram.put(9, locationX2);// 8 bytes
+  fram.put(17, locationY2);// 8 bytes
+  fram.put(25, tripValue);// 8 bytes
 
 }
 
@@ -303,7 +303,11 @@ void nextionTerminatMessage(){
 }
 
 void tripResetCheck(){
-    if(Serial4.read() == 0xff){
+    char buffer[2] = {'a'};
+    char * bufferPtr = buffer;
+    Serial4.readBytes(bufferPtr, 2);
+    if(buffer[0] == 'f' && buffer[1] == 'f')
+    {
     tripValue = 0;
     }
 }
