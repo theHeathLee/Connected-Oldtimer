@@ -255,7 +255,7 @@ void readFromFRAM () {
   fram.get(8, fuelLevel);// 1 byte
   fram.get(9, locationX2);// 8 bytes
   fram.get(17, locationY2);// 8 bytes
-  fram.put(18, tripValue);// 4 bytes
+  fram.put(25, tripValue);// 4 bytes
 }
 
 
@@ -267,7 +267,7 @@ void storeToFRAM (){
     fram.put(8, fuelLevel);// 1 byte
     fram.put(9, locationX2);// 8 bytes
     fram.put(17, locationY2);// 8 bytes
-    fram.put(18, tripValue);// 4 bytes
+    fram.put(25, tripValue);// 4 bytes
 
 }
 
