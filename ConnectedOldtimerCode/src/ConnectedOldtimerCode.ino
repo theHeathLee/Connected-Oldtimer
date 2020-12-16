@@ -303,7 +303,11 @@ void nextionTerminatMessage(){
 }
 
 void tripResetCheck(){
-    if(Serial4.read() == 0xff){
+    char buffer[2] = {'a'};
+    char * bufferPtr = buffer;
+    Serial4.readBytes(bufferPtr, 2);
+    if(buffer[0] == 'f' && buffer[1] == 'f')
+    {
     tripValue = 0;
     }
 }
