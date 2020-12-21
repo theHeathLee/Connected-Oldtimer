@@ -6,6 +6,9 @@ SYSTEM_MODE(AUTOMATIC);
 #include "../lib/MB85RC256V-FRAM-RK/src/MB85RC256V-FRAM-RK.h"
 #include <math.h>
 
+#include "../lib/isotp-c/src/isotp.h"
+//#include "../lib/isotp-c/isotp_user.h"
+
 #define earthRadiusKm 6371.0 // for use in haversine calculation 
 
 uint8_t nextionSpeed = 120;
@@ -110,6 +113,8 @@ if (millis() >= Heartbeat_2000mS_Start + 2000) {
    pbBatteryVoltage = double((analogRead(pbBatVoltPin)*batCalibrationMultiplier)/1000)+batCalibrationOffset;
    //Serial.println(pbBatteryVoltage);
 
+   canSendIsoTP();
+
   Heartbeat_2000mS_Start = millis();
 }
 
@@ -155,9 +160,23 @@ void canSend(){
   messageOut.data[2] = 0xEE;
   can.transmit(messageOut); //actually transmits the message 
 
+  
+
 }  
 
-
+static IsoTpLink g_link;
+#define ISOTP_BUFSIZE 20
+static uint8_t g_isotpRecvBuf[ISOTP_BUFSIZE];
+static uint8_t g_isotpSendBuf[ISOTP_BUFSIZE];
+void canSendIsoTP()
+{
+  isotp_init_link(&g_link, 0x700,
+						g_isotpSendBuf, sizeof(g_isotpSendBuf), 
+						g_isotpRecvBuf, sizeof(g_isotpRecvBuf));
+  byte txData[] = {0x02,0x01,0x00,0x55,0x55,0x55,0x55,0x55,0x66,0x77};
+  //send via iso-tp
+  isotp_send(&g_link , txData, sizeof(txData));
+}
 
 void statusLED(){
   
