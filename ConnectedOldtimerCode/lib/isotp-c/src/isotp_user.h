@@ -1,5 +1,10 @@
-#ifndef __ISOTP_USER_H__
-#define __ISOTP_USER_H__
+//#ifndef __ISOTP_USER_H__
+//#define __ISOTP_USER_H__
+/*
+#ifdef __cplusplus
+extern "C"{
+#endif
+*/
 #include <stdint.h>
 /* user implemented, print debug message */
 void isotp_user_debug(const char* message, ...);
@@ -11,5 +16,5 @@ int  isotp_user_send_can(const uint32_t arbitration_id,
 /* user implemented, get millisecond */
 uint32_t isotp_user_get_ms(void);
 
-#endif // __ISOTP_H__
+//#endif // __ISOTP_H__
 

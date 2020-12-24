@@ -5,8 +5,9 @@ SYSTEM_MODE(AUTOMATIC);
 #include "../lib/TinyGPS++/src/TinyGPS++.h"
 #include "../lib/MB85RC256V-FRAM-RK/src/MB85RC256V-FRAM-RK.h"
 #include <math.h>
-
+//extern "C"{
 #include "../lib/isotp-c/src/isotp.h"
+//}
 //#include "../lib/isotp-c/isotp_user.h"
 
 #define earthRadiusKm 6371.0 // for use in haversine calculation 
