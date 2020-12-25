@@ -166,17 +166,18 @@ void canSend(){
 }  
 
 static IsoTpLink g_link;
-#define ISOTP_BUFSIZE 20
+#define ISOTP_BUFSIZE 100
 static uint8_t g_isotpRecvBuf[ISOTP_BUFSIZE];
 static uint8_t g_isotpSendBuf[ISOTP_BUFSIZE];
 void canSendIsoTP()
 {
-  isotp_init_link(&g_link, 0x700,
+  isotp_init_link(&g_link, 0x703,
 						g_isotpSendBuf, sizeof(g_isotpSendBuf), 
 						g_isotpRecvBuf, sizeof(g_isotpRecvBuf));
-  byte txData[] = {0x02,0x01,0x00,0x55,0x55,0x55,0x55,0x55,0x66,0x77};
+  uint8_t txData[] = {0x02,0x01,0x00,0x55,0x55,0x55,0x55,0x55,0x66,0x77};
+  uint8_t *txDataPtr = txData;
   //send via iso-tp
-  isotp_send(&g_link , txData, sizeof(txData));
+  isotp_send(&g_link , txDataPtr, sizeof(txData));
 }
 
 void statusLED(){
