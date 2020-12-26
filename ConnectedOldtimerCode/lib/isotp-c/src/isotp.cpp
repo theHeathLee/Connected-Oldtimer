@@ -523,10 +523,11 @@ int  isotp_user_send_can(const uint32_t arbitration_id,
     CANChannel can(CAN_C4_C5);
     CANMessage messageIsoTp;
     messageIsoTp.id = arbitration_id;
-    *messageIsoTp.data = *data;
+    uint8_t * destPtr = messageIsoTp.data;
+    memcpy(destPtr, data, size);
     messageIsoTp.len = size;
-    can.transmit(messageIsoTp); 
     isotp_user_debug("message sent");
+    can.transmit(messageIsoTp); 
     return 1;
 }
 
