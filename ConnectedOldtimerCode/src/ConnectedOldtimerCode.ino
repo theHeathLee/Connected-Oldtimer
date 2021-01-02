@@ -43,7 +43,11 @@ CANChannel can(CAN_C4_C5);
 //FRAM Stuff
 MB85RC256V fram(Wire, 0);
 
-
+//iso-tp stuff 
+static IsoTpLink g_link;
+#define ISOTP_BUFSIZE 100
+static uint8_t g_isotpRecvBuf[ISOTP_BUFSIZE];
+static uint8_t g_isotpSendBuf[ISOTP_BUFSIZE];
 
 void setup() {
 
@@ -83,6 +87,11 @@ void setup() {
   //FRAM Setup stuff
   fram.begin();
   readFromFRAM(); // pulls FRAM values for last odo, fuel, and gps into memory
+
+  //iso tp stuff
+  isotp_init_link(&g_link, 0x703,
+						g_isotpSendBuf, sizeof(g_isotpSendBuf), 
+						g_isotpRecvBuf, sizeof(g_isotpRecvBuf));
 }
 
 
@@ -91,8 +100,8 @@ void loop() {
 if (millis() >= Heartbeat_200mS_Start + 200) {
 
     //all funtions to be run every 200mS
-    canReceive();
-    canSend();
+    
+    //canSend();
     updateDisplay();
 
     Heartbeat_200mS_Start = millis(); //reset timer
@@ -120,12 +129,13 @@ if (millis() >= Heartbeat_2000mS_Start + 2000) {
 }
 
 //funtions being executed as fast as possible
-ignitionSignalCheck();
+//ignitionSignalCheck();
+digitalWrite(pwerDisplayEnable, HIGH);
 getGpsInfo();
 tripResetCheck();
 shockSensorCheck();
-//canReceive(); // put this back in heartbeat if possible
-
+canReceive();
+isotp_poll(&g_link);
 
 
 
@@ -135,6 +145,7 @@ void canReceive(){
   
   CANMessage message;
   can.receive(message);
+  uint8_t *rxDataPtr = message.data;
   switch (message.id)
   {
   case 0x100:
@@ -144,9 +155,13 @@ void canReceive(){
     motorRPM =  message.data[0]| message.data[1]<<8;
   case 0x300:
     fuelLevel = message.data[0];
+  case 0x704:
+    isotp_on_can_message(&g_link, rxDataPtr, message.len);
+    Serial.println("704 Received!");
   default:
     break;
   }
+  //isotp_receive(@g_link, rxDataPtr, 8, 8);
 
   
 }  
@@ -155,26 +170,21 @@ void canSend(){
 
   CANMessage messageOut;
   messageOut.id = 0x555;
-  messageOut.len = 3;
+  messageOut.len = 4;
   messageOut.data[0] = 0xC0;
   messageOut.data[1] = 0xff;
   messageOut.data[2] = 0xEE;
+  messageOut.data[2] = 0x01;
   can.transmit(messageOut); //actually transmits the message 
 
   
 
 }  
 
-static IsoTpLink g_link;
-#define ISOTP_BUFSIZE 100
-static uint8_t g_isotpRecvBuf[ISOTP_BUFSIZE];
-static uint8_t g_isotpSendBuf[ISOTP_BUFSIZE];
+
 void canSendIsoTP()
 {
-  isotp_init_link(&g_link, 0x703,
-						g_isotpSendBuf, sizeof(g_isotpSendBuf), 
-						g_isotpRecvBuf, sizeof(g_isotpRecvBuf));
-  uint8_t txData[] = {0x02,0x01,0x00,0x55,0x55,0x55,0x55,0x55,0x66,0x77};
+  uint8_t txData[] = {0x02,0x01,0x06,0x55,0x55, 0x54,0x53,0x55,0x66,0x77};
   uint8_t *txDataPtr = txData;
   //send via iso-tp
   isotp_send(&g_link , txDataPtr, sizeof(txData));
