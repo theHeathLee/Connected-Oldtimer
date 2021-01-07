@@ -88,7 +88,6 @@ void loop() {
 if (millis() >= Heartbeat_200mS_Start + 200) {
 
     //all funtions to be run every 200mS
-    canReceive();
     canSend();
     updateDisplay();
 
@@ -117,9 +116,9 @@ if (millis() >= Heartbeat_2000mS_Start + 2000) {
 //funtions being executed as fast as possible
 ignitionSignalCheck();
 getGpsInfo();
-tripResetCheck();
+//tripResetCheck(); bug: this is causing a big delay
 shockSensorCheck();
-//canReceive(); // put this back in heartbeat if possible
+canReceive(); 
 
 
 
@@ -141,11 +140,11 @@ void canReceive(){
   case 0x300:
     fuelLevel = message.data[0];
     break;
-  case 0x0000B600:
+  case 0xB600:
     //maybe add some sensors 
     break;
-  case 0x0000B601:
-    motorRPM = message.data[0] | message.data[1] << 8;
+  case 0xB601:
+    motorRPM = message.data[0] << 8 | message.data[1];
     fuelLevel = message.data[7];
     break;
   default:
