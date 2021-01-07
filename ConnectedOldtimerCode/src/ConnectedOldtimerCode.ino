@@ -56,7 +56,8 @@ void setup() {
   Particle.function("activate5v", activate5Volts);
   
   
-  can.begin(250000); // initialize can at 250 kbs 
+  //can.begin(250000); // initialize can at 250 kbs //todo set to compile switch
+  can.begin(500000); // initialize can at 250 kbs 
   Serial.begin(9600); //usb debugging
   Serial4.begin(9600); // uart for nextion c2 & c3
   Serial1.blockOnOverrun(true);
@@ -87,7 +88,6 @@ void loop() {
 if (millis() >= Heartbeat_200mS_Start + 200) {
 
     //all funtions to be run every 200mS
-    canReceive();
     canSend();
     updateDisplay();
 
@@ -116,9 +116,9 @@ if (millis() >= Heartbeat_2000mS_Start + 2000) {
 //funtions being executed as fast as possible
 ignitionSignalCheck();
 getGpsInfo();
-tripResetCheck();
+//tripResetCheck(); bug: this is causing a big delay
 shockSensorCheck();
-//canReceive(); // put this back in heartbeat if possible
+canReceive(); 
 
 
 
@@ -136,8 +136,17 @@ void canReceive(){
     break;
   case 0x200:
     motorRPM =  message.data[0]| message.data[1]<<8;
+    break;
   case 0x300:
     fuelLevel = message.data[0];
+    break;
+  case 0xB600:
+    //maybe add some sensors 
+    break;
+  case 0xB601:
+    motorRPM = message.data[0] << 8 | message.data[1];
+    fuelLevel = message.data[7];
+    break;
   default:
     break;
   }
