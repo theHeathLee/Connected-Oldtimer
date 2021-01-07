@@ -24,7 +24,7 @@ Disclaimer: Still in the __developement phase__. V1 hardware has been created an
 - CAN Bus 
 - Motor Temperature 
 - Movement Sensor 
-- 3D Printed Display mount ([Thingiverse](https://www.thingiverse.com/thing:2223484))
+- 3D Printed Display mount ([Thingiverse](https://www.thingiverse.com/thing:4713912))
 
 ### To be implemented:
 
