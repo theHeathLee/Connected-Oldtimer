@@ -16,6 +16,7 @@ Disclaimer: Still in the __developement phase__. V1 hardware has been created an
 ### Software used:
 - Visual Studio Code w/ [Particle Workbench Extentsion](https://marketplace.visualstudio.com/items?itemName=particle.particle-vscode-pack)🤘
 - Particle [Cloud](https://www.particle.io/device-cloud/) 
+- [BusMaster](http://rbei-etas.github.io/busmaster/)
 
 ### Things implemented:
 
