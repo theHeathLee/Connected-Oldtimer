@@ -56,7 +56,8 @@ void setup() {
   Particle.function("activate5v", activate5Volts);
   
   
-  can.begin(250000); // initialize can at 250 kbs 
+  //can.begin(250000); // initialize can at 250 kbs //todo set to compile switch
+  can.begin(500000); // initialize can at 250 kbs 
   Serial.begin(9600); //usb debugging
   Serial4.begin(9600); // uart for nextion c2 & c3
   Serial1.blockOnOverrun(true);
@@ -136,8 +137,17 @@ void canReceive(){
     break;
   case 0x200:
     motorRPM =  message.data[0]| message.data[1]<<8;
+    break;
   case 0x300:
     fuelLevel = message.data[0];
+    break;
+  case 0x0000B600:
+    //maybe add some sensors 
+    break;
+  case 0x0000B601:
+    motorRPM = message.data[0] | message.data[1] << 8;
+    fuelLevel = message.data[7];
+    break;
   default:
     break;
   }
