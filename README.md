@@ -67,9 +67,9 @@ Disclaimer: Still in the __developement phase__. V1 hardware has been created an
 <img src="https://github.com/theHeathLee/Connected-Oldtimer/blob/master/Photos/basicguage.jpg" width="880">
 
 
+## 3D Printed Bracket
 
-
-
+![Alt Text](https://github.com/theHeathLee/Connected-Oldtimer/blob/master/Photos/3dPrintGif.gif)
 
 
 Art Credits:
