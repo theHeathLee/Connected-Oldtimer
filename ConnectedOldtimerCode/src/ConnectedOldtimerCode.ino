@@ -328,16 +328,6 @@ void nextionTerminatMessage(){
   nexSerial.write(0xff);
 }
 
-void tripResetCheck(){
-    char buffer[2] = {'a'};
-    char * bufferPtr = buffer;
-    nexSerial.readBytes(bufferPtr, 2);
-    if(buffer[0] == 'f' && buffer[1] == 'f')
-    {
-    tripValue = 0;
-    }
-}
-
 int lockDoors(String args){
   digitalWrite(activateLock, LOW);
   digitalWrite(activateUnlock, HIGH);
