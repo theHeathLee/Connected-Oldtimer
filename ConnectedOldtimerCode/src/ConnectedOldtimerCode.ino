@@ -4,6 +4,8 @@ SYSTEM_MODE(AUTOMATIC);
 #include "Serial5/Serial5.h"
 #include "../lib/TinyGPS++/src/TinyGPS++.h"
 #include "../lib/MB85RC256V-FRAM-RK/src/MB85RC256V-FRAM-RK.h"
+#include "../lib/ITEADLIB_Nextion\src/ITEADLIB_Nextion.h"
+//#include "../lib/ITEADLIB_Nextion\src\ITEADLIB_Nextion\Nextion.h"
 #include <math.h>
 
 #define earthRadiusKm 6371.0 // for use in haversine calculation 
@@ -28,6 +30,15 @@ int ignitionSignal = D2;
 int GPSEnable = B5;
 int pwr5VoltEnable = A1;
 int shockSense = WKP;
+
+//Nextion Object Defs
+USARTSerial& nexSerial = Serial4;
+NexButton b0 = NexButton(1, 2, "b0");
+NexTouch *nex_listen_list[] = 
+{
+    &b0,
+    NULL
+};
 
 //todo change to defien 
 double batCalibrationMultiplier = 12.8151; //calculated excel todo c
@@ -59,7 +70,6 @@ void setup() {
   //can.begin(250000); // initialize can at 250 kbs //todo set to compile switch
   can.begin(500000); // initialize can at 250 kbs 
   Serial.begin(9600); //usb debugging
-  Serial4.begin(9600); // uart for nextion c2 & c3
   Serial1.blockOnOverrun(true);
   Serial5.begin(GPSBaud); // uart for GPS
   Serial1.begin(GPSBaud); // 
@@ -80,6 +90,12 @@ void setup() {
   //FRAM Setup stuff
   fram.begin();
   readFromFRAM(); // pulls FRAM values for last odo, fuel, and gps into memory
+
+  //Nextion
+  nexInit();
+  
+  b0.attachPop(b0PopCallback, &b0);
+
 }
 
 
@@ -119,6 +135,7 @@ getGpsInfo();
 //tripResetCheck(); bug: this is causing a big delay
 shockSensorCheck();
 canReceive(); 
+nexLoop(nex_listen_list);
 
 
 
@@ -229,31 +246,31 @@ void updateDisplay() {
 
 
   // sends data to display
-  Serial4.printf("n0.val=");
-  Serial4.print(nextionSpeed);
+  nexSerial.printf("n0.val=");
+  nexSerial.print(nextionSpeed);
   // next 3 writes must be made for the Nextion to accept the update
   nextionTerminatMessage();
 
   // updates odometer value
-  Serial4.printf("n1.val=");
-  Serial4.print((uint32_t)((odometerValue + 0.5 - (odometerValue<0)) * 0.621371192 ));
+  nexSerial.printf("n1.val=");
+  nexSerial.print((uint32_t)((odometerValue + 0.5 - (odometerValue<0)) * 0.621371192 ));
   nextionTerminatMessage();
 
   //updates temperature value
-  Serial4.printf("n2.val=");
-  Serial4.print(motorTemperature);
+  nexSerial.printf("n2.val=");
+  nexSerial.print(motorTemperature);
   nextionTerminatMessage();
   //Serial.print(motorTemperature);
 
   //updates RPM value
-  Serial4.printf("va0.val=");
-  Serial4.print(motorRPM);
+  nexSerial.printf("va0.val=");
+  nexSerial.print(motorRPM);
   nextionTerminatMessage();
   //Serial.print(motorRPM);
 
   //updates trip value
-  Serial4.printf("n3.val=");
-  Serial4.print((uint32_t)((tripValue + 0.5 - (tripValue<0)) * 0.621371192 ));
+  nexSerial.printf("n3.val=");
+  nexSerial.print((uint32_t)((tripValue + 0.5 - (tripValue<0)) * 0.621371192 ));
   nextionTerminatMessage(); 
 
 }
@@ -306,19 +323,9 @@ double deg2rad(double deg) {
 
 
 void nextionTerminatMessage(){
-  Serial4.write(0xff);
-  Serial4.write(0xff);
-  Serial4.write(0xff);
-}
-
-void tripResetCheck(){
-    char buffer[2] = {'a'};
-    char * bufferPtr = buffer;
-    Serial4.readBytes(bufferPtr, 2);
-    if(buffer[0] == 'f' && buffer[1] == 'f')
-    {
-    tripValue = 0;
-    }
+  nexSerial.write(0xff);
+  nexSerial.write(0xff);
+  nexSerial.write(0xff);
 }
 
 int lockDoors(String args){
@@ -367,4 +374,10 @@ int activateDeepSleep(String args){
 int activate5Volts(String args){
 digitalWrite(pwr5VoltEnable, atoi(args));
   return atoi(args);
+}
+
+
+void b0PopCallback(void *ptr)
+{
+  tripValue = 0;
 }
