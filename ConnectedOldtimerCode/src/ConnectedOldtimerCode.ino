@@ -70,7 +70,6 @@ void setup() {
   //can.begin(250000); // initialize can at 250 kbs //todo set to compile switch
   can.begin(500000); // initialize can at 250 kbs 
   Serial.begin(9600); //usb debugging
-  //Serial4.begin(9600); // uart for nextion c2 & c3
   Serial1.blockOnOverrun(true);
   Serial5.begin(GPSBaud); // uart for GPS
   Serial1.begin(GPSBaud); // 
@@ -390,5 +389,5 @@ digitalWrite(pwr5VoltEnable, atoi(args));
 
 void b0PopCallback(void *ptr)
 {
-//put what button does here
+  tripValue = 0;
 }
