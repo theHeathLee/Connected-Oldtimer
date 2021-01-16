@@ -22,18 +22,9 @@ Disclaimer: Still in the __developement phase__. V1 hardware has been created an
 
 - 3G Connectivity and vehicle to [cloud](https://www.particle.io/device-cloud/) data transfer   
 - Gps velocity and location tracking and display  
-- CAN Bus 
-- Motor Temperature 
+- CAN Bus Sensor Data
 - Movement Sensor 
 - 3D Printed Display mount ([Thingiverse](https://www.thingiverse.com/thing:4713912))
-
-### To be implemented:
-
-- Motor RPM
-- Fuel Level
-- Fuel Flow
-- daylight sensor
-- Fine Dust Report (for [Open Data Project](https://luftdaten.info/))
 
 ### Parts List:
 
@@ -41,12 +32,12 @@ Disclaimer: Still in the __developement phase__. V1 hardware has been created an
 - [Nextion 3.5" Display](https://www.itead.cc/nextion-nx4832t035.html)
 - [Adafruit Ultimage GPS](https://www.adafruit.com/product/746)
 - [Adafruit I2C FRAM](https://www.adafruit.com/product/1895)
-- [Piezoelectric Sensor](https://www.digikey.de/product-detail/de/murata-electronics/7BB-20-6L0/490-7712-ND/4358152?utm_adgroup=Buzzer+Elements%2C+Piezo+Benders&mkwid=sdpYcvxN4&pcrid=340842080350&pkw=&pmt=&pdv=c&productid=4358152&slid=&gclid=CjwKCAjwq-TmBRBdEiwAaO1en7SKzERGe0ExhqXDZEztK8s2fRCffiLP5_EfisI5quuC8e3fuQmO5BoC3RUQAvD_BwE)
+- [Shock Sensor SW-420](https://components101.com/sensors/sw-420-vibration-sensor-module)
 - [CAN Bus Tranceiver Module (TJA1051)](https://www.nxp.com/products/analog/interfaces/in-vehicle-network/can-transceiver-and-controllers/high-speed-can-transceiver:TJA1051)
-- [K-Type Thermocouple amplifier](https://www.ebay.de/itm/DC-5V-MAX6675-Module-K-Type-Thermocouple-Temperature-Sensor-M6-for-Arduino/172165516851?hash=item2815dd4e33:g:~eMAAOSw0QFXDRCH)
-- [CAN Bus Cable](https://www.conrad.de/de/p/busleitung-unitronic-bus-2-x-2-x-0-22-mm-violett-lapp-2170261-meterware-604030.html
-)
-- [Fuel Flow Meter](https://www.conrad.com/p/bt-bio-tech-fch-m-pom-lc-ad-6-mm-low-flow-flowmeter-non-corrosive-liquids-water-diesel-oil-150392?searchTerm=150392&searchType=suggest&searchSuggest=product)
+- [CAN Bus Cable](https://www.conrad.de/de/p/busleitung-unitronic-bus-2-x-2-x-0-22-mm-violett-lapp-2170261-meterware-604030.html)
+- PCB From this Repo
+- [~~Fuel Flow Meter~~](https://www.conrad.com/p/bt-bio-tech-fch-m-pom-lc-ad-6-mm-low-flow-flowmeter-non-corrosive-liquids-water-diesel-oil-150392?searchTerm=150392&searchType=suggest&searchSuggest=product)
+
 
 # End Product
 
