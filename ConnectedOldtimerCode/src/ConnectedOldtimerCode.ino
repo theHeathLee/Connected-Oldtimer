@@ -56,8 +56,8 @@ void setup() {
 
   //particle variables
   Particle.variable("dummyValue", demoConnectivityValue);
-  Particle.variable("Pos.Lat", locationY1);
-  Particle.variable("Pos.Lon", locationX2);
+  Particle.variable("PosLat", locationY1);
+  Particle.variable("PosLon", locationX2);
   Particle.variable("PBBatVolt", pbBatteryVoltage);
 
   //particle functions
@@ -68,7 +68,7 @@ void setup() {
   
   
   //can.begin(250000); // initialize can at 250 kbs //todo set to compile switch
-  can.begin(500000); // initialize can at 250 kbs 
+  can.begin(250000); // initialize can at 250 kbs 
   Serial.begin(9600); //usb debugging
   Serial1.blockOnOverrun(true);
   Serial5.begin(GPSBaud); // uart for GPS
