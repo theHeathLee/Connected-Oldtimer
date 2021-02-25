@@ -56,7 +56,7 @@ void setup() {
 
   //particle variables
   Particle.variable("dummyValue", demoConnectivityValue);
-  Particle.variable("PosLat", locationY1);
+  Particle.variable("PosLat", locationY2);
   Particle.variable("PosLon", locationX2);
   Particle.variable("PBBatVolt", pbBatteryVoltage);
 
