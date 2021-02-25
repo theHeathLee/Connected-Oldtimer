@@ -56,7 +56,7 @@ void setup() {
 
   //particle variables
   Particle.variable("dummyValue", demoConnectivityValue);
-  Particle.variable("PosLat", locationY1);
+  Particle.variable("PosLat", locationY2);
   Particle.variable("PosLon", locationX2);
   Particle.variable("PBBatVolt", pbBatteryVoltage);
 
@@ -271,6 +271,20 @@ void updateDisplay() {
   //updates trip value
   nexSerial.printf("n3.val=");
   nexSerial.print((uint32_t)((tripValue + 0.5 - (tripValue<0)) * 0.621371192 ));
+  nextionTerminatMessage(); 
+
+  nexSerial.printf("n4.val=");
+  nexSerial.print(Time.hour());
+  nextionTerminatMessage(); 
+  nexSerial.printf("n5.val=");
+  nexSerial.print(Time.minute());
+  nextionTerminatMessage(); 
+
+  nexSerial.printf("n7.val=");
+  nexSerial.print(pbBatteryVoltage);
+  nextionTerminatMessage(); 
+  nexSerial.printf("n6.val=");
+  nexSerial.print(pbBatteryVoltage);
   nextionTerminatMessage(); 
 
 }
