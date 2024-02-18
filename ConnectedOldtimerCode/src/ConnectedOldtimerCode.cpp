@@ -38,7 +38,7 @@ SYSTEM_MODE(AUTOMATIC);
 
 #define earthRadiusKm 6371.0 // for use in haversine calculation 
 
-uint8_t nextionSpeed = 255, nextionSpeedOld = 254;
+uint8_t nextionSpeed = 255, nextionSpeedOld = 254, gpsNotValid = 1, gpsNotValidOld = 0;
 uint8_t fuelLevel, FuelFlow, fuelUsed, litersper100km, vacuum, vacuumefficiency = 0;
 uint8_t fuelLevelold, FuelFlowold, fuelUsedold, litersper100kmold, vacuumold, vacuumefficiencyold, motorTemperatureold = 0;
 uint8_t motorTemperature = 10;
@@ -238,10 +238,10 @@ void getGpsInfo() {
     //read speed directly 
     if (gps.location.isValid()) {
       nextionSpeed = (uint8_t) ( gps.speed.kmph() + 0.5 - (gps.speed.kmph()<0) ); // gets speed, rounds it and converts to an integer
-      Serial.println("GPS Location found!");
+      gpsNotValid = 0;
     }
     else {
-      //Serial.println("GPS Location invalid");
+      gpsNotValid = 1;
     }
 
 } 
@@ -305,6 +305,18 @@ void updateDisplay() {
     nextionSpeed = 1;
   }
   */
+
+  //set gps symbol
+
+  if (gpsNotValid != gpsNotValidOld)
+  {
+    nexSerial.printf("NoGPSBool.val=");
+    nexSerial.print(gpsNotValid);
+    nextionTerminatMessage();
+  }
+  gpsNotValidOld = gpsNotValid;
+
+
   // updates odometer value
   if (odometerValue == odometerValueOld)
   {
