@@ -10,7 +10,7 @@ SYSTEM_MODE(AUTOMATIC);
 
 #define earthRadiusKm 6371.0 // for use in haversine calculation 
 
-uint8_t nextionSpeed = 255;
+uint8_t nextionSpeed = 255, nextionSpeedOld = 254;
 uint8_t fuelLevel, FuelFlow, fuelUsed, litersper100km, vacuum, vacuumefficiency = 0;
 uint8_t fuelLevelold, FuelFlowold, fuelUsedold, litersper100kmold, vacuumold, vacuumefficiencyold, motorTemperatureold = 0;
 uint8_t motorTemperature = 10;
@@ -22,8 +22,8 @@ static const uint32_t GPSBaud = 9600;
 unsigned long Heartbeat_200mS_Start = millis();
 unsigned long Heartbeat_1000mS_Start = millis();
 unsigned long Heartbeat_2000mS_Start = millis();
-double locationX1, locationX2, locationY1, locationY2, latestDistanceTraveled, odometerValue, pbBatteryVoltage;
-double tripValue = 55;
+double locationX1, locationX2, locationY1, locationY2, latestDistanceTraveled, odometerValue, odometerValueOld, pbBatteryVoltage;
+double tripValue = 55, tripValueOld;
 int led = D7;
 int activateLock = B2;
 int activateUnlock = B3;
@@ -107,6 +107,7 @@ if (millis() >= Heartbeat_200mS_Start + 200) {
 
     //all funtions to be run every 200mS
     //canSend();
+    getGpsInfo();
     updateDisplay();
     //canReceive(); 
     Heartbeat_200mS_Start = millis(); //reset timer
@@ -133,7 +134,7 @@ if (millis() >= Heartbeat_2000mS_Start + 2000) {
 
 //funtions being executed as fast as possible
 ignitionSignalCheck();
-getGpsInfo();
+//getGpsInfo();
 //tripResetCheck(); bug: this is causing a big delay
 //shockSensorCheck();
 canReceive(); 
@@ -152,6 +153,7 @@ void canReceive(){
   {
   case 0x100:
     motorTemperature = message.data[0];
+    oilPressure = message.data[1];
     break;
   case 0x200:
     motorRPM =  message.data[0]| message.data[1]<<8;
@@ -208,6 +210,7 @@ void getGpsInfo() {
     //read speed directly 
     if (gps.location.isValid()) {
       nextionSpeed = (uint8_t) ( gps.speed.kmph() + 0.5 - (gps.speed.kmph()<0) ); // gets speed, rounds it and converts to an integer
+      Serial.println("GPS Location found!");
     }
     else {
       //Serial.println("GPS Location invalid");
@@ -232,6 +235,7 @@ void updateOdometer() {
         odometerValue = odometerValue + latestDistanceTraveled;
         tripValue = tripValue + latestDistanceTraveled;
       }
+      /*
       Serial.print ("Speed = ");
       Serial.print (gps.speed.kmph());
       Serial.print ("  x1 = ");
@@ -249,6 +253,7 @@ void updateOdometer() {
       Serial.print ("  GPS accuracy=");
       Serial.print (gps.hdop.value());
       Serial.println();
+      */
     }
 }
 
@@ -256,15 +261,30 @@ void updateDisplay() {
 
 
   // sends data to display
-  nexSerial.printf("SpeedKmh.val=");
-  nexSerial.print(nextionSpeed);
-  // next 3 writes must be made for the Nextion to accept the update
-  nextionTerminatMessage();
-
+  if (nextionSpeed != nextionSpeedOld)
+  {
+    nexSerial.printf("SpeedKmh.val=");
+    nexSerial.print(nextionSpeed);
+    // next 3 writes must be made for the Nextion to accept the update
+    nextionTerminatMessage();
+  }
+  nextionSpeedOld = nextionSpeed;
+  //speed simulator
+  /*
+  nextionSpeed++;
+  if (nextionSpeed == 255)
+  {
+    nextionSpeed = 1;
+  }
+  */
   // updates odometer value
-  nexSerial.printf("n1.val=");
-  nexSerial.print((uint32_t)((odometerValue + 0.5 - (odometerValue<0)) * 0.621371192 ));
-  nextionTerminatMessage();
+  if (odometerValue == odometerValueOld)
+  {
+    nexSerial.printf("n1.val=");
+    nexSerial.print((uint32_t)((odometerValue + 0.5 - (odometerValue<0)) * 0.621371192 ));
+    nextionTerminatMessage();
+  }
+  odometerValueOld = odometerValue;
 
 
   //updates temperature value
@@ -275,7 +295,7 @@ void updateDisplay() {
     nextionTerminatMessage();
   }
   motorTemperatureold = motorTemperature;
-  Serial.print(motorTemperature);
+  //Serial.print(motorTemperature);
 
   //updates RPM value
   if (motorRPM != motorRPMold)
@@ -285,15 +305,19 @@ void updateDisplay() {
     nextionTerminatMessage();
   }
   motorRPMold = motorRPM;
-  Serial.println(motorRPM);
+  //Serial.println(motorRPM);
 
   //updates trip value
-  nexSerial.printf("n3.val=");
-  nexSerial.print((uint32_t)((tripValue + 0.5 - (tripValue<0)) * 0.621371192 ));
-  nextionTerminatMessage(); 
+  if (tripValue != tripValueOld)
+  {
+    nexSerial.printf("n3.val=");
+    nexSerial.print((uint32_t)((tripValue + 0.5 - (tripValue<0)) * 0.621371192 ));
+    nextionTerminatMessage(); 
+  }
+  tripValueOld = tripValue;
 
-  nexSerial.printf("n4.val=");
-  nexSerial.print(Time.hour());
+  //nexSerial.printf("n4.val=");
+  //nexSerial.print(Time.hour());
   nextionTerminatMessage(); 
   nexSerial.printf("n5.val=");
   nexSerial.print(Time.minute());
@@ -309,13 +333,15 @@ void updateDisplay() {
   //update oil pressure
   if (oilPressure != oilPressureOld)
   {
-    nexSerial.printf("OilPressure.val=");
+    //nexSerial.printf("OilPressure.val=");
+    nexSerial.printf("n4.val=");
     nexSerial.print(oilPressure);
     nextionTerminatMessage(); 
   }
   oilPressureOld = oilPressure;
 
   //update fuelLevel
+  /*
   if (fuelLevel != fuelLevelold)
   {
     nexSerial.printf("fuellevel.val=");
@@ -341,8 +367,9 @@ void updateDisplay() {
     nextionTerminatMessage(); 
   }
   fuelUsedold = fuelLevel;
-
-  //update litersper100km
+  */
+  //update litersper100km todo
+  /*
   if (litersper100km != litersper100kmold)
   {
     nexSerial.printf("literper100.val=");
@@ -350,8 +377,9 @@ void updateDisplay() {
     nextionTerminatMessage(); 
   }
   litersper100kmold = litersper100km;
-
-  //update vacuum
+  */
+  //update vacuum todo
+  /*
   if (vacuum != vacuumold)
   {
     nexSerial.printf("vacuum.val=");
@@ -359,8 +387,9 @@ void updateDisplay() {
     nextionTerminatMessage(); 
   }
   vacuumold = vacuum;
-
-  //update ovacuumefficiency
+  */
+  //update ovacuumefficiency todo
+  /*
   if (vacuumefficiency != vacuumefficiencyold)
   {
     nexSerial.printf("vacuumeffic.val=");
@@ -368,6 +397,7 @@ void updateDisplay() {
     nextionTerminatMessage();
   }
   vacuumefficiencyold = vacuumefficiency; 
+  */
 }
 
 //run at startup
@@ -444,7 +474,7 @@ void ignitionSignalCheck(){
   }
   else
   {
-    digitalWrite(pwerDisplayEnable, LOW);
+    digitalWrite(pwerDisplayEnable, HIGH);
     digitalWrite(pwr5VoltEnable, LOW);
   }
   
