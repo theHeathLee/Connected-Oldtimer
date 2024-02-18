@@ -10,10 +10,13 @@ SYSTEM_MODE(AUTOMATIC);
 
 #define earthRadiusKm 6371.0 // for use in haversine calculation 
 
-uint8_t nextionSpeed = 120;
-uint8_t fuelLevel = 0;
+uint8_t nextionSpeed = 255;
+uint8_t fuelLevel, FuelFlow, fuelUsed, litersper100km, vacuum, vacuumefficiency = 0;
+uint8_t fuelLevelold, FuelFlowold, fuelUsedold, litersper100kmold, vacuumold, vacuumefficiencyold, motorTemperatureold = 0;
 uint8_t motorTemperature = 10;
-uint16_t motorRPM = 0;
+uint8_t oilPressure, oilPressureOld = 0;
+uint8_t setSpeedKmh = 1;
+uint16_t motorRPM, motorRPMold = 0;
 int demoConnectivityValue = 64;
 static const uint32_t GPSBaud = 9600;
 unsigned long Heartbeat_200mS_Start = millis();
@@ -67,7 +70,6 @@ void setup() {
   Particle.function("activate5v", activate5Volts);
   
   
-  //can.begin(250000); // initialize can at 250 kbs //todo set to compile switch
   can.begin(250000); // initialize can at 250 kbs 
   Serial.begin(9600); //usb debugging
   Serial1.blockOnOverrun(true);
@@ -92,7 +94,7 @@ void setup() {
   readFromFRAM(); // pulls FRAM values for last odo, fuel, and gps into memory
 
   //Nextion
-  nexInit();
+  nexInit(250000);
   
   b0.attachPop(b0PopCallback, &b0);
 
@@ -104,9 +106,9 @@ void loop() {
 if (millis() >= Heartbeat_200mS_Start + 200) {
 
     //all funtions to be run every 200mS
-    canSend();
+    //canSend();
     updateDisplay();
-
+    //canReceive(); 
     Heartbeat_200mS_Start = millis(); //reset timer
   }
 
@@ -133,7 +135,7 @@ if (millis() >= Heartbeat_2000mS_Start + 2000) {
 ignitionSignalCheck();
 getGpsInfo();
 //tripResetCheck(); bug: this is causing a big delay
-shockSensorCheck();
+//shockSensorCheck();
 canReceive(); 
 nexLoop(nex_listen_list);
 
@@ -161,8 +163,16 @@ void canReceive(){
     //maybe add some sensors 
     break;
   case 0xB601:
-    motorRPM = message.data[0] << 8 | message.data[1];
-    fuelLevel = message.data[7];
+    //motorRPM = message.data[0] << 8 | message.data[1];
+   // fuelLevel = message.data[7];
+    break;
+  case 0x400:
+    FuelFlow = message.data[0];
+    fuelUsed = message.data[1];
+    litersper100km = message.data[2];
+    fuelLevel = message.data[3];
+    vacuum = message.data[4];
+    vacuumefficiency = message.data[5];
     break;
   default:
     break;
@@ -246,7 +256,7 @@ void updateDisplay() {
 
 
   // sends data to display
-  nexSerial.printf("n0.val=");
+  nexSerial.printf("SpeedKmh.val=");
   nexSerial.print(nextionSpeed);
   // next 3 writes must be made for the Nextion to accept the update
   nextionTerminatMessage();
@@ -256,23 +266,108 @@ void updateDisplay() {
   nexSerial.print((uint32_t)((odometerValue + 0.5 - (odometerValue<0)) * 0.621371192 ));
   nextionTerminatMessage();
 
+
   //updates temperature value
-  nexSerial.printf("n2.val=");
-  nexSerial.print(motorTemperature);
-  nextionTerminatMessage();
-  //Serial.print(motorTemperature);
+  if (motorTemperature != motorTemperatureold)
+  {
+    nexSerial.printf("n2.val=");
+    nexSerial.print(motorTemperature);
+    nextionTerminatMessage();
+  }
+  motorTemperatureold = motorTemperature;
+  Serial.print(motorTemperature);
 
   //updates RPM value
-  nexSerial.printf("va0.val=");
-  nexSerial.print(motorRPM);
-  nextionTerminatMessage();
-  //Serial.print(motorRPM);
+  if (motorRPM != motorRPMold)
+  {
+    nexSerial.printf("va0.val=");
+    nexSerial.print(motorRPM);
+    nextionTerminatMessage();
+  }
+  motorRPMold = motorRPM;
+  Serial.println(motorRPM);
 
   //updates trip value
   nexSerial.printf("n3.val=");
   nexSerial.print((uint32_t)((tripValue + 0.5 - (tripValue<0)) * 0.621371192 ));
   nextionTerminatMessage(); 
 
+  nexSerial.printf("n4.val=");
+  nexSerial.print(Time.hour());
+  nextionTerminatMessage(); 
+  nexSerial.printf("n5.val=");
+  nexSerial.print(Time.minute());
+  nextionTerminatMessage(); 
+
+  nexSerial.printf("n7.val=");
+  nexSerial.print(pbBatteryVoltage);
+  nextionTerminatMessage(); 
+  nexSerial.printf("n6.val=");
+  nexSerial.print(pbBatteryVoltage);
+  nextionTerminatMessage(); 
+
+  //update oil pressure
+  if (oilPressure != oilPressureOld)
+  {
+    nexSerial.printf("OilPressure.val=");
+    nexSerial.print(oilPressure);
+    nextionTerminatMessage(); 
+  }
+  oilPressureOld = oilPressure;
+
+  //update fuelLevel
+  if (fuelLevel != fuelLevelold)
+  {
+    nexSerial.printf("fuellevel.val=");
+    nexSerial.print(fuelLevel);
+    nextionTerminatMessage(); 
+  }
+  fuelLevelold = fuelLevel;
+
+  //update FuelFlow
+  if (fuelLevel != fuelLevelold)
+  {
+    nexSerial.printf("Flow.val=");
+    nexSerial.print(FuelFlow);
+    nextionTerminatMessage(); 
+  }
+  fuelLevelold = fuelLevel;
+
+  //update fuelUsed
+  if (fuelUsed != fuelLevelold)
+  {
+    nexSerial.printf("Usage.val=");
+    nexSerial.print(fuelUsed);
+    nextionTerminatMessage(); 
+  }
+  fuelUsedold = fuelLevel;
+
+  //update litersper100km
+  if (litersper100km != litersper100kmold)
+  {
+    nexSerial.printf("literper100.val=");
+    nexSerial.print(litersper100km);
+    nextionTerminatMessage(); 
+  }
+  litersper100kmold = litersper100km;
+
+  //update vacuum
+  if (vacuum != vacuumold)
+  {
+    nexSerial.printf("vacuum.val=");
+    nexSerial.print(vacuum);
+    nextionTerminatMessage(); 
+  }
+  vacuumold = vacuum;
+
+  //update ovacuumefficiency
+  if (vacuumefficiency != vacuumefficiencyold)
+  {
+    nexSerial.printf("vacuumeffic.val=");
+    nexSerial.print(vacuumefficiency);
+    nextionTerminatMessage();
+  }
+  vacuumefficiencyold = vacuumefficiency; 
 }
 
 //run at startup
@@ -350,6 +445,7 @@ void ignitionSignalCheck(){
   else
   {
     digitalWrite(pwerDisplayEnable, LOW);
+    digitalWrite(pwr5VoltEnable, LOW);
   }
   
 }
