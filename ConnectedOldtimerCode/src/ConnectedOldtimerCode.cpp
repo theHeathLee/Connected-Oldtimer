@@ -20,9 +20,9 @@ double deg2rad(double deg);
 void nextionTerminatMessage();
 int lockDoors(String args);
 int UnlockDoors(String args);
+void startDeepSleep(void);
 void ignitionSignalCheck();
-void shockSensorCheck();
-int activateDeepSleep(String args);
+int cloudActivateDeepSleep(String args);
 int activate5Volts(String args);
 void b0PopCallback(void *ptr);
 #line 1 "c:/Users/Heath/workspace/Connected-Oldtimer/ConnectedOldtimerCode/src/ConnectedOldtimerCode.ino"
@@ -50,6 +50,7 @@ static const uint32_t GPSBaud = 9600;
 unsigned long Heartbeat_200mS_Start = millis();
 unsigned long Heartbeat_1000mS_Start = millis();
 unsigned long Heartbeat_2000mS_Start = millis();
+unsigned long Heartbeat_10mS_Start = millis();
 double locationX1, locationX2, locationY1, locationY2, latestDistanceTraveled, odometerValue, odometerValueOld, pbBatteryVoltage;
 double tripValue = 55, tripValueOld;
 int led = D7;
@@ -61,6 +62,7 @@ int ignitionSignal = D2;
 int GPSEnable = B5;
 int pwr5VoltEnable = A1;
 int shockSense = WKP;
+int countdownToDeepSleep = 0;
 
 //Nextion Object Defs
 USARTSerial& nexSerial = Serial4;
@@ -94,7 +96,7 @@ void setup() {
   //particle functions
   Particle.function("LockDrs", lockDoors);
   Particle.function("UnlockDrs", UnlockDoors);
-  Particle.function("deepSleep", activateDeepSleep);
+  Particle.function("deepSleep", cloudActivateDeepSleep);
   Particle.function("activate5v", activate5Volts);
   
   
@@ -160,9 +162,12 @@ if (millis() >= Heartbeat_2000mS_Start + 2000) {
   Heartbeat_2000mS_Start = millis();
 }
 
+if (millis() >= Heartbeat_10mS_Start + 10) {
+  ignitionSignalCheck();
+  Heartbeat_10mS_Start = millis();
+}
+
 //funtions being executed as fast as possible
-ignitionSignalCheck();
-//getGpsInfo();
 //tripResetCheck(); bug: this is causing a big delay
 //shockSensorCheck();
 canReceive(); 
@@ -263,25 +268,6 @@ void updateOdometer() {
         odometerValue = odometerValue + latestDistanceTraveled;
         tripValue = tripValue + latestDistanceTraveled;
       }
-      /*
-      Serial.print ("Speed = ");
-      Serial.print (gps.speed.kmph());
-      Serial.print ("  x1 = ");
-      Serial.print (locationX1);
-      Serial.print (" x2 = ");
-      Serial.print (locationX2, 6);
-      Serial.print ("   y1 = ");
-      Serial.print (locationY1);
-      Serial.print (" y2 = ");
-      Serial.print (locationY2, 6);
-      Serial.print ("   Latest Distance=");
-      Serial.print (latestDistanceTraveled, 6);
-      Serial.print ("   Odometer=");
-      Serial.print (odometerValue, 6);
-      Serial.print ("  GPS accuracy=");
-      Serial.print (gps.hdop.value());
-      Serial.println();
-      */
     }
 }
 
@@ -379,65 +365,6 @@ void updateDisplay() {
     nextionTerminatMessage(); 
   }
   oilPressureOld = oilPressure;
-
-  //update fuelLevel
-  /*
-  if (fuelLevel != fuelLevelold)
-  {
-    nexSerial.printf("fuellevel.val=");
-    nexSerial.print(fuelLevel);
-    nextionTerminatMessage(); 
-  }
-  fuelLevelold = fuelLevel;
-
-  //update FuelFlow
-  if (fuelLevel != fuelLevelold)
-  {
-    nexSerial.printf("Flow.val=");
-    nexSerial.print(FuelFlow);
-    nextionTerminatMessage(); 
-  }
-  fuelLevelold = fuelLevel;
-
-  //update fuelUsed
-  if (fuelUsed != fuelLevelold)
-  {
-    nexSerial.printf("Usage.val=");
-    nexSerial.print(fuelUsed);
-    nextionTerminatMessage(); 
-  }
-  fuelUsedold = fuelLevel;
-  */
-  //update litersper100km todo
-  /*
-  if (litersper100km != litersper100kmold)
-  {
-    nexSerial.printf("literper100.val=");
-    nexSerial.print(litersper100km);
-    nextionTerminatMessage(); 
-  }
-  litersper100kmold = litersper100km;
-  */
-  //update vacuum todo
-  /*
-  if (vacuum != vacuumold)
-  {
-    nexSerial.printf("vacuum.val=");
-    nexSerial.print(vacuum);
-    nextionTerminatMessage(); 
-  }
-  vacuumold = vacuum;
-  */
-  //update ovacuumefficiency todo
-  /*
-  if (vacuumefficiency != vacuumefficiencyold)
-  {
-    nexSerial.printf("vacuumeffic.val=");
-    nexSerial.print(vacuumefficiency);
-    nextionTerminatMessage();
-  }
-  vacuumefficiencyold = vacuumefficiency; 
-  */
 }
 
 //run at startup
@@ -507,38 +434,47 @@ int UnlockDoors(String args){
   return 1;
 }
 
+void startDeepSleep(void){
+  SystemSleepConfiguration config;
+  config.mode(SystemSleepMode::HIBERNATE)
+        // wake up on ignition signal or shake sensor
+        .gpio(WKP, RISING)
+        // duration every 12 hours
+        .duration(43200);
+  SystemSleepResult result = System.sleep(config);
+}
+
 void ignitionSignalCheck(){
   if (digitalRead(ignitionSignal) == HIGH){
     digitalWrite(pwerDisplayEnable, HIGH);
     digitalWrite(pwr5VoltEnable, HIGH);
+    countdownToDeepSleep = 0;
   }
   else
   {
-    digitalWrite(pwerDisplayEnable, HIGH);
+    digitalWrite(pwerDisplayEnable, LOW);
     digitalWrite(pwr5VoltEnable, LOW);
+    countdownToDeepSleep++; 
+    Serial.println(countdownToDeepSleep);
+    // go to deep sleep after 60 seconds of no ignition signal
+    if (countdownToDeepSleep > 6000){
+      countdownToDeepSleep = 0;
+      startDeepSleep();
+    }  
   }
-  
 }
 
-void shockSensorCheck(){
-    if(digitalRead(shockSense)== HIGH){
-      Serial.println("MOVEMENT Detected!!!");
-    }
-}
-
-int activateDeepSleep(String args){
-  //System.sleep(SLEEP_MODE_DEEP);
-  SystemSleepConfiguration config;
-  config.mode(SystemSleepMode::HIBERNATE)
-        .gpio(WKP, RISING)
-        .duration(60s);
-  SystemSleepResult result = System.sleep(config);
+int cloudActivateDeepSleep(String args){
+  startDeepSleep();
   return 1;
 }
 
 
+
 int activate5Volts(String args){
-digitalWrite(pwr5VoltEnable, atoi(args));
+  Serial.println(args);
+  digitalWrite(pwr5VoltEnable, atoi(args));
+  Serial.println(digitalRead(pwr5VoltEnable));
   return atoi(args);
 }
 

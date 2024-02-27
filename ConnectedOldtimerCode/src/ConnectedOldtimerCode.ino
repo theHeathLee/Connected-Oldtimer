@@ -409,8 +409,10 @@ int UnlockDoors(String args){
 void startDeepSleep(void){
   SystemSleepConfiguration config;
   config.mode(SystemSleepMode::HIBERNATE)
-        .gpio(WKP, RISING);
-        //.duration(60s);
+        // wake up on ignition signal or shake sensor
+        .gpio(WKP, RISING)
+        // duration every 12 hours
+        .duration(43200);
   SystemSleepResult result = System.sleep(config);
 }
 
@@ -426,8 +428,8 @@ void ignitionSignalCheck(){
     digitalWrite(pwr5VoltEnable, LOW);
     countdownToDeepSleep++; 
     Serial.println(countdownToDeepSleep);
-    // go to deep sleep after 20 seconds of no ignition signal
-    if (countdownToDeepSleep > 2000){
+    // go to deep sleep after 60 seconds of no ignition signal
+    if (countdownToDeepSleep > 6000){
       countdownToDeepSleep = 0;
       startDeepSleep();
     }  
