@@ -23,7 +23,7 @@ unsigned long Heartbeat_200mS_Start = millis();
 unsigned long Heartbeat_1000mS_Start = millis();
 unsigned long Heartbeat_2000mS_Start = millis();
 unsigned long Heartbeat_10mS_Start = millis();
-double locationX1, locationX2, locationY1, locationY2, latestDistanceTraveled, odometerValue, odometerValueOld, pbBatteryVoltage;
+double locationX1, locationX2, locationY1, locationY2, latestDistanceTraveled, odometerValue, odometerValueOld, pbBatteryVoltage, lipoCellVoltage, lipoSOC;
 double tripValue = 55, tripValueOld;
 int led = D7;
 int activateLock = B2;
@@ -35,6 +35,8 @@ int GPSEnable = B5;
 int pwr5VoltEnable = A1;
 int shockSense = WKP;
 int countdownToDeepSleep = 0;
+FuelGauge fuel;
+PMIC pmic;
 
 //Nextion Object Defs
 USARTSerial& nexSerial = Serial4;
@@ -64,6 +66,8 @@ void setup() {
   Particle.variable("PosLat", locationY2);
   Particle.variable("PosLon", locationX2);
   Particle.variable("PBBatVolt", pbBatteryVoltage);
+  Particle.variable("LipoCellV", lipoCellVoltage);
+  Particle.variable("LipoSOC", lipoSOC);
 
   //particle functions
   Particle.function("LockDrs", lockDoors);
@@ -100,6 +104,13 @@ void setup() {
   
   b0.attachPop(b0PopCallback, &b0);
 
+  //set minimum input voltage
+  
+  pmic.setInputVoltageLimit(4680); 
+
+  //set gps module to 1hz update rate
+  Serial5.println("$PMTK220,1000*1F");
+
 }
 
 
@@ -108,10 +119,7 @@ void loop() {
 if (millis() >= Heartbeat_200mS_Start + 200) {
 
     //all funtions to be run every 200mS
-    //canSend();
-    getGpsInfo();
     updateDisplay();
-    //canReceive(); 
     Heartbeat_200mS_Start = millis(); //reset timer
   }
 
@@ -120,7 +128,6 @@ if (millis() >= Heartbeat_1000mS_Start + 1000) {
     //all funtions to be run every second
     statusLED();
     storeToFRAM(); //Todo - comment this back in when there is a change compare
-    //serialLogger();
     
     Heartbeat_1000mS_Start = millis(); //reset timer
   }
@@ -128,8 +135,7 @@ if (millis() >= Heartbeat_1000mS_Start + 1000) {
 if (millis() >= Heartbeat_2000mS_Start + 2000) {
 
    updateOdometer(); 
-   pbBatteryVoltage = double((analogRead(pbBatVoltPin)*batCalibrationMultiplier)/1000)+batCalibrationOffset;
-   //Serial.println(pbBatteryVoltage);
+   updatebatteriesinfo();
 
   Heartbeat_2000mS_Start = millis();
 }
@@ -140,8 +146,7 @@ if (millis() >= Heartbeat_10mS_Start + 10) {
 }
 
 //funtions being executed as fast as possible
-//tripResetCheck(); bug: this is causing a big delay
-//shockSensorCheck();
+getGpsInfo();
 canReceive(); 
 nexLoop(nex_listen_list);
 
@@ -210,10 +215,8 @@ void statusLED(){
 void getGpsInfo() {
     while (Serial5.available())
       gps.encode(Serial5.read());
-
-    
     //read speed directly 
-    if (gps.location.isValid()) {
+    if (gps.location.isValid() && gps.location.isUpdated()) {
       nextionSpeed = (uint8_t) ( gps.speed.kmph() + 0.5 - (gps.speed.kmph()<0) ); // gets speed, rounds it and converts to an integer
       gpsNotValid = 0;
     }
@@ -247,14 +250,14 @@ void updateDisplay() {
 
 
   // sends data to display
-  if (nextionSpeed != nextionSpeedOld)
-  {
+  // if (nextionSpeed != nextionSpeedOld)
+  // {
     nexSerial.printf("SpeedKmh.val=");
     nexSerial.print(nextionSpeed);
     // next 3 writes must be made for the Nextion to accept the update
     nextionTerminatMessage();
-  }
-  nextionSpeedOld = nextionSpeed;
+  // }
+  // nextionSpeedOld = nextionSpeed;
   //speed simulator
   /*
   nextionSpeed++;
@@ -266,23 +269,19 @@ void updateDisplay() {
 
   //set gps symbol
 
-  if (gpsNotValid != gpsNotValidOld)
-  {
+  //if (gpsNotValid != gpsNotValidOld)
+  //{
     nexSerial.printf("NoGPSBool.val=");
     nexSerial.print(gpsNotValid);
     nextionTerminatMessage();
-  }
-  gpsNotValidOld = gpsNotValid;
+  //}
+ // gpsNotValidOld = gpsNotValid;
 
 
   // updates odometer value
-  if (odometerValue == odometerValueOld)
-  {
     nexSerial.printf("n1.val=");
     nexSerial.print((uint32_t)((odometerValue + 0.5 - (odometerValue<0)) * 0.621371192 ));
     nextionTerminatMessage();
-  }
-  odometerValueOld = odometerValue;
 
 
   //updates temperature value
@@ -296,37 +295,32 @@ void updateDisplay() {
   //Serial.print(motorTemperature);
 
   //updates RPM value
-  if (motorRPM != motorRPMold)
-  {
-    nexSerial.printf("va0.val=");
-    nexSerial.print(motorRPM);
-    nextionTerminatMessage();
-  }
-  motorRPMold = motorRPM;
+  // if (motorRPM != motorRPMold)
+  // {
+  //   nexSerial.printf("va0.val=");
+  //   nexSerial.print(motorRPM);
+  //   nextionTerminatMessage();
+  // }
+  // motorRPMold = motorRPM;
   //Serial.println(motorRPM);
 
   //updates trip value
-  if (tripValue != tripValueOld)
-  {
     nexSerial.printf("n3.val=");
     nexSerial.print((uint32_t)((tripValue + 0.5 - (tripValue<0)) * 0.621371192 ));
     nextionTerminatMessage(); 
-  }
-  tripValueOld = tripValue;
 
-  //nexSerial.printf("n4.val=");
-  //nexSerial.print(Time.hour());
+
   nextionTerminatMessage(); 
   nexSerial.printf("n5.val=");
   nexSerial.print(Time.minute());
   nextionTerminatMessage(); 
 
-  nexSerial.printf("n7.val=");
-  nexSerial.print(pbBatteryVoltage);
-  nextionTerminatMessage(); 
-  nexSerial.printf("n6.val=");
-  nexSerial.print(pbBatteryVoltage);
-  nextionTerminatMessage(); 
+  // nexSerial.printf("n7.val=");
+  // nexSerial.print(pbBatteryVoltage);
+  // nextionTerminatMessage(); 
+  // nexSerial.printf("n6.val=");
+  // nexSerial.print(pbBatteryVoltage);
+  // nextionTerminatMessage(); 
 
   //update oil pressure
   if (oilPressure != oilPressureOld)
@@ -417,11 +411,6 @@ void startDeepSleep(void){
 }
 
 void ignitionSignalCheck(){
-  Serial.print("ignition signal: ");
-  Serial.print(digitalRead(ignitionSignal));
-  //print the value of the wkp pi
-  Serial.print("    WKP: ");
-  Serial.println(digitalRead(WKP));
   if (digitalRead(ignitionSignal) == HIGH){
     digitalWrite(pwerDisplayEnable, HIGH);
     digitalWrite(pwr5VoltEnable, HIGH);
@@ -432,9 +421,8 @@ void ignitionSignalCheck(){
     digitalWrite(pwerDisplayEnable, LOW);
     digitalWrite(pwr5VoltEnable, LOW);
     countdownToDeepSleep++; 
-    Serial.println(countdownToDeepSleep);
     // go to deep sleep after 5 minutes of no ignition signal
-    if (countdownToDeepSleep > 1000){
+    if (countdownToDeepSleep > 30000){
       countdownToDeepSleep = 0;
       startDeepSleep();
     }  
@@ -460,3 +448,11 @@ void b0PopCallback(void *ptr)
 {
   tripValue = 0;
 }
+
+// read electron fuel gauge
+void updatebatteriesinfo(){
+  pbBatteryVoltage = double((analogRead(pbBatVoltPin)*batCalibrationMultiplier)/1000)+batCalibrationOffset;
+  lipoCellVoltage = fuel.getVCell();
+  lipoSOC = fuel.getSoC();
+}
+ 
